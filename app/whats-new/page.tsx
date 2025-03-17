@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, ChevronDown, ArrowRight, Search, X, ArrowUpRight, Menu, Filter } from 'lucide-react';
+import { Calendar, ArrowRight, Search, X, ArrowUpRight, Menu, Filter } from 'lucide-react';
 
 interface NewsItem {
   id: number;

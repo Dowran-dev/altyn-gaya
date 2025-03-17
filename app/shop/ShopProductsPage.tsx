@@ -1,298 +1,3 @@
-// 'use client';
-// import React, { useState, useEffect } from 'react';
-// import Head from 'next/head';
-// import Image from 'next/image';
-// import Link from 'next/link';
-// import { Star, ChevronDown, Grid, List } from 'lucide-react';
-
-// // Align this interface with your API data structure
-// interface ProductSize {
-//   id: number;
-//   name: string;
-//   quantity: string;
-//   price: string;
-// }
-
-// interface ProductReview {
-//   id: number;
-//   author: string;
-//   date: string;
-//   rating: number;
-//   title: string;
-//   content: string;
-// }
-
-// interface Product {
-//   id: number;
-//   name: string;
-//   subtitle: string;
-//   fullTitle: string;
-//   description: string;
-//   longDescription: string;
-//   features: string[];
-//   directions: string[];
-//   rating: number;
-//   reviews: number;
-//   imageSrc: string;
-//   badge?: string;
-//   sizes: ProductSize[];
-//   reviewsList: ProductReview[];
-//   slug: string;
-// }
-
-// type SortOption = 'popularity' | 'rating' | 'a-z' | 'z-a';
-// type ViewMode = 'grid' | 'list';
-
-// const ShopProductsPage: React.FC = () => {
-//   const [products, setProducts] = useState<Product[]>([]);
-//   const [loading, setLoading] = useState(true);
-//   const [sortBy, setSortBy] = useState<SortOption>('popularity');
-//   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-//   const [viewMode, setViewMode] = useState<ViewMode>('grid');
-
-//   useEffect(() => {
-//     fetch('/api/products')
-//       .then((res) => res.json())
-//       .then((data) => {
-//         setProducts(data);
-//         setLoading(false);
-//       })
-//       .catch((err) => {
-//         console.error('Ошибка при загрузке продуктов:', err);
-//         setLoading(false);
-//       });
-//   }, []);
-
-//   if (loading) return (
-//     <div className="min-h-screen flex items-center justify-center">
-//       <div className="text-blue-800 text-xl">Загрузка продуктов...</div>
-//     </div>
-//   );
-
-//   const sortedProducts = [...products].sort((a, b) => {
-//     switch (sortBy) {
-//       case 'rating':
-//         return b.rating - a.rating;
-//       case 'a-z':
-//         return a.subtitle.localeCompare(b.subtitle);
-//       case 'z-a':
-//         return b.subtitle.localeCompare(a.subtitle);
-//       case 'popularity':
-//       default:
-//         return b.reviews - a.reviews;
-//     }
-//   });
-
-//   const getSortOptionText = (option: SortOption): string => {
-//     switch (option) {
-//       case 'popularity': return 'Популярность';
-//       case 'rating': return 'Рейтинг продукта';
-//       case 'a-z': return 'Продукты А-Я';
-//       case 'z-a': return 'Продукты Я-А';
-//     }
-//   };
-
-//   const renderRatingStars = (rating: number) => {
-//     return (
-//       <div className="flex text-orange-500">
-//         {[...Array(Math.floor(rating))].map((_, i) => (
-//           <Star key={i} fill="currentColor" className="h-4 w-4" />
-//         ))}
-//         {rating % 1 > 0 && (
-//           <Star key="half" className="h-4 w-4" fill="currentColor" strokeWidth={0} style={{ clipPath: 'inset(0 50% 0 0)' }} />
-//         )}
-//       </div>
-//     );
-//   };
-
-//   const renderGridItem = (product: Product) => (
-//     <Link href={`/product-details/${product.id}`} key={product.id}>
-//       <div className="bg-white p-4 rounded shadow-sm hover:shadow-md transition-shadow">
-//         <div className="relative h-64 w-full mb-4">
-//           {product.badge && (
-//             <div className="absolute top-0 right-0 w-16 h-16 z-10">
-//               <div className="w-16 h-16 rounded-full bg-purple-900 flex flex-col items-center justify-center text-white text-xs font-bold text-center p-1">
-//                 {product.badge.split(' ').map((word, index) => (
-//                   <span key={index}>{word}</span>
-//                 ))}
-//               </div>
-//             </div>
-//           )}
-//           <div className="w-full h-full relative">
-//             <Image 
-//               src={product.imageSrc} 
-//               alt={product.fullTitle} 
-//               layout="fill" 
-//               objectFit="contain"
-//             />
-//           </div>
-//         </div>
-//         <div className="text-left">
-//           <h2 className="text-xl mb-1">
-//             <span className="text-blue-800">{product.name} </span>
-//             <span className="text-blue-800 font-bold">{product.subtitle}</span>
-//           </h2>
-//           <div className="flex justify-start items-center mb-3">
-//             {renderRatingStars(product.rating)}
-//             <span className="text-blue-800 ml-2 text-xs font-normal">({product.reviews})</span>
-//           </div>
-//           <p className="text-blue-800 mb-4 text-sm line-clamp-2">{product.description}</p>
-//           <button className="bg-orange-500 text-white px-8 py-2 my-4 rounded-full hover:bg-orange-600 transition-colors font-bold text-lg">
-//             Найти магазины
-//           </button>
-//         </div>
-//       </div>
-//     </Link>
-//   );
-
-//   const renderListItem = (product: Product) => (
-//     <div key={product.id} className="border-b border-gray-200 pb-8 mb-8">
-//       <div className="flex flex-col md:flex-row">
-//         <div className="w-full md:w-1/3 relative mb-4 md:mb-0">
-//           <Link href={`/product-details/${product.id}`} className="block relative">
-//             {product.badge && (
-//               <div className="absolute top-0 right-12 w-20 h-20">
-//                 <div className="w-20 h-20 rounded-full bg-purple-900 flex flex-col items-center justify-center text-white text-xs font-bold text-center p-1">
-//                   {product.badge.split(' ').map((word, index) => (
-//                     <span key={index}>{word}</span>
-//                   ))}
-//                 </div>
-//               </div>
-//             )}
-//             <div className="relative h-72 w-72 mx-auto">
-//               <Image 
-//                 src={product.imageSrc} 
-//                 alt={product.fullTitle} 
-//                 layout="fill" 
-//                 objectFit="contain"
-//               />
-//             </div>
-//           </Link>
-//         </div>
-//         <div className="w-full md:w-2/3 md:pl-4">
-//           <Link href={`/product-details/${product.slug}`}>
-//             <h2 className="text-2xl mb-1">
-//               <span className="text-blue-800">{product.name} </span>
-//               <span className="text-blue-800 font-bold">{product.subtitle}</span>
-//             </h2>
-//           </Link>
-//           <div className="flex items-center mb-3">
-//             {renderRatingStars(product.rating)}
-//             <span className="text-blue-800 ml-2">({product.reviews})</span>
-//           </div>
-//           <p className="text-blue-800 mb-6" style={{ fontFamily: '"Kamber Medium", sans-serif' }}>
-//             {product.description}
-//           </p>
-//           <div className="mb-4">
-//             <h3 className="font-bold text-blue-800 mb-2">Доступные размеры:</h3>
-//             <div className="flex flex-wrap gap-2">
-//               {product.sizes.map(size => (
-//                 <span key={size.id} className="bg-blue-50 text-blue-800 px-3 py-1 rounded-full text-sm">
-//                   {size.name}
-//                 </span>
-//               ))}
-//             </div>
-//           </div>
-//           <button className="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-colors font-bold text-lg">
-//             Найти магазины
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-
-//   return (
-//     <div className="min-h-screen bg-white">
-//       <Head>
-//         <title>Магазин продуктов</title>
-//         <meta name="description" content="Просмотрите нашу полную линейку продуктов" />
-//         <link rel="icon" href="/favicon.ico" />
-//       </Head>
-
-//       <main className="container mx-auto max-w-6xl px-4">
-//         <div className="py-4">
-//           <div className="text-xs text-blue-800 font-light mt-6">Магазин продуктов</div>
-//         </div>
-
-//         <div className="flex flex-col md:flex-row md:justify-between md:items-center my-8">
-//           <h1 className="text-4xl md:text-5xl font-light text-orange-500 mb-4 md:mb-0">
-//             Магазин <span className="font-bold" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>Продуктов</span>
-//           </h1>
-//           <button className="bg-orange-500 text-white font-bold text-lg px-6 py-3 rounded-full hover:bg-orange-600 transition-colors">
-//             Просмотреть другие продукты
-//           </button>
-//         </div>
-
-//         <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 border-b border-gray-200 pb-4">
-//           <div className="text-blue-800 font-bold text-xl mb-4 md:mb-0" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
-//             {products.length} Продуктов
-//           </div>
-//           <div className="flex items-center gap-6">
-//             <div className="flex items-center gap-2 relative">
-//               <span className="text-blue-900 font-semibold" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>Сортировать по:</span>
-//               <div 
-//                 className="flex items-center cursor-pointer" 
-//                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-//               >
-//                 <span className="text-blue-900">{getSortOptionText(sortBy)}</span>
-//                 <ChevronDown className="text-orange-500 ml-1 h-4 w-4" />
-//               </div>
-              
-//               {isDropdownOpen && (
-//                 <div className="absolute top-full right-0 mt-1 bg-white border border-gray-200 shadow-lg z-10 w-40">
-//                   {(['popularity', 'rating', 'a-z', 'z-a'] as SortOption[]).map(option => (
-//                     <div 
-//                       key={option} 
-//                       className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-blue-900"
-//                       onClick={() => {
-//                         setSortBy(option);
-//                         setIsDropdownOpen(false);
-//                       }}
-//                     >
-//                       {getSortOptionText(option)}
-//                     </div>
-//                   ))}
-//                 </div>
-//               )}
-//             </div>
-//             <div className="flex border-2 border-gray-200">
-//               <button 
-//                 className={`p-2 ${viewMode === 'grid' ? 'bg-orange-100' : ''}`}
-//                 onClick={() => setViewMode('grid')}
-//               >
-//                 <Grid className={`h-5 w-5 ${viewMode === 'grid' ? 'text-orange-500' : 'text-gray-400'}`} />
-//               </button>
-//               <button 
-//                 className={`p-2 ${viewMode === 'list' ? 'bg-orange-100' : ''}`}
-//                 onClick={() => setViewMode('list')}
-//               >
-//                 <List className={`h-5 w-5 ${viewMode === 'list' ? 'text-orange-500' : 'text-gray-400'}`} />
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-
-//         {sortedProducts.length === 0 ? (
-//           <div className="text-center py-16">
-//             <p className="text-xl text-blue-800">Продукты не найдены.</p>
-//           </div>
-//         ) : viewMode === 'grid' ? (
-//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-//             {sortedProducts.map(product => renderGridItem(product))}
-//           </div>
-//         ) : (
-//           <div className="space-y-8">
-//             {sortedProducts.map(product => renderListItem(product))}
-//           </div>
-//         )}
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default ShopProductsPage;
-
-
 'use client';
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
@@ -366,7 +71,7 @@ const ShopProductsPage: React.FC = () => {
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
   
   // Filter states
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(true); // Changed default to true for desktop
   const [availableBrands, setAvailableBrands] = useState<string[]>([]);
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
   const [filterOptions, setFilterOptions] = useState<FilterOptions>({
@@ -530,36 +235,27 @@ const ShopProductsPage: React.FC = () => {
     );
   };
 
-  // const renderFilterPanel = () => {
-  //   return (
-  //     <div className="p-4 bg-white shadow-md rounded">
-  //       <div className="flex justify-between items-center mb-4">
-  //         <h2 className="text-xl font-bold text-blue-800">Фильтры</h2>
-  //         <button 
-  //           className="text-blue-800 underline" 
-  //           onClick={clearAllFilters}
-  //         >
-  //           Очистить все
-  //         </button>
-  //       </div>
-        
-  //       {renderBrandFilter()}
-  //       {renderCategoryFilter()}
-  //     </div>
-  //   );
-  // };
-
   const renderFilterPanel = () => {
+    if (!isFilterOpen) return null;
+    
     return (
       <div className="p-5 bg-white shadow rounded-lg border border-gray-100">
         <div className="flex justify-between items-center mb-5 pb-3 border-b border-gray-100">
           <h2 className="text-xl font-bold text-blue-800">Фильтры</h2>
-          <button 
-            className="text-blue-600 hover:text-orange-500 text-sm font-medium transition-colors" 
-            onClick={clearAllFilters}
-          >
-            Очистить все
-          </button>
+          <div className="flex gap-2">
+            <button 
+              className="text-blue-600 hover:text-orange-500 text-sm font-medium transition-colors" 
+              onClick={clearAllFilters}
+            >
+              Очистить все
+            </button>
+            <button
+              className="text-blue-600 hover:text-orange-500 text-sm font-medium transition-colors"
+              onClick={() => setIsFilterOpen(false)}
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
         </div>
         
         {/* Brand filter section */}
@@ -778,12 +474,16 @@ const ShopProductsPage: React.FC = () => {
           </button>
         </div>
 
-        {/* Active filters */}
-        {/* {renderActiveFilters()} */}
-
         <div className="flex flex-col md:flex-row md:space-x-6 mb-8">
-          {/* Desktop filters panel */}
-          <div className="hidden md:block w-64 flex-shrink-0">
+        {!isFilterOpen && (
+              <button
+                className="mb-4 bg-blue-50 text-blue-800 py-2 px-4 rounded flex items-center font-bold"
+                onClick={() => setIsFilterOpen(true)}
+              >
+                <Filter className="mr-2 h-5 w-5" />
+                Показать фильтры
+              </button>
+            )}
             {renderFilterPanel()}
           </div>
 
