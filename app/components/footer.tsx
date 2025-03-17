@@ -1,8 +1,4 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Input } from "@/app/components/ui/input"
-import { Search, Phone, Mail, MapPin } from "lucide-react"
-import Navigation from "./navigation"
+import { Phone, Mail, MapPin } from "lucide-react"
 
 export default function Footer() {
 

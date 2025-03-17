@@ -1,15 +1,14 @@
 'use client';
-import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/app/components/ui/button";
-import { ChevronLeft, ChevronRight, Check, ArrowRight, Phone, Mail, MapPin, Calendar, Users, UserCheck, Shield, Youtube, MessageCircle } from "lucide-react";
+import { Check, ArrowRight, Phone, Mail, MapPin, Calendar, Users, UserCheck, Shield } from "lucide-react";
 import ProcessSection from "./components/ProcessSection";
 import ProductCarousel from "./components/ProductCarousel";
 import AboutCompanySection from "./components/AboutCompanySection";
 import HeroSection from "./components/HeroSection";
 import FAQSection from "./components/FAQSection";
 import AdvancedWaveSeparator from "./components/BrushWaveSeparator";
-import { FaInstagram, FaYoutube, FaTiktok, FaWhatsapp, FaPlus, FaTimes } from 'react-icons/fa';
+import { FaInstagram, FaYoutube, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 
 export const runtime = 'edge';
 
@@ -144,48 +143,6 @@ const FadeInView = ({ children, delay = 0, className = "" }) => {
 };
 
 export default function Page() {
-  const [scrollY, setScrollY] = useState(0);
-  
-  // Company advantages array
-  const advantages = [
-    {
-      title: "Качество",
-      description: "Производство с использованием экологически чистого сырья и современных технологий",
-      image: "/images/wagtlayynca/step1.webp",
-      stats: [
-        { value: 99.5, label: "Соответствие стандартам" },
-        { value: 15, label: "Лет опыта" }
-      ]
-    },
-    {
-      title: "Технологии",
-      description: "Инновационные решения и автоматизация производства для максимальной эффективности",
-      image: "/images/wagtlayynca/step2.webp",
-      stats: [
-        { value: 85, label: "Автоматизация процессов" },
-        { value: 12, label: "Патентов и разработок" }
-      ]
-    },
-    {
-      title: "Экологичность",
-      description: "Бережное отношение к природе и использование возобновляемых ресурсов",
-      image: "/images/wagtlayynca/step3.webp",
-      stats: [
-        { value: 70, label: "Переработка отходов" },
-        { value: 40, label: "Снижение углеродного следа" }
-      ]
-    }
-  ];
-  
-  // Scroll handler for parallax effects
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
   
   return (
     <div className="min-h-screen overflow-hidden">

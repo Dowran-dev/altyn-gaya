@@ -43,17 +43,15 @@ export default function ClientFeatures({
         darkMode ? "bg-blue-950 text-white" : "bg-white text-blue-800"
       }`}
     >
-      {" "}
-      {/* Reading Progress Bar */}{" "}
+      {/* Reading Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 z-50">
         <div
           className="h-full bg-orange-500"
           style={{ width: `${readProgressPercent}%` }}
         >
-          {" "}
-        </div>{" "}
+        </div>
       </div>
-      {/* Modern Navbar */}{" "}
+      {/* Modern Navbar */}
       <nav
         className={`sticky top-0 z-40 backdrop-blur-lg ${
           darkMode ? "bg-blue-950/80" : "bg-white/80"
@@ -73,27 +71,26 @@ export default function ClientFeatures({
                     className={`h-6 w-6 ${
                       darkMode ? "text-white" : "text-blue-800"
                     }`}
-                  />{" "}
-                </button>{" "}
-              </div>{" "}
+                  />
+                </button>
+              </div>
               <Link href="/">
                 <span className="flex items-center">
                   <div
                     className="h-8 w-8 rounded-full bg-orange-500 mr-2 flex items-center justify-center"
                   >
-                    <span className="text-white font-bold"> T </span>{" "}
-                  </div>{" "}
+                    <span className="text-white font-bold"> T </span>
+                  </div>
                   <span
                     className={`font-bold text-xl ${
                       darkMode ? "text-white" : "text-blue-800"
                     }`}
                   >
-                    {" "}
-                    Tide{" "}
-                  </span>{" "}
-                </span>{" "}
-              </Link>{" "}
-            </div>{" "}
+                    Tide
+                  </span>
+                </span>
+              </Link>
+            </div>
             <div className="hidden md:flex items-center space-x-6">
               <Link
                 href="/products"
@@ -103,8 +100,8 @@ export default function ClientFeatures({
                     : "text-blue-800 hover:text-orange-500"
                 } transition-colors`}
               >
-                Products{" "}
-              </Link>{" "}
+                Products
+              </Link>
               <Link
                 href="/how-to-wash"
                 className={`${
@@ -113,8 +110,8 @@ export default function ClientFeatures({
                     : "text-blue-800 hover:text-orange-500"
                 } transition-colors`}
               >
-                How to Wash{" "}
-              </Link>{" "}
+                How to Wash
+              </Link>
               <Link
                 href="/sustainability"
                 className={`${
@@ -123,19 +120,17 @@ export default function ClientFeatures({
                     : "text-blue-800 hover:text-orange-500"
                 } transition-colors`}
               >
-                Sustainability{" "}
-              </Link>{" "}
+                Sustainability
+              </Link>
               <Link
                 href="/whats-new"
                 className={`${
-                  darkMode
-                    ? "bg-blue-800 text-white"
-                    : "bg-orange-50 text-orange-500"
+                  darkMode ? "bg-blue-800 text-white" : "bg-orange-50 text-orange-500"
                 } px-3 py-1 rounded-full font-medium`}
               >
-                What 's New{" "}
-              </Link>{" "}
-            </div>{" "}
+                What&apos;s New {/* Fixed Line 136:22 */}
+              </Link>
+            </div>
             <div className="flex items-center">
               <button
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
@@ -147,8 +142,8 @@ export default function ClientFeatures({
                   className={`h-5 w-5 ${
                     darkMode ? "text-white" : "text-blue-800"
                   }`}
-                />{" "}
-              </button>{" "}
+                />
+              </button>
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className={`p-2 rounded-full ${
@@ -187,13 +182,13 @@ export default function ClientFeatures({
                       d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
                     />
                   </svg>
-                )}{" "}
-              </button>{" "}
-            </div>{" "}
-          </div>{" "}
-        </div>{" "}
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
       </nav>
-      {/* Mobile Menu */}{" "}
+      {/* Mobile Menu */}
       {isMenuOpen && (
         <div
           className={`fixed inset-0 z-40 ${
@@ -206,9 +201,9 @@ export default function ClientFeatures({
                 className={`h-6 w-6 ${
                   darkMode ? "text-white" : "text-blue-800"
                 }`}
-              />{" "}
-            </button>{" "}
-          </div>{" "}
+              />
+            </button>
+          </div>
           <div className="flex flex-col items-center space-y-6 p-8">
             <Link
               href="/products"
@@ -217,8 +212,8 @@ export default function ClientFeatures({
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
-              Products{" "}
-            </Link>{" "}
+              Products
+            </Link>
             <Link
               href="/how-to-wash"
               className={`text-2xl font-medium ${
@@ -226,8 +221,8 @@ export default function ClientFeatures({
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
-              How to Wash{" "}
-            </Link>{" "}
+              How to Wash
+            </Link>
             <Link
               href="/sustainability"
               className={`text-2xl font-medium ${
@@ -235,8 +230,8 @@ export default function ClientFeatures({
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
-              Sustainability{" "}
-            </Link>{" "}
+              Sustainability
+            </Link>
             <Link
               href="/whats-new"
               className={`text-2xl font-medium ${
@@ -244,17 +239,17 @@ export default function ClientFeatures({
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
-              What 's New{" "}
-            </Link>{" "}
+              What&apos;s New {/* Fixed Line 247:20 */}
+            </Link>
             <Link href="/shop-products" onClick={() => setIsMenuOpen(false)}>
               <button className="bg-orange-500 text-white font-bold text-lg px-6 py-3 rounded-full hover:bg-orange-600 transition-colors mt-6">
-                Shop Tide Products{" "}
-              </button>{" "}
-            </Link>{" "}
-          </div>{" "}
+                Shop Tide Products
+              </button>
+            </Link>
+          </div>
         </div>
       )}
-      {/* Search Overlay */}{" "}
+      {/* Search Overlay */}
       {isSearchOpen && (
         <div
           className={`fixed inset-0 z-50 ${
@@ -267,9 +262,9 @@ export default function ClientFeatures({
                 className={`h-6 w-6 ${
                   darkMode ? "text-white" : "text-blue-800"
                 }`}
-              />{" "}
-            </button>{" "}
-          </div>{" "}
+              />
+            </button>
+          </div>
           <div
             className={`bg-transparent border-b-2 ${
               darkMode ? "border-blue-700" : "border-gray-300"
@@ -280,7 +275,7 @@ export default function ClientFeatures({
                 className={`h-6 w-6 ${
                   darkMode ? "text-white" : "text-blue-800"
                 } mr-2`}
-              />{" "}
+              />
               <input
                 type="text"
                 placeholder="Search articles, products, and guides..."
@@ -293,19 +288,17 @@ export default function ClientFeatures({
                 }`}
                 autoFocus
               />
-            </div>{" "}
-          </div>{" "}
+            </div>
+          </div>
           <div className="mt-4">
             <h3
               className={`text-lg font-medium mb-4 ${
                 darkMode ? "text-gray-300" : "text-gray-600"
               }`}
             >
-              {" "}
-              Popular Searches{" "}
-            </h3>{" "}
+              Popular Searches
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {" "}
               {[
                 "Stain removal",
                 "Sustainable washing",
@@ -324,20 +317,19 @@ export default function ClientFeatures({
                     className={`h-4 w-4 ${
                       darkMode ? "text-gray-400" : "text-gray-500"
                     } mr-3`}
-                  />{" "}
+                  />
                   <span
                     className={darkMode ? "text-gray-200" : "text-gray-700"}
                   >
-                    {" "}
-                    {term}{" "}
-                  </span>{" "}
+                    {term}
+                  </span>
                 </div>
-              ))}{" "}
-            </div>{" "}
-          </div>{" "}
+              ))}
+            </div>
+          </div>
         </div>
       )}
-      {children}{" "}
+      {children}
     </div>
   );
 }
