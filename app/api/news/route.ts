@@ -1,5 +1,4 @@
 // api/news/route.ts
-import { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 
 interface News {

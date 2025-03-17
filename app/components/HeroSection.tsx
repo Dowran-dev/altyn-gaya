@@ -1,11 +1,8 @@
 import React from 'react';
 import { Check, ArrowRight, ArrowDown } from 'lucide-react';
 
-interface Props {
-  // Add any props you might need here
-}
-
-const HeroSection: React.FC<Props> = () => {
+// Removed empty Props interface since no props are needed
+const HeroSection: React.FC = () => {
   // Function to handle scroll on arrow click
   const handleScrollDown = () => {
     window.scrollTo({

@@ -1,5 +1,4 @@
-// pages/api/products.ts
-import { NextApiRequest, NextApiResponse } from 'next';
+// api/products/route.ts
 import { NextResponse } from 'next/server';
 
 // interface ProductSize {
