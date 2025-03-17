@@ -64,11 +64,11 @@ interface Company {
 interface ProductCardProps {
   product: Product;
   isActive: boolean;
-  index: number;
-  activeIndex: number;
+  // index: number;
+  // activeIndex: number;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, isActive, index, activeIndex }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
 
   const cardPosition = isActive ? 
     "opacity-100 z-20 transform-none" : 
