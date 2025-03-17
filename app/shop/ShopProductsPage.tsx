@@ -186,7 +186,7 @@ const ShopProductsPage: React.FC = () => {
             className="h-4 w-4" 
           />
         ))}
-        <span className="text-blue-800 ml-2 text-xs font-normal">({rating})</span>
+ bikes       <span className="text-blue-800 ml-2 text-xs font-normal">({rating})</span>
       </div>
     );
   };
@@ -475,7 +475,9 @@ const ShopProductsPage: React.FC = () => {
         </div>
 
         <div className="flex flex-col md:flex-row md:space-x-6 mb-8">
-        {!isFilterOpen && (
+          {/* Desktop filters panel */}
+          <div className="hidden md:block w-64 flex-shrink-0">
+            {!isFilterOpen && (
               <button
                 className="mb-4 bg-blue-50 text-blue-800 py-2 px-4 rounded flex items-center font-bold"
                 onClick={() => setIsFilterOpen(true)}
@@ -489,7 +491,8 @@ const ShopProductsPage: React.FC = () => {
 
           {/* Mobile filter panel */}
           {renderMobileFilterPanel()}
-          
+
+          {/* Product listing */}
           <div className="flex-grow">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 border-b border-gray-200 pb-4">
               <div className="text-blue-800 font-bold text-xl mb-4 md:mb-0" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
