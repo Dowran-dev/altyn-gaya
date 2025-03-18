@@ -871,13 +871,13 @@ const productsData: Product[] = [
       },
     },
   
-    // Vim - Универсальные чистящие средства
+    // Wim - Универсальные чистящие средства
     {
-      title: "Vim Универсальное чистящее средство",
+      title: "Wim Универсальное чистящее средство",
       description: "Эффективное средство для борьбы с загрязнениями на любых поверхностях.",
-      image: "/images/Vim_Cleaner.png",
+      image: "/images/Wim_Cleaner.png",
       color: "#03a31e",
-      brandName: "Vim",
+      brandName: "Wim",
       category: "Универсальные чистящие средства",
       features: [
         "Быстрое удаление грязи",
@@ -886,15 +886,15 @@ const productsData: Product[] = [
       ],
       details: {
         id: 16,
-        name: "Vim",
+        name: "Wim",
         subtitle: "Универсальное чистящее средство",
-        fullTitle: "Vim - Универсальное чистящее средство 500мл",
+        fullTitle: "Wim - Универсальное чистящее средство 500мл",
         description: "Эффективное средство для борьбы с загрязнениями на любых поверхностях.",
         longDescription:
-          "Vim Универсальное чистящее средство справляется с жиром, грязью и пятнами на кухне, в ванной и других поверхностях.",
-        image: "/images/Vim_Cleaner.png",
+          "Wim Универсальное чистящее средство справляется с жиром, грязью и пятнами на кухне, в ванной и других поверхностях.",
+        image: "/images/Wim_Cleaner.png",
         color: "#03a31e",
-        brandName: "Vim",
+        brandName: "Wim",
         category: "Универсальные чистящие средства",
         features: [
           "Быстрое удаление грязи",
@@ -925,11 +925,11 @@ const productsData: Product[] = [
       },
     },
     {
-      title: "Vim Средство для кухни",
+      title: "Wim Средство для кухни",
       description: "Специальное средство для кухонных поверхностей.",
-      image: "/images/Vim_Cleaner_Kitchen.png",
+      image: "/images/Wim_Cleaner_Kitchen.png",
       color: "#03a31e",
-      brandName: "Vim",
+      brandName: "Wim",
       category: "Универсальные чистящие средства",
       features: [
         "Удаление жира",
@@ -938,15 +938,15 @@ const productsData: Product[] = [
       ],
       details: {
         id: 17,
-        name: "Vim",
+        name: "Wim",
         subtitle: "Средство для кухни",
-        fullTitle: "Vim - Средство для кухни 500мл",
+        fullTitle: "Wim - Средство для кухни 500мл",
         description: "Специальное средство для кухонных поверхностей.",
         longDescription:
           "Эффективно удаляет жир и загрязнения с кухонных поверхностей, оставляя блеск и свежий аромат.",
-        image: "/images/Vim_Cleaner_Kitchen.png",
+        image: "/images/Wim_Cleaner_Kitchen.png",
         color: "#03a31e",
-        brandName: "Vim",
+        brandName: "Wim",
         category: "Универсальные чистящие средства",
         features: [
           "Удаление жира",
@@ -976,11 +976,11 @@ const productsData: Product[] = [
       },
     },
     {
-      title: "Vim Средство для ванной",
+      title: "Wim Средство для ванной",
       description: "Средство для удаления известкового налета.",
-      image: "/images/Vim_Cleaner_Bathroom.png",
+      image: "/images/Wim_Cleaner_Bathroom.png",
       color: "#03a31e",
-      brandName: "Vim",
+      brandName: "Wim",
       category: "Универсальные чистящие средства",
       features: [
         "Удаление налета",
@@ -989,15 +989,15 @@ const productsData: Product[] = [
       ],
       details: {
         id: 18,
-        name: "Vim",
+        name: "Wim",
         subtitle: "Средство для ванной",
-        fullTitle: "Vim - Средство для ванной 500мл",
+        fullTitle: "Wim - Средство для ванной 500мл",
         description: "Средство для удаления известкового налета.",
         longDescription:
           "Удаляет известковый налет и загрязнения в ванной, оставляя сантехнику блестящей.",
-        image: "/images/Vim_Cleaner_Bathroom.png",
+        image: "/images/Wim_Cleaner_Bathroom.png",
         color: "#03a31e",
-        brandName: "Vim",
+        brandName: "Wim",
         category: "Универсальные чистящие средства",
         features: [
           "Удаление налета",
@@ -1027,13 +1027,13 @@ const productsData: Product[] = [
       },
     },
   
-    // Vim - Бытовые чистящие спреи
+    // Wim - Бытовые чистящие спреи
     {
-      title: "Vim Бытовой чистящий спрей",
+      title: "Wim Бытовой чистящий спрей",
       description: "Спрей для моментального очищения поверхностей от загрязнений.",
-      image: "/images/Vim_Spray.png",
+      image: "/images/Wim_Spray.png",
       color: "#03a31e",
-      brandName: "Vim",
+      brandName: "Wim",
       category: "Бытовые чистящие спреи",
       features: [
         "Подходит для кухни и ванной",
@@ -1042,15 +1042,15 @@ const productsData: Product[] = [
       ],
       details: {
         id: 19,
-        name: "Vim",
+        name: "Wim",
         subtitle: "Бытовой чистящий спрей",
-        fullTitle: "Vim - Бытовой чистящий спрей 400мл",
+        fullTitle: "Wim - Бытовой чистящий спрей 400мл",
         description: "Спрей для моментального очищения поверхностей от загрязнений.",
         longDescription:
-          "Vim Спрей быстро удаляет грязь и бактерии, оставляя поверхности чистыми и блестящими.",
-        image: "/images/Vim_Spray.png",
+          "Wim Спрей быстро удаляет грязь и бактерии, оставляя поверхности чистыми и блестящими.",
+        image: "/images/Wim_Spray.png",
         color: "#03a31e",
-        brandName: "Vim",
+        brandName: "Wim",
         category: "Бытовые чистящие спреи",
         features: [
           "Подходит для кухни и ванной",
@@ -1081,11 +1081,11 @@ const productsData: Product[] = [
       },
     },
     {
-      title: "Vim Спрей для стекол",
+      title: "Wim Спрей для стекол",
       description: "Спрей для чистки стекол без разводов.",
-      image: "/images/Vim_Spray_Glass.png",
+      image: "/images/Wim_Spray_Glass.png",
       color: "#03a31e",
-      brandName: "Vim",
+      brandName: "Wim",
       category: "Бытовые чистящие спреи",
       features: [
         "Чистота без разводов",
@@ -1094,15 +1094,15 @@ const productsData: Product[] = [
       ],
       details: {
         id: 20,
-        name: "Vim",
+        name: "Wim",
         subtitle: "Спрей для стекол",
-        fullTitle: "Vim - Спрей для стекол 400мл",
+        fullTitle: "Wim - Спрей для стекол 400мл",
         description: "Спрей для чистки стекол без разводов.",
         longDescription:
           "Обеспечивает идеальную чистоту стекол и зеркал, быстро испаряется без следов.",
-        image: "/images/Vim_Spray_Glass.png",
+        image: "/images/Wim_Spray_Glass.png",
         color: "#03a31e",
-        brandName: "Vim",
+        brandName: "Wim",
         category: "Бытовые чистящие спреи",
         features: [
           "Чистота без разводов",
@@ -1132,11 +1132,11 @@ const productsData: Product[] = [
       },
     },
     {
-      title: "Vim Спрей анти-жир",
+      title: "Wim Спрей анти-жир",
       description: "Спрей для удаления жира с кухонных поверхностей.",
-      image: "/images/Vim_Spray_AntiGrease.png",
+      image: "/images/Wim_Spray_AntiGrease.png",
       color: "#03a31e",
-      brandName: "Vim",
+      brandName: "Wim",
       category: "Бытовые чистящие спреи",
       features: [
         "Мощное удаление жира",
@@ -1145,15 +1145,15 @@ const productsData: Product[] = [
       ],
       details: {
         id: 21,
-        name: "Vim",
+        name: "Wim",
         subtitle: "Спрей анти-жир",
-        fullTitle: "Vim - Спрей анти-жир 400мл",
+        fullTitle: "Wim - Спрей анти-жир 400мл",
         description: "Спрей для удаления жира с кухонных поверхностей.",
         longDescription:
           "Мгновенно удаляет жир и пригоревшие пятна, оставляя кухонные поверхности чистыми.",
-        image: "/images/Vim_Spray_AntiGrease.png",
+        image: "/images/Wim_Spray_AntiGrease.png",
         color: "#03a31e",
-        brandName: "Vim",
+        brandName: "Wim",
         category: "Бытовые чистящие спреи",
         features: [
           "Мощное удаление жира",
