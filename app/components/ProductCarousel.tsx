@@ -1424,14 +1424,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
               }}
             >
               {/* Brand badge in top left */}
-              <div className="absolute top-4 left-4 z-20 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
+              {/* <div className="absolute top-4 left-4 z-20 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
                 <span className="font-bold text-sm" style={{ color: product.color }}>{product.brandName}</span>
-              </div>
+              </div> */}
               
               {/* Category badge in top right */}
-              <div className="absolute top-4 right-4 z-20 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
+              {/* <div className="absolute top-4 right-4 z-20 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
                 <span className="text-white text-xs">{product.category}</span>
-              </div>
+              </div> */}
               
               {/* Product image */}
               <div className="relative z-10 transform transition-transform duration-700 perspective-1000">
@@ -1726,7 +1726,7 @@ const ProductCarousel: React.FC = () => {
           {
             title: "Wim Бытовой чистящий спрей",
             description: "Спрей для моментального очищения поверхностей от загрязнений.",
-            image: "/images/category_pictures/Wim_antizir.png",
+            image: "/images/category_pictures/Wim_antizir_450ml.png",
             color: "#03a31e",
             brandName: "Wim",
             category: "Бытовые чистящие спреи",
@@ -1741,7 +1741,7 @@ const ProductCarousel: React.FC = () => {
           {
             title: "Yumşa Plus Универсальное жидкое моющее средство с кондиционером",
             description: "Мягкое моющее средство с кондиционером для деликатных тканей.",
-            image: "/images/category_pictures/Yumsa_uly.png",
+            image: "/images/category_pictures/YumsaPlus_uly.png",
             color: "#1138b7",
             brandName: "Yumşa Plus",
             category: "Универсальные жидкие моющие средства с кондиционером",
@@ -1754,7 +1754,7 @@ const ProductCarousel: React.FC = () => {
           {
             title: "Yumşa Plus Спрей-освежитель для тканей",
             description: "Освежает и удаляет запахи с одежды и текстиля.",
-            image: "/images/category_pictures/Yumsa_sprey2.png",
+            image: "/images/category_pictures/YumsaPlus_sprey2.png",
             color: "#1138b7",
             brandName: "Yumşa Plus",
             category: "Спреи-освежители для тканей",
@@ -1767,7 +1767,7 @@ const ProductCarousel: React.FC = () => {
           {
             title: "Yumşa Plus Кондиционер для белья",
             description: "Придает белью мягкость и приятный аромат.",
-            image: "/images/category_pictures/Yumsa_sprey.png",
+            image: "/images/category_pictures/YumsaPlus_sprey.png",
             color: "#1138b7",
             brandName: "Yumşa Plus",
             category: "Кондиционеры для белья",

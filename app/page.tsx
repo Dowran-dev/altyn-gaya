@@ -275,7 +275,7 @@ export default function Page() {
                   <div className="w-6 h-6 rounded-full bg-[#fb4b06]/10 flex items-center justify-center mr-3">
                     <Check className="w-3 h-3 text-[#fb4b06]" />
                   </div>
-                  <span className="text-gray-700">Доставка по всему Туркменистану и России</span>
+                  {/* <span className="text-gray-700">Доставка по всему Туркменистану и России</span> */}
                 </div>
               </div>
             </div>
