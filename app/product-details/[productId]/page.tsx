@@ -1644,6 +1644,36 @@ const ProductDetailsPage: React.FC = () => {
     );
   }
 
+  const ProductBadge = ({ badgeText }: { badgeText: string }) => {
+    return (
+      <div className="absolute top-0 right-0 z-10">
+        {/* Corner ribbon container */}
+        <div className="w-40 h-40 overflow-hidden absolute top-0 right-0">
+          {/* Ribbon with correct orientation */}
+          <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold 
+                        text-xs tracking-wider shadow-lg text-center w-56 absolute top-10 right-[-60px] 
+                        transform rotate-45">
+            {/* Inner border for depth */}
+            <div className="border-t border-b border-white border-opacity-20 py-1.5 px-1">
+              {/* Text with decorative elements */}
+              <span className="flex justify-center items-center">
+                <span className="mr-1 text-purple-300">✦</span>
+                <span className="uppercase tracking-widest">{badgeText}</span>
+                <span className="ml-1 text-purple-300">✦</span>
+              </span>
+            </div>
+            
+            {/* Shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"></div>
+          </div>
+        </div>
+        
+        {/* Ribbon fold shadow - left side */}
+        {/* <div className="absolute top-0 right-0 w-6 h-6 bg-purple-900 transform origin-bottom-left rotate-45"></div> */}
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Head>
@@ -1670,15 +1700,7 @@ const ProductDetailsPage: React.FC = () => {
         <div className="flex flex-col md:flex-row md:space-x-8">
           <div className="w-full md:w-1/2 relative mb-6 md:mb-0">
             <div className="relative h-64 sm:h-96 md:h-[500px] w-full">
-              {product.badge && (
-                <div className="absolute top-0 right-0 w-20 h-20 z-10">
-                  <div className="w-full h-full rounded-full bg-purple-900 flex flex-col items-center justify-center text-white text-xs font-bold text-center p-1">
-                    {product.badge.split(' ').map((word, index) => (
-                      <span key={index}>{word}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
+              {product.badge && <ProductBadge badgeText={product.badge} />}
               {renderProductImage()}
             </div>
           </div>

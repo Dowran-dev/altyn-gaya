@@ -1554,7 +1554,7 @@ const ShopProductsPage: React.FC = () => {
   const renderCategoryFilter = () => (
     <div className="mb-6">
            <h3 className="font-bold text-blue-800 mb-3">Категория</h3>
-           <div className="space-y-2 max-h-44 overflow-y-auto pr-1">
+           <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
              {availableCategories.map(category => (
                <div 
                  key={category} 
@@ -1578,7 +1578,7 @@ const ShopProductsPage: React.FC = () => {
   const renderFilterPanel = () => {
     if (!isFilterOpen) return null;
     return (
-      <div className="p-5 bg-white shadow rounded-lg border border-gray-100">
+      <div className="p-5 bg-white shadow rounded-lg border border-gray-100 md:sticky md:top-4">
         <div className="flex justify-between items-center mb-5 pb-3 border-b border-gray-100">
           <h2 className="text-xl font-bold text-blue-800">Фильтры</h2>
           <div className="flex gap-2">
@@ -1651,19 +1651,42 @@ const ShopProductsPage: React.FC = () => {
     );
   };
 
+  const ProductBadge = ({ badgeText }: { badgeText: string }) => {
+    return (
+      <div className="absolute top-0 right-0 z-10">
+        {/* Corner ribbon container */}
+        <div className="w-40 h-40 overflow-hidden absolute -top-6 -right-4">
+          {/* Ribbon with correct orientation */}
+          <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold 
+                        text-xs tracking-wider shadow-lg text-center w-56 absolute top-10 right-[-60px] 
+                        transform rotate-45">
+            {/* Inner border for depth */}
+            <div className="border-t border-b border-white border-opacity-20 py-1.5 px-1">
+              {/* Text with decorative elements */}
+              <span className="flex justify-center items-center">
+                <span className="mr-1 text-purple-300">✦</span>
+                <span className="uppercase tracking-widest">{badgeText}</span>
+                <span className="ml-1 text-purple-300">✦</span>
+              </span>
+            </div>
+            
+            {/* Shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"></div>
+          </div>
+        </div>
+        
+        {/* Ribbon fold shadow - left side */}
+        {/* <div className="absolute top-0 right-0 w-6 h-6 bg-purple-900 transform origin-bottom-left rotate-45"></div> */}
+      </div>
+    );
+  };
+
+
   const renderGridItem = (product: Products) => (
     <Link href={`/product-details/${product.id}`} key={product.id}> {/* Still using product.id */}
       <div className="bg-white p-4 rounded shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
         <div className="relative h-48 sm:h-56 md:h-64 w-full mb-4 flex-shrink-0">
-          {product.badge && (
-            <div className="absolute top-0 right-0 w-16 h-16 sm:w-20 sm:h-20 z-10">
-              <div className="w-full h-full rounded-full bg-purple-900 flex flex-col items-center justify-center text-white text-xs font-bold text-center p-1">
-                {product.badge.split(' ').map((word, index) => (
-                  <span key={index}>{word}</span>
-                ))}
-              </div>
-            </div>
-          )}
+        {product.badge && <ProductBadge badgeText={product.badge} />}
           <div className="w-full h-full relative">
             {renderProductImage(product)}
           </div>
@@ -1692,15 +1715,7 @@ const ShopProductsPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row">
         <div className="w-full sm:w-1/3 relative mb-4 sm:mb-0">
           <Link href={`/product-details/${product.id}`} className="block relative"> {/* Still using product.id */}
-            {product.badge && (
-              <div className="absolute top-0 right-0 sm:right-6 w-16 h-16 sm:w-20 sm:h-20 z-10">
-                <div className="w-full h-full rounded-full bg-purple-900 flex flex-col items-center justify-center text-white text-xs font-bold text-center p-1">
-                  {product.badge.split(' ').map((word, index) => (
-                    <span key={index}>{word}</span>
-                  ))}
-                </div>
-              </div>
-            )}
+          {product.badge && <ProductBadge badgeText={product.badge} />}
             <div className="relative h-56 sm:h-64 md:h-72 w-full sm:w-56 md:w-72 mx-auto">
               {renderProductImage(product)}
             </div>
