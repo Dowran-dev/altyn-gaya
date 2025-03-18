@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Button } from "@/app/components/ui/button";
 import { Check, ArrowRight, Phone, Mail, MapPin, Calendar, Users, UserCheck, Shield } from "lucide-react";
 import ProcessSection from "./components/ProcessSection";
@@ -115,32 +115,32 @@ const contactInfo = {
 };
 
 // Component for smooth element appearance
-const FadeInView = ({ children, delay = 0, className = "" }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const domRef = useRef(null);
+// const FadeInView = ({ children, delay = 0, className = "" }) => {
+//   const [isVisible, setIsVisible] = useState(false);
+//   const domRef = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        setIsVisible(true);
-        observer.unobserve(domRef.current);
-      }
-    });
+//   useEffect(() => {
+//     const observer = new IntersectionObserver(entries => {
+//       if (entries[0].isIntersecting) {
+//         setIsVisible(true);
+//         observer.unobserve(domRef.current);
+//       }
+//     });
     
-    observer.observe(domRef.current);
-    return () => observer.disconnect();
-  }, []);
+//     observer.observe(domRef.current);
+//     return () => observer.disconnect();
+//   }, []);
 
-  return (
-    <div
-      ref={domRef}
-      className={`${className} transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {children}
-    </div>
-  );
-};
+//   return (
+//     <div
+//       ref={domRef}
+//       className={`${className} transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+//       style={{ transitionDelay: `${delay}ms` }}
+//     >
+//       {children}
+//     </div>
+//   );
+// };
 
 export default function Page() {
   
@@ -171,7 +171,7 @@ export default function Page() {
     
     <div className="container mx-auto px-4 relative z-10">
       <div className="text-center max-w-3xl mx-auto mb-20">
-        <FadeInView>
+        {/* <FadeInView> */}
           <div className="inline-block mb-4 bg-[#fb4b06]/10 rounded-full px-6 py-2">
             <span className="text-[#fb4b06] text-sm font-medium uppercase tracking-wider">Почему выбирают нас</span>
           </div>
@@ -182,12 +182,12 @@ export default function Page() {
             Мы стремимся к совершенству на всех этапах производства и доставки нашей продукции, 
             гарантируя удовлетворение потребностей даже самых требовательных клиентов.
           </p>
-        </FadeInView>
+        {/* </FadeInView> */}
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Advantage 1 */}
-        <FadeInView delay={100}>
+        {/* <FadeInView delay={100}> */}
           <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
             <div className="border-b border-gray-100 p-6">
               <div className="w-12 h-12 bg-[#fb4b06]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#fb4b06] transition-colors duration-300">
@@ -216,10 +216,10 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </FadeInView>
+        {/* </FadeInView> */}
         
         {/* Advantage 2 */}
-        <FadeInView delay={200}>
+        {/* <FadeInView delay={200}> */}
           <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
             <div className="border-b border-gray-100 p-6">
               <div className="w-12 h-12 bg-[#fb4b06]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#fb4b06] transition-colors duration-300">
@@ -248,10 +248,10 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </FadeInView>
+        {/* </FadeInView> */}
         
         {/* Advantage 3 */}
-        <FadeInView delay={300}>
+        {/* <FadeInView delay={300}> */}
           <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
             <div className="border-b border-gray-100 p-6">
               <div className="w-12 h-12 bg-[#fb4b06]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#fb4b06] transition-colors duration-300">
@@ -280,11 +280,11 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </FadeInView>
+        {/* </FadeInView> */}
       </div>
       
       {/* Stats section */}
-      <FadeInView delay={400}>
+      {/* <FadeInView delay={400}> */}
         <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Stat 1 */}
           <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 group hover:shadow-xl transition-all duration-300">
@@ -322,10 +322,10 @@ export default function Page() {
             <div className="text-gray-600">гарантия качества</div>
           </div>
         </div>
-      </FadeInView>
+      {/* </FadeInView> */}
       
       {/* CTA Button */}
-      <FadeInView delay={500}>
+      {/* <FadeInView delay={500}> */}
         <div className="mt-16 text-center">
           <button className="relative overflow-hidden group bg-gradient-to-r from-[#fb4b06] to-[#E85D24] hover:from-[#E85D24] hover:to-[#fb4b06] text-white px-10 py-5 text-xl rounded-full font-semibold shadow-lg shadow-[#fb4b06]/20 hover:shadow-[#fb4b06]/40 transition-all">
             <span className="relative z-10 flex items-center gap-3">
@@ -334,7 +334,7 @@ export default function Page() {
             </span>
           </button>
         </div>
-      </FadeInView>
+      {/* </FadeInView> */}
     </div>
   </section>
 
@@ -352,7 +352,7 @@ export default function Page() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <FadeInView>
+              {/* <FadeInView> */}
                 <div className="inline-block mb-4 bg-white/10 backdrop-blur-sm rounded-full px-6 py-2">
                   <span className="text-white text-sm font-medium uppercase tracking-wider">Свяжитесь с нами</span>
                 </div>
@@ -394,10 +394,10 @@ export default function Page() {
                     </div>
                   </div>
                 </div>
-              </FadeInView>
+              {/* </FadeInView> */}
             </div>
             
-            <FadeInView delay={300}>
+            {/* <FadeInView delay={300}> */}
               <div className="bg-white rounded-2xl p-8 shadow-2xl">
                 <h3 className="text-2xl font-bold text-[#1E22AA] mb-6">Отправить сообщение</h3>
                 
@@ -442,7 +442,7 @@ export default function Page() {
                   </Button>
                 </form>
               </div>
-            </FadeInView>
+            {/* </FadeInView> */}
           </div>
         </div>
       </section>

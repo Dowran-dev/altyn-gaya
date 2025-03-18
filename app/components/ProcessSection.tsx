@@ -147,37 +147,37 @@
 import React from 'react';
 import Image from 'next/image'; // Assuming you're using Next.js for Image optimization
 import { Check } from 'lucide-react'; // Replace with your actual icon library
-import { useState, useEffect, useRef } from "react";
+// import { useState, useEffect, useRef } from "react";
 
 
 // Component for smooth element appearance
 // Component for smooth element appearance
-const FadeInView = ({ children, delay = 0, className = "" }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const domRef = useRef(null);
+// const FadeInView = ({ children, delay = 0, className = "" }) => {
+//     const [isVisible, setIsVisible] = useState(false);
+//     const domRef = useRef(null);
   
-    useEffect(() => {
-      const observer = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(domRef.current);
-        }
-      });
+//     useEffect(() => {
+//       const observer = new IntersectionObserver(entries => {
+//         if (entries[0].isIntersecting) {
+//           setIsVisible(true);
+//           observer.unobserve(domRef.current);
+//         }
+//       });
       
-      observer.observe(domRef.current);
-      return () => observer.disconnect();
-    }, []);
+//       observer.observe(domRef.current);
+//       return () => observer.disconnect();
+//     }, []);
   
-    return (
-      <div
-        ref={domRef}
-        className={`${className} transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        style={{ transitionDelay: `${delay}ms` }}
-      >
-        {children}
-      </div>
-    );
-  };
+//     return (
+//       <div
+//         ref={domRef}
+//         className={`${className} transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+//         style={{ transitionDelay: `${delay}ms` }}
+//       >
+//         {children}
+//       </div>
+//     );
+//   };
 
 const ProcessSection: React.FC = () => {
   return (
@@ -190,7 +190,7 @@ const ProcessSection: React.FC = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <FadeInView>
+          {/* <FadeInView> */}
             <div className="inline-block mb-4 bg-[#fb4b06]/10 rounded-full px-6 py-2">
               <span className="text-[#fb4b06] text-sm font-medium uppercase tracking-wider">Как мы работаем</span>
             </div>
@@ -200,7 +200,7 @@ const ProcessSection: React.FC = () => {
             <p className="text-xl text-gray-600 leading-relaxed">
               От закупки сырья до доставки готовой продукции - каждый этап производства контролируется нашими экспертами для обеспечения наивысшего качества.
             </p>
-          </FadeInView>
+          {/* </FadeInView> */}
         </div>
 
         <div className="relative">
@@ -209,7 +209,7 @@ const ProcessSection: React.FC = () => {
 
           <div className="space-y-24 relative">
             {/* Step 1 */}
-            <FadeInView className="relative">
+            {/* <FadeInView className="relative"> */}
               <div className="absolute left-1/2 top-0 w-12 h-12 bg-[#fb4b06] rounded-full transform -translate-x-1/2 flex items-center justify-center text-xl font-bold text-white shadow-lg z-20">1</div>
 
               <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -244,10 +244,10 @@ const ProcessSection: React.FC = () => {
                   />
                 </div>
               </div>
-            </FadeInView>
+            {/* </FadeInView> */}
 
             {/* Step 2 */}
-            <FadeInView className="relative">
+            {/* <FadeInView className="relative"> */}
               <div className="absolute left-1/2 top-0 w-12 h-12 bg-[#fb4b06] rounded-full transform -translate-x-1/2 flex items-center justify-center text-xl font-bold text-white shadow-lg z-20">2</div>
 
               <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -282,10 +282,10 @@ const ProcessSection: React.FC = () => {
                   />
                 </div>
               </div>
-            </FadeInView>
+            {/* </FadeInView> */}
 
             {/* Step 3 */}
-            <FadeInView className="relative">
+            {/* <FadeInView className="relative"> */}
               <div className="absolute left-1/2 top-0 w-12 h-12 bg-[#fb4b06] rounded-full transform -translate-x-1/2 flex items-center justify-center text-xl font-bold text-white shadow-lg z-20">3</div>
 
               <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -320,7 +320,7 @@ const ProcessSection: React.FC = () => {
                   />
                 </div>
               </div>
-            </FadeInView>
+            {/* </FadeInView> */}
           </div>
         </div>
       </div>

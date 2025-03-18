@@ -90,9 +90,9 @@ const ShopProductsPage: React.FC = () => {
       .then((data) => {
         setProducts(data);
         
-        // Extract unique brands and categories
-        const brands = [...new Set(data.map((product: Product) => product.details.brandName))];
-        const categories = [...new Set(data.map((product: Product) => product.details.category))];
+        // Use Set<string> to ensure the type
+        const brands = [...new Set<string>(data.map((product: Product) => product.details.brandName))];
+        const categories = [...new Set<string>(data.map((product: Product) => product.details.category))];
         
         setAvailableBrands(brands);
         setAvailableCategories(categories);
