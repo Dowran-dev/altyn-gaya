@@ -1,5 +1,4 @@
 // api/products/route.ts
-import { NextResponse } from 'next/server';
 
 // interface ProductSize {
 //   id: number;
@@ -34,6 +33,7 @@ import { NextResponse } from 'next/server';
 //   reviewsList: ProductReview[];
 // }
 
+import { NextResponse } from 'next/server';
 
 // Interface for product sizes (unchanged)
 interface ProductSize {
@@ -53,18 +53,18 @@ interface ProductReview {
   content: string;
 }
 
-// Interface for the nested "details" object (replaces the old Product interface)
-interface ProductDetails {
+// Interface for the nested "products" object (replaces the old Product interface)
+interface Products {
   id: number;
   name: string;
   subtitle: string;
   fullTitle: string;
   description: string;
   longDescription: string;
-  image: string; // Matches "image" in the nested details object
-  color: string; // Matches "color" in the nested details object
-  brandName: string; // Matches "brandName" in the nested details object
-  category: string; // Matches "category" in the nested details object
+  image: string; // Matches "image" in the nested products object
+  color: string; // Matches "color" in the nested products object
+  brandName: string; // Matches "brandName" in the nested products object
+  category: string; // Matches "category" in the nested products object
   features: string[];
   directions: string[];
   rating: number;
@@ -75,7 +75,7 @@ interface ProductDetails {
 }
 
 // Interface for the outer product object
-interface Product {
+interface ProductCategories {
   title: string;
   description: string;
   image: string;
@@ -83,27 +83,27 @@ interface Product {
   brandName: string;
   category: string;
   features: string[];
-  details: ProductDetails; // Nested details object
+  products: Products[]; // Nested products object
 }
 
-const productsData: Product[] = [
+const productsData: ProductCategories[] = [
     // Real Plus - Универсальные жидкие моющие средства с кондиционером
     {
-      title: "Real Plus Универсальное жидкое моющее средство с кондиционером",
-      description: "Многофункциональное средство для бережного ухода за тканями с эффектом кондиционирования.",
-      image: "/images/RealPlus_Liquid.png",
-      color: "#3538C8",
+      title: "Real Plus Универсальный гель для стирки",
+      description: "Жидкое средство для стирки с усиленной формулой для бережного ухода за тканями.",
+      image: "/images/RealPlus_WashGel.png",
+      color: "#264653",
       brandName: "Real Plus",
-      category: "Универсальные жидкие моющие средства с кондиционером",
+      category: "Универсальный гель для стирки",
       features: [
-        "Делает ткани мягкими и свежими",
-        "Удаляет стойкие пятна",
-        "Подходит для ручной и машинной стирки",
+        "Глубокая очистка волокон",
+        "Подходит для цветного и белого белья",
+        "Бережное отношение к ткани"
       ],
-      details: {
+      products: [{
         id: 1,
         name: "Real Plus",
-        subtitle: "Универсальное моющее средство с кондиционером",
+        subtitle: "Универсальное жидкое моющее средство с кондиционером",
         fullTitle: "Real Plus - Универсальное жидкое моющее средство с кондиционером 1л",
         description: "Многофункциональное средство для бережного ухода за тканями с эффектом кондиционирования.",
         longDescription:
@@ -140,283 +140,122 @@ const productsData: Product[] = [
             content: "Белье стало мягким, а запах просто волшебный!",
           },
         ],
-      },
-    },
-    {
-      title: "Real Plus Жидкость с ароматом лаванды",
-      description: "Жидкое средство с кондиционером и ароматом лаванды.",
-      image: "/images/RealPlus_Liquid_Lavender.png",
-      color: "#3538C8",
-      brandName: "Real Plus",
-      category: "Универсальные жидкие моющие средства с кондиционером",
-      features: [
-        "Долговременный аромат",
-        "Мягкость тканей",
-        "Эффективная очистка",
-      ],
-      details: {
-        id: 2,
-        name: "Real Plus",
-        subtitle: "Жидкость с ароматом лаванды",
-        fullTitle: "Real Plus - Жидкость с ароматом лаванды 1л",
-        description: "Жидкое средство с кондиционером и ароматом лаванды.",
-        longDescription:
-          "Средство с нежным ароматом лаванды обеспечивает глубокую очистку и оставляет белье мягким и свежим на долгое время.",
-        image: "/images/RealPlus_Liquid_Lavender.png",
-        color: "#3538C8",
-        brandName: "Real Plus",
-        category: "Универсальные жидкие моющие средства с кондиционером",
-        features: [
-          "Долговременный аромат",
-          "Мягкость тканей",
-          "Эффективная очистка",
+      },{
+        "id": 6,
+        "name": "Real Plus Supreme",
+        "subtitle": "Жидкое средство для стирки белых тканей с изысканным французским ароматом",
+        "fullTitle": "Real Plus Supreme - Жидкое средство для стирки белых тканей с изысканным французским ароматом 3л",
+        "description": "Специальное жидкое средство для стирки белых тканей с изысканным французским ароматом, сохраняющее их яркость.",
+        "longDescription": "Это премиальное жидкое средство разработано для эффективной стирки белых тканей, предотвращая их посерение и сохраняя яркость. Обогащено изысканным французским ароматом, который оставляет белье свежим и приятным на ощупь. Подходит для использования в стиральных машинах при любых температурах.",
+        "image": "/images/RealPlusWhiteSupreme_Detergent.png",
+        "color": "#FFFFFF",
+        "brandName": "Real Plus",
+        "category": "Жидкие средства для стирки",
+        "features": [
+          "Сохраняет яркость белых тканей",
+          "Эффективен при любых температурах",
+          "Подходит для стиральных машин",
+          "Изысканный французский аромат"
         ],
-        directions: [
-          "Используйте 50 мл на 5 кг белья.",
-          "Храните в прохладном месте.",
+        "directions": [
+          "Используйте 50 мл на 4 кг белья.",
+          "Храните в прохладном, сухом месте."
         ],
-        rating: 4.7,
-        reviews: 120,
-        badge: "Новинка",
-        sizes: [
-          { id: 1, name: "1л", quantity: "1000 мл", price: "₽499" },
-          { id: 2, name: "2л", quantity: "2000 мл", price: "₽899" },
-        ],
-        reviewsList: [
+        "rating": 4.5,
+        "reviews": 90,
+        "badge": "Премиум с французским ароматом",
+        "sizes": [
           {
-            id: 1,
-            author: "Анна К.",
-            date: "10 марта 2025",
-            rating: 4.9,
-            title: "Приятный аромат",
-            content: "Лаванда пахнет натурально, белье мягкое!",
-          },
+            "id": 1,
+            "name": "3л",
+            "quantity": "3000 мл",
+            "price": "₽899"
+          }
         ],
-      },
-    },
-    {
-      title: "Real Plus Жидкость для спортивной одежды",
-      description: "Специальное средство для стирки спортивной одежды.",
-      image: "/images/RealPlus_Liquid_Sport.png",
-      color: "#3538C8",
-      brandName: "Real Plus",
-      category: "Универсальные жидкие моющие средства с кондиционером",
-      features: [
-        "Удаление запаха пота",
-        "Сохранение эластичности",
-        "Мягкий уход",
-      ],
-      details: {
-        id: 3,
-        name: "Real Plus",
-        subtitle: "Жидкость для спортивной одежды",
-        fullTitle: "Real Plus - Жидкость для спортивной одежды 1л",
-        description: "Специальное средство для стирки спортивной одежды.",
-        longDescription:
-          "Разработано для удаления запахов и пятен с синтетических тканей, сохраняя их эластичность и форму.",
-        image: "/images/RealPlus_Liquid_Sport.png",
-        color: "#3538C8",
-        brandName: "Real Plus",
-        category: "Универсальные жидкие моющие средства с кондиционером",
-        features: [
-          "Удаление запаха пота",
-          "Сохранение эластичности",
-          "Мягкий уход",
-        ],
-        directions: [
-          "Добавьте 40 мл на 4 кг белья.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.8,
-        reviews: 95,
-        badge: "Специальный уход",
-        sizes: [
-          { id: 1, name: "1л", quantity: "1000 мл", price: "₽549" },
-          { id: 2, name: "2л", quantity: "2000 мл", price: "₽949" },
-        ],
-        reviewsList: [
+        "reviewsList": [
           {
-            id: 1,
-            author: "Игорь П.",
-            date: "8 марта 2025",
-            rating: 4.7,
-            title: "Идеально для спорта",
-            content: "Запах пота исчез, форма одежды сохранена!",
-          },
-        ],
-      },
+            "id": 1,
+            "author": "Ольга М.",
+            "date": "12 марта 2025",
+            "rating": 4.6,
+            "title": "Невероятный аромат!",
+            "content": "Белые вещи как новые, а аромат просто восхитительный, как из французской парфюмерии!"
+          }
+        ]
+      }],
     },
   
     // Real Plus - Стиральные порошки
     {
-      title: "Real Plus Стиральный порошок",
-      description: "Специальный стиральный порошок для сохранения цвета и структуры ткани.",
-      image: "/images/RealPlus_Detergent.png",
-      color: "#3538C8",
+      title: "Real Plus Стиральные порошки",
+      description: "Эффективное средство для стирки с усиленной формулой против пятен.",
+      image: "/images/RealPlus_LaundryPowder.png",
+      color: "#264653",
       brandName: "Real Plus",
       category: "Стиральные порошки",
       features: [
-        "Защита цвета тканей",
-        "Эффективен при любых температурах",
-        "Подходит для всех типов стиральных машин",
+        "Удаляет даже сложные пятна",
+        "Придает белью свежий аромат",
+        "Экономичный расход"
       ],
-      details: {
-        id: 4,
-        name: "Real Plus",
-        subtitle: "Стиральный порошок для яркости цветов",
-        fullTitle: "Real Plus - Стиральный порошок для яркости цветов 1кг",
-        description: "Специальный стиральный порошок для сохранения цвета и структуры ткани.",
-        longDescription:
-          "Этот порошок разработан для сохранения яркости цветов и защиты ткани от износа. Подходит для всех типов стиральных машин и температур.",
-        image: "/images/RealPlus_Detergent.png",
-        color: "#3538C8",
-        brandName: "Real Plus",
-        category: "Стиральные порошки",
-        features: [
-          "Защита цвета тканей",
-          "Эффективен при любых температурах",
-          "Подходит для всех типов стиральных машин",
+      products: [{
+        "id": 4,
+        "name": "Real Plus",
+        "subtitle": "Стиральный порошок для глубокого очищения",
+        "fullTitle": "Real Plus - Стиральный порошок для глубокого очищения 450г",
+        "description": "Специальный стиральный порошок для ручной стирки с глубоким очищением.",
+        "longDescription": "Этот порошок разработан для эффективного удаления пятен и сохранения структуры ткани при ручной стирке. Подходит для глубокого очищения при любых условиях.",
+        "image": "/images/RealPlus_Soda.png",
+        "color": "#008000", // Green color based on the packaging
+        "brandName": "Altyn Gaya",
+        "category": "Стиральные порошки",
+        "features": [
+          "Глубокое очищение",
+          "Для ручной стирки",
+          "Эффективен против пятен"
         ],
-        directions: [
-          "Используйте 80 г на 4 кг белья.",
+        "directions": [
+          "Используйте согласно инструкции на упаковке.",
           "Храните в сухом месте.",
         ],
-        rating: 4.5,
-        reviews: 130,
-        badge: "Эко-продукт",
-        sizes: [
-          { id: 1, name: "500г", quantity: "500 грамм", price: "₽349" },
-          { id: 2, name: "1кг", quantity: "1000 грамм", price: "₽599" },
-        ],
-        reviewsList: [
+        "rating": 4.0, // Estimated based on typical product ratings
+        "reviews": 50, // Estimated based on typical review counts
+        "badge": "Для ручной стирки",
+        "sizes": [
           {
-            id: 1,
-            author: "Анна К.",
-            date: "8 марта 2025",
-            rating: 4.5,
-            title: "Цвета как новые",
-            content: "Одежда выглядит ярко даже после многих стирок!",
-          },
+            "id": 1,
+            "name": "450г",
+            "quantity": "450 грамм",
+            "price": "₽299" // Estimated price based on size
+          }
         ],
-      },
-    },
-    {
-      title: "Real Plus Порошок для белого",
-      description: "Порошок для ослепительной белизны белья.",
-      image: "/images/RealPlus_Detergent_White.png",
-      color: "#3538C8",
-      brandName: "Real Plus",
-      category: "Стиральные порошки",
-      features: [
-        "Отбеливающий эффект",
-        "Удаление серости",
-        "Защита ткани",
-      ],
-      details: {
-        id: 5,
-        name: "Real Plus",
-        subtitle: "Порошок для белого белья",
-        fullTitle: "Real Plus - Порошок для белого белья 1кг",
-        description: "Порошок для ослепительной белизны белья.",
-        longDescription:
-          "Формула с отбеливающими компонентами возвращает белизну и удаляет серый налет с белых тканей.",
-        image: "/images/RealPlus_Detergent_White.png",
-        color: "#3538C8",
-        brandName: "Real Plus",
-        category: "Стиральные порошки",
-        features: [
-          "Отбеливающий эффект",
-          "Удаление серости",
-          "Защита ткани",
-        ],
-        directions: [
-          "Используйте 100 г на 5 кг белья.",
-          "Храните в сухом месте.",
-        ],
-        rating: 4.6,
-        reviews: 110,
-        badge: "Для белизны",
-        sizes: [
-          { id: 1, name: "1кг", quantity: "1000 грамм", price: "₽649" },
-        ],
-        reviewsList: [
+        "reviewsList": [
           {
-            id: 1,
-            author: "Мария Л.",
-            date: "6 марта 2025",
-            rating: 4.7,
-            title: "Белоснежное белье",
-            content: "Белое стало как новое!",
-          },
-        ],
-      },
-    },
-    {
-      title: "Real Plus Порошок универсальный",
-      description: "Универсальный порошок для всех типов белья.",
-      image: "/images/RealPlus_Detergent_Universal.png",
-      color: "#3538C8",
-      brandName: "Real Plus",
-      category: "Стиральные порошки",
-      features: [
-        "Эффективная очистка",
-        "Универсальное применение",
-        "Экономичная упаковка",
-      ],
-      details: {
-        id: 6,
-        name: "Real Plus",
-        subtitle: "Универсальный порошок",
-        fullTitle: "Real Plus - Универсальный порошок 1кг",
-        description: "Универсальный порошок для всех типов белья.",
-        longDescription:
-          "Подходит для белого и цветного белья, обеспечивая глубокую очистку и защиту тканей.",
-        image: "/images/RealPlus_Detergent_Universal.png",
-        color: "#3538C8",
-        brandName: "Real Plus",
-        category: "Стиральные порошки",
-        features: [
-          "Эффективная очистка",
-          "Универсальное применение",
-          "Экономичная упаковка",
-        ],
-        directions: [
-          "Используйте 80 г на 4 кг белья.",
-          "Храните в сухом месте.",
-        ],
-        rating: 4.5,
-        reviews: 100,
-        badge: "Универсальный",
-        sizes: [
-          { id: 1, name: "1кг", quantity: "1000 грамм", price: "₽599" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Елена М.",
-            date: "5 марта 2025",
-            rating: 4.6,
-            title: "Хороший универсал",
-            content: "Отстирывает все типы тканей отлично!",
-          },
-        ],
-      },
+            "id": 1,
+            "author": "Мария П.",
+            "date": "15 марта 2025",
+            "rating": 4.0,
+            "title": "Хорошо очищает",
+            "content": "Порошок отлично справляется с пятнами при ручной стирке!"
+          }
+        ]
+      }],
     },
   
     // Real Plus - Освежители воздуха
     {
-      title: "Real Plus Освежитель воздуха",
-      description: "Долговременная свежесть и приятный аромат в вашем доме.",
+      title: "Real Plus Освежители воздуха",
+      description: "Ароматные освежители воздуха для создания уютной атмосферы в доме.",
       image: "/images/RealPlus_AirFreshener.png",
-      color: "#3538C8",
+      color: "#E76F51",
       brandName: "Real Plus",
       category: "Освежители воздуха",
       features: [
-        "Нейтрализует неприятные запахи",
-        "Долговременный эффект",
-        "Разнообразие ароматов",
+        "Длительное освежение",
+        "Эффективно устраняет неприятные запахи",
+        "Большой выбор ароматов"
       ],
-      details: {
+      products: [{
         id: 7,
         name: "Real Plus",
         subtitle: "Освежитель воздуха с ароматом цитруса",
@@ -454,125 +293,24 @@ const productsData: Product[] = [
             content: "Аромат держится долго, дом пахнет чистотой!",
           },
         ],
-      },
+      }],
     },
-    {
-      title: "Real Plus Освежитель с ароматом океана",
-      description: "Свежий морской аромат для вашего дома.",
-      image: "/images/RealPlus_AirFreshener_Ocean.png",
-      color: "#3538C8",
-      brandName: "Real Plus",
-      category: "Освежители воздуха",
-      features: [
-        "Морская свежесть",
-        "Долговременный эффект",
-        "Нейтрализация запахов",
-      ],
-      details: {
-        id: 8,
-        name: "Real Plus",
-        subtitle: "Освежитель с ароматом океана",
-        fullTitle: "Real Plus - Освежитель с ароматом океана 300мл",
-        description: "Свежий морской аромат для вашего дома.",
-        longDescription:
-          "Приносит в дом ощущение морской свежести, эффективно устраняя неприятные запахи.",
-        image: "/images/RealPlus_AirFreshener_Ocean.png",
-        color: "#3538C8",
-        brandName: "Real Plus",
-        category: "Освежители воздуха",
-        features: [
-          "Морская свежесть",
-          "Долговременный эффект",
-          "Нейтрализация запахов",
-        ],
-        directions: [
-          "Распыляйте в воздух.",
-          "Храните вдали от огня.",
-        ],
-        rating: 4.7,
-        reviews: 150,
-        badge: "Новинка",
-        sizes: [
-          { id: 1, name: "300мл", quantity: "300 мл", price: "₽299" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Татьяна Р.",
-            date: "14 марта 2025",
-            rating: 4.8,
-            title: "Морская свежесть",
-            content: "Ощущение моря в квартире!",
-          },
-        ],
-      },
-    },
-    {
-      title: "Real Plus Освежитель с ароматом леса",
-      description: "Природный аромат леса для уюта.",
-      image: "/images/RealPlus_AirFreshener_Forest.png",
-      color: "#3538C8",
-      brandName: "Real Plus",
-      category: "Освежители воздуха",
-      features: [
-        "Естественный аромат",
-        "Освежает воздух",
-        "Долговременное действие",
-      ],
-      details: {
-        id: 9,
-        name: "Real Plus",
-        subtitle: "Освежитель с ароматом леса",
-        fullTitle: "Real Plus - Освежитель с ароматом леса 300мл",
-        description: "Природный аромат леса для уюта.",
-        longDescription:
-          "Создает атмосферу лесной прогулки, нейтрализуя запахи и освежая воздух.",
-        image: "/images/RealPlus_AirFreshener_Forest.png",
-        color: "#3538C8",
-        brandName: "Real Plus",
-        category: "Освежители воздуха",
-        features: [
-          "Естественный аромат",
-          "Освежает воздух",
-          "Долговременное действие",
-        ],
-        directions: [
-          "Распыляйте в воздух.",
-          "Храните вдали от огня.",
-        ],
-        rating: 4.6,
-        reviews: 140,
-        badge: "Эко-продукт",
-        sizes: [
-          { id: 1, name: "300мл", quantity: "300 мл", price: "₽299" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Светлана В.",
-            date: "13 марта 2025",
-            rating: 4.7,
-            title: "Лесной уют",
-            content: "Приятный натуральный запах!",
-          },
-        ],
-      },
-    },
+    
   
     // Real Plus - Жидкое мыло
     {
       title: "Real Plus Жидкое мыло",
-      description: "Увлажняющее жидкое мыло с мягким очищающим эффектом.",
-      image: "/images/RealPlus_Soap.png",
-      color: "#3538C8",
+      description: "Мягкое жидкое мыло с увлажняющими компонентами для ухода за кожей рук.",
+      image: "/images/RealPlus_LiquidSoap.png",
+      color: "#F4A261",
       brandName: "Real Plus",
       category: "Жидкое мыло",
       features: [
-        "Гипоаллергенный состав",
-        "Не сушит кожу",
+        "Очищает и увлажняет кожу",
         "Приятный аромат",
+        "Подходит для ежедневного использования"
       ],
-      details: {
+      products: [{
         id: 10,
         name: "Real Plus",
         subtitle: "Увлажняющее жидкое мыло",
@@ -610,125 +348,23 @@ const productsData: Product[] = [
             content: "Кожа после мытья не пересыхает, запах нежный.",
           },
         ],
-      },
+      }],
     },
-    {
-      title: "Real Plus Мыло с алоэ вера",
-      description: "Жидкое мыло с экстрактом алоэ для увлажнения.",
-      image: "/images/RealPlus_Soap_Aloe.png",
-      color: "#3538C8",
-      brandName: "Real Plus",
-      category: "Жидкое мыло",
-      features: [
-        "Увлажнение кожи",
-        "Мягкая пена",
-        "Натуральные компоненты",
-      ],
-      details: {
-        id: 11,
-        name: "Real Plus",
-        subtitle: "Мыло с алоэ вера",
-        fullTitle: "Real Plus - Мыло с алоэ вера 500мл",
-        description: "Жидкое мыло с экстрактом алоэ для увлажнения.",
-        longDescription:
-          "С экстрактом алоэ вера, это мыло увлажняет и успокаивает кожу, обеспечивая мягкое очищение.",
-        image: "/images/RealPlus_Soap_Aloe.png",
-        color: "#3538C8",
-        brandName: "Real Plus",
-        category: "Жидкое мыло",
-        features: [
-          "Увлажнение кожи",
-          "Мягкая пена",
-          "Натуральные компоненты",
-        ],
-        directions: [
-          "Нанесите на влажные руки, вспеньте, смойте.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.8,
-        reviews: 160,
-        badge: "Натуральный",
-        sizes: [
-          { id: 1, name: "500мл", quantity: "500 мл", price: "₽299" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Екатерина Д.",
-            date: "9 марта 2025",
-            rating: 4.9,
-            title: "Увлажняет кожу",
-            content: "Очень мягкое, кожа гладкая!",
-          },
-        ],
-      },
-    },
-    {
-      title: "Real Plus Антибактериальное мыло",
-      description: "Жидкое мыло с антибактериальным эффектом.",
-      image: "/images/RealPlus_Soap_AntiBacterial.png",
-      color: "#3538C8",
-      brandName: "Real Plus",
-      category: "Жидкое мыло",
-      features: [
-        "Антибактериальная защита",
-        "Мягкое очищение",
-        "Приятный аромат",
-      ],
-      details: {
-        id: 12,
-        name: "Real Plus",
-        subtitle: "Антибактериальное мыло",
-        fullTitle: "Real Plus - Антибактериальное мыло 500мл",
-        description: "Жидкое мыло с антибактериальным эффектом.",
-        longDescription:
-          "Обеспечивает антибактериальную защиту, мягко очищает и оставляет приятный аромат на коже.",
-        image: "/images/RealPlus_Soap_AntiBacterial.png",
-        color: "#3538C8",
-        brandName: "Real Plus",
-        category: "Жидкое мыло",
-        features: [
-          "Антибактериальная защита",
-          "Мягкое очищение",
-          "Приятный аромат",
-        ],
-        directions: [
-          "Нанесите на влажные руки, вспеньте, смойте.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.7,
-        reviews: 145,
-        badge: "Защита",
-        sizes: [
-          { id: 1, name: "500мл", quantity: "500 мл", price: "₽349" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Наталья П.",
-            date: "8 марта 2025",
-            rating: 4.8,
-            title: "Чистота и защита",
-            content: "Хорошо очищает и защищает руки!",
-          },
-        ],
-      },
-    },
-  
+    
     // Real Plus - Универсальный гель для стирки
     {
       title: "Real Plus Универсальный гель для стирки",
-      description: "Эффективный гель для стирки, придающий белью свежесть и мягкость.",
-      image: "/images/RealPlus_Gel.png",
-      color: "#3538C8",
+      description: "Жидкое средство для стирки с усиленной формулой для бережного ухода за тканями.",
+      image: "/images/RealPlus_WashGel.png",
+      color: "#264653",
       brandName: "Real Plus",
       category: "Универсальный гель для стирки",
       features: [
-        "Глубокая очистка тканей",
-        "Экономичный расход",
-        "Подходит для всех типов тканей",
+        "Глубокая очистка волокон",
+        "Подходит для цветного и белого белья",
+        "Бережное отношение к ткани"
       ],
-      details: {
+      products: [{
         id: 13,
         name: "Real Plus",
         subtitle: "Универсальный гель для стирки",
@@ -766,125 +402,23 @@ const productsData: Product[] = [
             content: "Экономичный и хорошо отстирывает!",
           },
         ],
-      },
-    },
-    {
-      title: "Real Plus Гель для цветного белья",
-      description: "Гель для сохранения яркости цветных тканей.",
-      image: "/images/RealPlus_Gel_Color.png",
-      color: "#3538C8",
-      brandName: "Real Plus",
-      category: "Универсальный гель для стирки",
-      features: [
-        "Защита цвета",
-        "Эффективная очистка",
-        "Мягкость тканей",
-      ],
-      details: {
-        id: 14,
-        name: "Real Plus",
-        subtitle: "Гель для цветного белья",
-        fullTitle: "Real Plus - Гель для цветного белья 1л",
-        description: "Гель для сохранения яркости цветных тканей.",
-        longDescription:
-          "Специальная формула защищает цвета от выцветания, обеспечивая чистоту и мягкость.",
-        image: "/images/RealPlus_Gel_Color.png",
-        color: "#3538C8",
-        brandName: "Real Plus",
-        category: "Универсальный гель для стирки",
-        features: [
-          "Защита цвета",
-          "Эффективная очистка",
-          "Мягкость тканей",
-        ],
-        directions: [
-          "Добавьте 40 мл на 4 кг белья.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.7,
-        reviews: 135,
-        badge: "Для яркости",
-        sizes: [
-          { id: 1, name: "1л", quantity: "1000 мл", price: "₽499" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Ирина Т.",
-            date: "6 марта 2025",
-            rating: 4.8,
-            title: "Яркие цвета",
-            content: "Цвета остались как новые после стирки!",
-          },
-        ],
-      },
-    },
-    {
-      title: "Real Plus Гель для белого белья",
-      description: "Гель для ослепительной белизны белья.",
-      image: "/images/RealPlus_Gel_White.png",
-      color: "#3538C8",
-      brandName: "Real Plus",
-      category: "Универсальный гель для стирки",
-      features: [
-        "Отбеливающий эффект",
-        "Удаление пятен",
-        "Свежесть белья",
-      ],
-      details: {
-        id: 15,
-        name: "Real Plus",
-        subtitle: "Гель для белого белья",
-        fullTitle: "Real Plus - Гель для белого белья 1л",
-        description: "Гель для ослепительной белизны белья.",
-        longDescription:
-          "Эффективно удаляет пятна и возвращает белизну тканям, сохраняя их свежесть.",
-        image: "/images/RealPlus_Gel_White.png",
-        color: "#3538C8",
-        brandName: "Real Plus",
-        category: "Универсальный гель для стирки",
-        features: [
-          "Отбеливающий эффект",
-          "Удаление пятен",
-          "Свежесть белья",
-        ],
-        directions: [
-          "Добавьте 40 мл на 4 кг белья.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.6,
-        reviews: 125,
-        badge: "Для белизны",
-        sizes: [
-          { id: 1, name: "1л", quantity: "1000 мл", price: "₽499" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Ольга С.",
-            date: "5 марта 2025",
-            rating: 4.7,
-            title: "Белое сияет",
-            content: "Белое белье стало ярче!",
-          },
-        ],
-      },
+      }],
     },
   
     // Wim - Универсальные чистящие средства
     {
-      title: "Wim Универсальное чистящее средство",
-      description: "Эффективное средство для борьбы с загрязнениями на любых поверхностях.",
-      image: "/images/Wim_Cleaner.png",
-      color: "#03a31e",
-      brandName: "Wim",
+      title: "Vim Универсальные чистящие средства",
+      description: "Многофункциональное средство для эффективного удаления загрязнений на любых поверхностях.",
+      image: "/images/Vim_AllPurposeCleaner.png",
+      color: "#E63946",
+      brandName: "Vim",
       category: "Универсальные чистящие средства",
       features: [
-        "Быстрое удаление грязи",
-        "Безопасный состав",
-        "Не оставляет разводов",
+        "Подходит для всех типов поверхностей",
+        "Эффективно удаляет жир и загрязнения",
+        "Оставляет приятный аромат"
       ],
-      details: {
+      products: [{
         id: 16,
         name: "Wim",
         subtitle: "Универсальное чистящее средство",
@@ -922,125 +456,23 @@ const productsData: Product[] = [
             content: "Жир на плите исчез моментально!",
           },
         ],
-      },
-    },
-    {
-      title: "Wim Средство для кухни",
-      description: "Специальное средство для кухонных поверхностей.",
-      image: "/images/Wim_Cleaner_Kitchen.png",
-      color: "#03a31e",
-      brandName: "Wim",
-      category: "Универсальные чистящие средства",
-      features: [
-        "Удаление жира",
-        "Блеск поверхностей",
-        "Приятный аромат",
-      ],
-      details: {
-        id: 17,
-        name: "Wim",
-        subtitle: "Средство для кухни",
-        fullTitle: "Wim - Средство для кухни 500мл",
-        description: "Специальное средство для кухонных поверхностей.",
-        longDescription:
-          "Эффективно удаляет жир и загрязнения с кухонных поверхностей, оставляя блеск и свежий аромат.",
-        image: "/images/Wim_Cleaner_Kitchen.png",
-        color: "#03a31e",
-        brandName: "Wim",
-        category: "Универсальные чистящие средства",
-        features: [
-          "Удаление жира",
-          "Блеск поверхностей",
-          "Приятный аромат",
-        ],
-        directions: [
-          "Нанесите на поверхность, протрите, смойте.",
-          "Храните вдали от детей.",
-        ],
-        rating: 4.7,
-        reviews: 180,
-        badge: "Для кухни",
-        sizes: [
-          { id: 1, name: "500мл", quantity: "500 мл", price: "₽349" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Елена М.",
-            date: "13 марта 2025",
-            rating: 4.8,
-            title: "Чистая кухня",
-            content: "Плита блестит, запах приятный!",
-          },
-        ],
-      },
-    },
-    {
-      title: "Wim Средство для ванной",
-      description: "Средство для удаления известкового налета.",
-      image: "/images/Wim_Cleaner_Bathroom.png",
-      color: "#03a31e",
-      brandName: "Wim",
-      category: "Универсальные чистящие средства",
-      features: [
-        "Удаление налета",
-        "Блеск сантехники",
-        "Антибактериальный эффект",
-      ],
-      details: {
-        id: 18,
-        name: "Wim",
-        subtitle: "Средство для ванной",
-        fullTitle: "Wim - Средство для ванной 500мл",
-        description: "Средство для удаления известкового налета.",
-        longDescription:
-          "Удаляет известковый налет и загрязнения в ванной, оставляя сантехнику блестящей.",
-        image: "/images/Wim_Cleaner_Bathroom.png",
-        color: "#03a31e",
-        brandName: "Wim",
-        category: "Универсальные чистящие средства",
-        features: [
-          "Удаление налета",
-          "Блеск сантехники",
-          "Антибактериальный эффект",
-        ],
-        directions: [
-          "Нанесите на поверхность, протрите, смойте.",
-          "Храните вдали от детей.",
-        ],
-        rating: 4.8,
-        reviews: 170,
-        badge: "Для ванной",
-        sizes: [
-          { id: 1, name: "500мл", quantity: "500 мл", price: "₽349" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Наталья П.",
-            date: "12 марта 2025",
-            rating: 4.9,
-            title: "Сияющая ванна",
-            content: "Налет исчез, сантехника блестит!",
-          },
-        ],
-      },
+      }],
     },
   
     // Wim - Бытовые чистящие спреи
     {
-      title: "Wim Бытовой чистящий спрей",
-      description: "Спрей для моментального очищения поверхностей от загрязнений.",
-      image: "/images/Wim_Spray.png",
-      color: "#03a31e",
-      brandName: "Wim",
+      title: "Vim Бытовые чистящие спреи",
+      description: "Готовые к использованию спреи для быстрого и легкого очищения поверхностей.",
+      image: "/images/Vim_CleaningSpray.png",
+      color: "#1D3557",
+      brandName: "Vim",
       category: "Бытовые чистящие спреи",
       features: [
-        "Подходит для кухни и ванной",
-        "Антибактериальный эффект",
-        "Быстрое испарение без следов",
+        "Быстро удаляет пятна и жир",
+        "Не оставляет разводов",
+        "Обладает антибактериальным эффектом"
       ],
-      details: {
+      products: [{
         id: 19,
         name: "Wim",
         subtitle: "Бытовой чистящий спрей",
@@ -1078,111 +510,9 @@ const productsData: Product[] = [
             content: "Спрей отлично справляется с пятнами на столе!",
           },
         ],
-      },
+      }],
     },
-    {
-      title: "Wim Спрей для стекол",
-      description: "Спрей для чистки стекол без разводов.",
-      image: "/images/Wim_Spray_Glass.png",
-      color: "#03a31e",
-      brandName: "Wim",
-      category: "Бытовые чистящие спреи",
-      features: [
-        "Чистота без разводов",
-        "Быстрое действие",
-        "Приятный аромат",
-      ],
-      details: {
-        id: 20,
-        name: "Wim",
-        subtitle: "Спрей для стекол",
-        fullTitle: "Wim - Спрей для стекол 400мл",
-        description: "Спрей для чистки стекол без разводов.",
-        longDescription:
-          "Обеспечивает идеальную чистоту стекол и зеркал, быстро испаряется без следов.",
-        image: "/images/Wim_Spray_Glass.png",
-        color: "#03a31e",
-        brandName: "Wim",
-        category: "Бытовые чистящие спреи",
-        features: [
-          "Чистота без разводов",
-          "Быстрое действие",
-          "Приятный аромат",
-        ],
-        directions: [
-          "Распылите на стекло, протрите тряпкой.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.8,
-        reviews: 165,
-        badge: "Для стекол",
-        sizes: [
-          { id: 1, name: "400мл", quantity: "400 мл", price: "₽399" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Юлия М.",
-            date: "12 марта 2025",
-            rating: 4.9,
-            title: "Сияющие стекла",
-            content: "Нет разводов, стекла блестят!",
-          },
-        ],
-      },
-    },
-    {
-      title: "Wim Спрей анти-жир",
-      description: "Спрей для удаления жира с кухонных поверхностей.",
-      image: "/images/Wim_Spray_AntiGrease.png",
-      color: "#03a31e",
-      brandName: "Wim",
-      category: "Бытовые чистящие спреи",
-      features: [
-        "Мощное удаление жира",
-        "Блеск поверхностей",
-        "Экономичный расход",
-      ],
-      details: {
-        id: 21,
-        name: "Wim",
-        subtitle: "Спрей анти-жир",
-        fullTitle: "Wim - Спрей анти-жир 400мл",
-        description: "Спрей для удаления жира с кухонных поверхностей.",
-        longDescription:
-          "Мгновенно удаляет жир и пригоревшие пятна, оставляя кухонные поверхности чистыми.",
-        image: "/images/Wim_Spray_AntiGrease.png",
-        color: "#03a31e",
-        brandName: "Wim",
-        category: "Бытовые чистящие спреи",
-        features: [
-          "Мощное удаление жира",
-          "Блеск поверхностей",
-          "Экономичный расход",
-        ],
-        directions: [
-          "Распылите на поверхность, протрите тряпкой.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.7,
-        reviews: 155,
-        badge: "Анти-жир",
-        sizes: [
-          { id: 1, name: "400мл", quantity: "400 мл", price: "₽399" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Павел С.",
-            date: "11 марта 2025",
-            rating: 4.8,
-            title: "Жир исчезает",
-            content: "Отлично убирает жир с плиты!",
-          },
-        ],
-      },
-    },
-  
+    
     // Yumşa Plus - Универсальные жидкие моющие средства с кондиционером
     {
       title: "Yumşa Plus Универсальное жидкое моющее средство с кондиционером",
@@ -1196,7 +526,7 @@ const productsData: Product[] = [
         "Сохранение формы одежды",
         "Освежающий аромат",
       ],
-      details: {
+      products: [{
         id: 22,
         name: "Yumşa Plus",
         subtitle: "Жидкое моющее средство с кондиционером",
@@ -1234,125 +564,23 @@ const productsData: Product[] = [
             content: "Одежда мягкая и пахнет свежестью!",
           },
         ],
-      },
-    },
-    {
-      title: "Yumşa Plus Жидкость с ароматом розы",
-      description: "Жидкое средство с кондиционером и ароматом розы.",
-      image: "/images/Yumsa_Liquid_Rose.png",
-      color: "#1138b7",
-      brandName: "Yumşa Plus",
-      category: "Универсальные жидкие моющие средства с кондиционером",
-      features: [
-        "Цветочный аромат",
-        "Мягкость тканей",
-        "Эффективная очистка",
-      ],
-      details: {
-        id: 23,
-        name: "Yumşa Plus",
-        subtitle: "Жидкость с ароматом розы",
-        fullTitle: "Yumşa Plus - Жидкость с ароматом розы 1л",
-        description: "Жидкое средство с кондиционером и ароматом розы.",
-        longDescription:
-          "Придает тканям мягкость и нежный цветочный аромат розы, эффективно очищая.",
-        image: "/images/Yumsa_Liquid_Rose.png",
-        color: "#1138b7",
-        brandName: "Yumşa Plus",
-        category: "Универсальные жидкие моющие средства с кондиционером",
-        features: [
-          "Цветочный аромат",
-          "Мягкость тканей",
-          "Эффективная очистка",
-        ],
-        directions: [
-          "Добавьте 50 мл на 5 кг белья.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.7,
-        reviews: 140,
-        badge: "Ароматный",
-        sizes: [
-          { id: 1, name: "1л", quantity: "1000 мл", price: "₽499" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Екатерина Д.",
-            date: "8 марта 2025",
-            rating: 4.8,
-            title: "Нежный аромат",
-            content: "Роза пахнет великолепно, ткани мягкие!",
-          },
-        ],
-      },
-    },
-    {
-      title: "Yumşa Plus Жидкость для шерсти",
-      description: "Средство для стирки шерстяных изделий.",
-      image: "/images/Yumsa_Liquid_Wool.png",
-      color: "#1138b7",
-      brandName: "Yumşa Plus",
-      category: "Универсальные жидкие моющие средства с кондиционером",
-      features: [
-        "Бережный уход",
-        "Сохранение структуры",
-        "Мягкость",
-      ],
-      details: {
-        id: 24,
-        name: "Yumşa Plus",
-        subtitle: "Жидкость для шерсти",
-        fullTitle: "Yumşa Plus - Жидкость для шерсти 1л",
-        description: "Средство для стирки шерстяных изделий.",
-        longDescription:
-          "Специально для шерсти и деликатных тканей, сохраняет структуру и мягкость.",
-        image: "/images/Yumsa_Liquid_Wool.png",
-        color: "#1138b7",
-        brandName: "Yumşa Plus",
-        category: "Универсальные жидкие моющие средства с кондиционером",
-        features: [
-          "Бережный уход",
-          "Сохранение структуры",
-          "Мягкость",
-        ],
-        directions: [
-          "Добавьте 40 мл на 4 кг белья.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.8,
-        reviews: 130,
-        badge: "Для шерсти",
-        sizes: [
-          { id: 1, name: "1л", quantity: "1000 мл", price: "₽549" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Ирина Т.",
-            date: "7 марта 2025",
-            rating: 4.9,
-            title: "Шерсть как новая",
-            content: "Свитера мягкие и не растянулись!",
-          },
-        ],
-      },
+      }],
     },
   
     // Yumşa Plus - Спреи-освежители для тканей
     {
-      title: "Yumşa Plus Спрей-освежитель для тканей",
-      description: "Освежает и удаляет запахи с одежды и текстиля.",
-      image: "/images/Yumsa_FabricSpray.png",
-      color: "#1138b7",
+      title: "Yumşa Plus Спреи-освежители для тканей",
+      description: "Средство для придания свежести одежде и домашнему текстилю.",
+      image: "/images/YumsaPlus_FabricFreshener.png",
+      color: "#8D99AE",
       brandName: "Yumşa Plus",
       category: "Спреи-освежители для тканей",
       features: [
-        "Быстрое действие",
-        "Не оставляет следов",
-        "Гипоаллергенный состав",
+        "Удаляет неприятные запахи",
+        "Делает ткань мягкой и ароматной",
+        "Подходит для всех типов тканей"
       ],
-      details: {
+      products: [{
         id: 25,
         name: "Yumşa Plus",
         subtitle: "Спрей-освежитель для тканей",
@@ -1390,125 +618,23 @@ const productsData: Product[] = [
             content: "Спасает одежду от запаха после ресторана!",
           },
         ],
-      },
+      }],
     },
-    {
-      title: "Yumşa Plus Спрей с ароматом лаванды",
-      description: "Освежитель для тканей с ароматом лаванды.",
-      image: "/images/Yumsa_FabricSpray_Lavender.png",
-      color: "#1138b7",
-      brandName: "Yumşa Plus",
-      category: "Спреи-освежители для тканей",
-      features: [
-        "Успокаивающий аромат",
-        "Удаление запахов",
-        "Долговременный эффект",
-      ],
-      details: {
-        id: 26,
-        name: "Yumşa Plus",
-        subtitle: "Спрей с ароматом лаванды",
-        fullTitle: "Yumşa Plus - Спрей с ароматом лаванды 300мл",
-        description: "Освежитель для тканей с ароматом лаванды.",
-        longDescription:
-          "Придает тканям успокаивающий аромат лаванды, эффективно устраняя запахи.",
-        image: "/images/Yumsa_FabricSpray_Lavender.png",
-        color: "#1138b7",
-        brandName: "Yumşa Plus",
-        category: "Спреи-освежители для тканей",
-        features: [
-          "Успокаивающий аромат",
-          "Удаление запахов",
-          "Долговременный эффект",
-        ],
-        directions: [
-          "Распылите с расстояния 20 см.",
-          "Храните вдали от огня.",
-        ],
-        rating: 4.7,
-        reviews: 175,
-        badge: "Ароматный",
-        sizes: [
-          { id: 1, name: "300мл", quantity: "300 мл", price: "₽349" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Татьяна Р.",
-            date: "10 марта 2025",
-            rating: 4.8,
-            title: "Лаванда супер",
-            content: "Запах успокаивает, ткани свежие!",
-          },
-        ],
-      },
-    },
-    {
-      title: "Yumşa Plus Спрей антибактериальный",
-      description: "Антибактериальный спрей для тканей.",
-      image: "/images/Yumsa_FabricSpray_AntiBacterial.png",
-      color: "#1138b7",
-      brandName: "Yumşa Plus",
-      category: "Спреи-освежители для тканей",
-      features: [
-        "Антибактериальная защита",
-        "Освежение тканей",
-        "Безопасный состав",
-      ],
-      details: {
-        id: 27,
-        name: "Yumşa Plus",
-        subtitle: "Спрей антибактериальный",
-        fullTitle: "Yumşa Plus - Спрей антибактериальный 300мл",
-        description: "Антибактериальный спрей для тканей.",
-        longDescription:
-          "Обеспечивает антибактериальную защиту тканей, удаляя запахи и бактерии.",
-        image: "/images/Yumsa_FabricSpray_AntiBacterial.png",
-        color: "#1138b7",
-        brandName: "Yumşa Plus",
-        category: "Спреи-освежители для тканей",
-        features: [
-          "Антибактериальная защита",
-          "Освежение тканей",
-          "Безопасный состав",
-        ],
-        directions: [
-          "Распылите с расстояния 20 см.",
-          "Храните вдали от огня.",
-        ],
-        rating: 4.8,
-        reviews: 160,
-        badge: "Защита",
-        sizes: [
-          { id: 1, name: "300мл", quantity: "300 мл", price: "₽399" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Светлана В.",
-            date: "9 марта 2025",
-            rating: 4.9,
-            title: "Чистота и защита",
-            content: "Отлично для дивана и штор!",
-          },
-        ],
-      },
-    },
-  
+    
     // Yumşa Plus - Кондиционеры для белья
     {
-      title: "Yumşa Plus Кондиционер для белья",
-      description: "Придает белью мягкость и приятный аромат.",
-      image: "/images/Yumsa_Softener.png",
-      color: "#1138b7",
+      title: "Yumşa Plus Кондиционеры для белья",
+      description: "Средство для придания белью мягкости и стойкого аромата.",
+      image: "/images/YumsaPlus_FabricSoftener.png",
+      color: "#457B9D",
       brandName: "Yumşa Plus",
       category: "Кондиционеры для белья",
-      features: [
-        "Антистатический эффект",
-        "Долговременная свежесть",
-        "Экономичный расход",
+      "features": [
+        "Защищает ткань от износа",
+        "Придает приятный аромат",
+        "Антистатический эффект"
       ],
-      details: {
+      products: [{
         id: 28,
         name: "Yumşa Plus",
         subtitle: "Кондиционер для белья",
@@ -1546,125 +672,23 @@ const productsData: Product[] = [
             content: "Белье стало мягким, а запах держится долго!",
           },
         ],
-      },
-    },
-    {
-      title: "Yumşa Plus Кондиционер с ароматом орхидеи",
-      description: "Кондиционер с цветочным ароматом орхидеи.",
-      image: "/images/Yumsa_Softener_Orchid.png",
-      color: "#1138b7",
-      brandName: "Yumşa Plus",
-      category: "Кондиционеры для белья",
-      features: [
-        "Цветочный аромат",
-        "Мягкость тканей",
-        "Антистатический эффект",
-      ],
-      details: {
-        id: 29,
-        name: "Yumşa Plus",
-        subtitle: "Кондиционер с ароматом орхидеи",
-        fullTitle: "Yumşa Plus - Кондиционер с ароматом орхидеи 1л",
-        description: "Кондиционер с цветочным ароматом орхидеи.",
-        longDescription:
-          "Придает белью мягкость и изысканный аромат орхидеи, облегчает глажку.",
-        image: "/images/Yumsa_Softener_Orchid.png",
-        color: "#1138b7",
-        brandName: "Yumşa Plus",
-        category: "Кондиционеры для белья",
-        features: [
-          "Цветочный аромат",
-          "Мягкость тканей",
-          "Антистатический эффект",
-        ],
-        directions: [
-          "Добавьте 30 мл в отсек для кондиционера.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.8,
-        reviews: 155,
-        badge: "Ароматный",
-        sizes: [
-          { id: 1, name: "1л", quantity: "1000 мл", price: "₽399" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Ольга С.",
-            date: "5 марта 2025",
-            rating: 4.9,
-            title: "Изысканный запах",
-            content: "Орхидея пахнет роскошно!",
-          },
-        ],
-      },
-    },
-    {
-      title: "Yumşa Plus Кондиционер для детского белья",
-      description: "Гипоаллергенный кондиционер для детской одежды.",
-      image: "/images/Yumsa_Softener_Baby.png",
-      color: "#1138b7",
-      brandName: "Yumşa Plus",
-      category: "Кондиционеры для белья",
-      features: [
-        "Безопасен для кожи",
-        "Мягкий уход",
-        "Нейтральный аромат",
-      ],
-      details: {
-        id: 30,
-        name: "Yumşa Plus",
-        subtitle: "Кондиционер для детского белья",
-        fullTitle: "Yumşa Plus - Кондиционер для детского белья 1л",
-        description: "Гипоаллергенный кондиционер для детской одежды.",
-        longDescription:
-          "Безопасен для чувствительной кожи, делает детское белье мягким и комфортным.",
-        image: "/images/Yumsa_Softener_Baby.png",
-        color: "#1138b7",
-        brandName: "Yumşa Plus",
-        category: "Кондиционеры для белья",
-        features: [
-          "Безопасен для кожи",
-          "Мягкий уход",
-          "Нейтральный аромат",
-        ],
-        directions: [
-          "Добавьте 30 мл в отсек для кондиционера.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.9,
-        reviews: 145,
-        badge: "Для детей",
-        sizes: [
-          { id: 1, name: "1л", quantity: "1000 мл", price: "₽449" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Анна К.",
-            date: "4 марта 2025",
-            rating: 5,
-            title: "Идеально для малышей",
-            content: "Мягкое и безопасное для детской кожи!",
-          },
-        ],
-      },
+      }],
     },
   
     // Awen - Жидкости для мытья посуды
     {
-      title: "Awen Жидкость для мытья посуды",
-      description: "Эффективное средство для удаления жира и загрязнений.",
-      image: "/images/Awen_Dishwashing.png",
-      color: "#ff3e1c",
+      title: "Awen Жидкости для мытья посуды",
+      description: "Эффективное средство для удаления жира и загрязнений с посуды.",
+      image: "/images/Awen_DishwashingLiquid.png",
+      color: "#F77F00",
       brandName: "Awen",
       category: "Жидкости для мытья посуды",
       features: [
-        "Обильная пена",
+        "Быстро удаляет жир и остатки пищи",
         "Мягкое воздействие на кожу рук",
-        "Удаление жира даже в холодной воде",
+        "Обильная пена и легкое смывание"
       ],
-      details: {
+      products: [{
         id: 31,
         name: "Awen",
         subtitle: "Жидкость для мытья посуды",
@@ -1702,125 +726,23 @@ const productsData: Product[] = [
             content: "Жир исчезает моментально, руки не сушит!",
           },
         ],
-      },
+      }],
     },
-    {
-      title: "Awen Жидкость с ароматом лимона",
-      description: "Средство для посуды с ароматом лимона.",
-      image: "/images/Awen_Dishwashing_Lemon.png",
-      color: "#ff3e1c",
-      brandName: "Awen",
-      category: "Жидкости для мытья посуды",
-      features: [
-        "Свежий аромат",
-        "Удаление жира",
-        "Мягкость для рук",
-      ],
-      details: {
-        id: 32,
-        name: "Awen",
-        subtitle: "Жидкость с ароматом лимона",
-        fullTitle: "Awen - Жидкость с ароматом лимона 500мл",
-        description: "Средство для посуды с ароматом лимона.",
-        longDescription:
-          "Эффективно удаляет жир, оставляя посуду чистой с приятным лимонным ароматом.",
-        image: "/images/Awen_Dishwashing_Lemon.png",
-        color: "#ff3e1c",
-        brandName: "Awen",
-        category: "Жидкости для мытья посуды",
-        features: [
-          "Свежий аромат",
-          "Удаление жира",
-          "Мягкость для рук",
-        ],
-        directions: [
-          "Добавьте 5 мл на 1 л воды.",
-          "Храните вдали от детей.",
-        ],
-        rating: 4.7,
-        reviews: 200,
-        badge: "Ароматный",
-        sizes: [
-          { id: 1, name: "500мл", quantity: "500 мл", price: "₽299" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Елена М.",
-            date: "11 марта 2025",
-            rating: 4.8,
-            title: "Лимонный свежак",
-            content: "Посуда чистая, аромат бодрит!",
-          },
-        ],
-      },
-    },
-    {
-      title: "Awen Жидкость антибактериальная",
-      description: "Антибактериальное средство для мытья посуды.",
-      image: "/images/Awen_Dishwashing_AntiBacterial.png",
-      color: "#ff3e1c",
-      brandName: "Awen",
-      category: "Жидкости для мытья посуды",
-      features: [
-        "Антибактериальный эффект",
-        "Эффективная очистка",
-        "Приятный аромат",
-      ],
-      details: {
-        id: 33,
-        name: "Awen",
-        subtitle: "Жидкость антибактериальная",
-        fullTitle: "Awen - Жидкость антибактериальная 500мл",
-        description: "Антибактериальное средство для мытья посуды.",
-        longDescription:
-          "Удаляет жир и бактерии, обеспечивая гигиеническую чистоту посуды.",
-        image: "/images/Awen_Dishwashing_AntiBacterial.png",
-        color: "#ff3e1c",
-        brandName: "Awen",
-        category: "Жидкости для мытья посуды",
-        features: [
-          "Антибактериальный эффект",
-          "Эффективная очистка",
-          "Приятный аромат",
-        ],
-        directions: [
-          "Добавьте 5 мл на 1 л воды.",
-          "Храните вдали от детей.",
-        ],
-        rating: 4.8,
-        reviews: 185,
-        badge: "Защита",
-        sizes: [
-          { id: 1, name: "500мл", quantity: "500 мл", price: "₽349" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Татьяна Р.",
-            date: "10 марта 2025",
-            rating: 4.9,
-            title: "Чисто и безопасно",
-            content: "Посуда чистая, бактерии уничтожены!",
-          },
-        ],
-      },
-    },
-  
+    
     // Glass Plus - Средства для очистки стекол и поверхностей
     {
-      title: "Glass Plus Средство для очистки стекол и поверхностей",
-      description: "Средство для сияющей чистоты стекол без разводов.",
+      title: "Glass Plus Средства для очистки стекол и поверхностей",
+      description: "Чистящее средство для стекол, зеркал и глянцевых поверхностей без разводов.",
       image: "/images/GlassPlus_Cleaner.png",
-      color: "#e80c00",
+      color: "#00A8E8",
       brandName: "Glass Plus",
       category: "Средства для очистки стекол и поверхностей",
       features: [
-        "Быстрое испарение",
-        "Удаление пыли и грязи",
+        "Удаляет загрязнения и отпечатки пальцев",
         "Не оставляет разводов",
+        "Антистатический эффект"
       ],
-      details: {
+      products: [{
         id: 34,
         name: "Glass Plus",
         subtitle: "Средство для очистки стекол",
@@ -1858,109 +780,7 @@ const productsData: Product[] = [
             content: "Стекла блестят, никаких разводов!",
           },
         ],
-      },
-    },
-    {
-      title: "Glass Plus Средство для зеркал",
-      description: "Средство для чистки зеркал без разводов.",
-      image: "/images/GlassPlus_Cleaner_Mirror.png",
-      color: "#e80c00",
-      brandName: "Glass Plus",
-      category: "Средства для очистки стекол и поверхностей",
-      features: [
-        "Идеальная чистота",
-        "Быстрое испарение",
-        "Удаление пятен",
-      ],
-      details: {
-        id: 35,
-        name: "Glass Plus",
-        subtitle: "Средство для зеркал",
-        fullTitle: "Glass Plus - Средство для зеркал 500мл",
-        description: "Средство для чистки зеркал без разводов.",
-        longDescription:
-          "Специально разработано для зеркал, обеспечивает кристальную чистоту и блеск без разводов и пятен.",
-        image: "/images/GlassPlus_Cleaner_Mirror.png",
-        color: "#e80c00",
-        brandName: "Glass Plus",
-        category: "Средства для очистки стекол и поверхностей",
-        features: [
-          "Идеальная чистота",
-          "Быстрое испарение",
-          "Удаление пятен",
-        ],
-        directions: [
-          "Распылите на зеркало, протрите мягкой тряпкой.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.8,
-        reviews: 180,
-        badge: "Для зеркал",
-        sizes: [
-          { id: 1, name: "500мл", quantity: "500 мл", price: "₽399" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Екатерина Д.",
-            date: "9 марта 2025",
-            rating: 4.9,
-            title: "Зеркала сияют",
-            content: "Чистота без разводов, очень удобно!",
-          },
-        ],
-      },
-    },
-    {
-      title: "Glass Plus Средство для столешниц",
-      description: "Средство для чистки стеклянных столешниц.",
-      image: "/images/GlassPlus_Cleaner_Countertop.png",
-      color: "#e80c00",
-      brandName: "Glass Plus",
-      category: "Средства для очистки стекол и поверхностей",
-      features: [
-        "Блеск поверхностей",
-        "Удаление загрязнений",
-        "Безопасный состав",
-      ],
-      details: {
-        id: 36,
-        name: "Glass Plus",
-        subtitle: "Средство для столешниц",
-        fullTitle: "Glass Plus - Средство для столешниц 500мл",
-        description: "Средство для чистки стеклянных столешниц.",
-        longDescription:
-          "Эффективно очищает стеклянные столешницы, удаляя загрязнения и придавая им блеск, безопасно для ежедневного использования.",
-        image: "/images/GlassPlus_Cleaner_Countertop.png",
-        color: "#e80c00",
-        brandName: "Glass Plus",
-        category: "Средства для очистки стекол и поверхностей",
-        features: [
-          "Блеск поверхностей",
-          "Удаление загрязнений",
-          "Безопасный состав",
-        ],
-        directions: [
-          "Распылите на поверхность, протрите сухой тряпкой.",
-          "Храните в прохладном месте.",
-        ],
-        rating: 4.7,
-        reviews: 165,
-        badge: "Для столешниц",
-        sizes: [
-          { id: 1, name: "500мл", quantity: "500 мл", price: "₽399" },
-        ],
-        reviewsList: [
-          {
-            id: 1,
-            author: "Анна К.",
-            date: "8 марта 2025",
-            rating: 4.8,
-            title: "Столешница блестит",
-            content: "Легко убирает пятна, поверхность как новая!",
-          },
-        ],
-      },
+      }],
     },
 ];
 
