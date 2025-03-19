@@ -1743,7 +1743,7 @@ const ShopProductsPage: React.FC = () => {
             </div>
           </div>
           <button className="bg-orange-500 text-white w-full sm:w-auto px-4 sm:px-8 py-3 rounded-full hover:bg-orange-600 transition-colors font-bold text-lg">
-            Найти магазины
+            
           </button>
         </div>
       </div>

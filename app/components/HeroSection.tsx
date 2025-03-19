@@ -120,6 +120,7 @@
 //responsive
 import React from 'react';
 import { Check, ArrowRight, ArrowDown } from 'lucide-react';
+import Link from 'next/link';
 
 const HeroSection: React.FC = () => {
   // Function to handle scroll on arrow click
@@ -208,12 +209,14 @@ const HeroSection: React.FC = () => {
             </div>
             
             <div className="mt-6 md:mt-10 transform transition-all duration-1000 delay-1000">
+              <Link href="/shop">
               <button className="relative overflow-hidden group bg-gradient-to-r from-[#fb4b06] to-[#E85D24] hover:from-[#E85D24] hover:to-[#fb4b06] text-white px-6 md:px-10 py-3 md:py-5 text-base md:text-xl rounded-full font-semibold shadow-lg shadow-[#fb4b06]/20 hover:shadow-[#fb4b06]/40 transition-all">
                 <span className="relative z-10 flex items-center gap-2 md:gap-3">
                   ЗАКАЗАТЬ ПРОДУКЦИЮ
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
                 </span>
               </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -493,7 +493,7 @@ const Header = () => {
 
   const navItems = [
     { name: "Главная", href: "/" },
-    { name: "Магазин", href: "/shop" },
+    { name: "Продукты", href: "/shop" },
     { name: "FAQ", href: "/faq" },
     { name: "Контакты", href: "/contact-us" },
   ];

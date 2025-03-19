@@ -1423,25 +1423,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
                 background: `linear-gradient(135deg, ${product.color} 30%, ${product.color}CC 100%)` 
               }}
             >
-              {/* Brand badge in top left */}
-              {/* <div className="absolute top-4 left-4 z-20 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                <span className="font-bold text-sm" style={{ color: product.color }}>{product.brandName}</span>
-              </div> */}
-              
-              {/* Category badge in top right */}
-              {/* <div className="absolute top-4 right-4 z-20 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                <span className="text-white text-xs">{product.category}</span>
-              </div> */}
               
               {/* Product image */}
-              <div className="relative z-10 transform transition-transform duration-700 perspective-1000">
+              <div className="relative z-10 transform transition-transform duration-700 perspective-1000 flex items-center justify-center w-full h-full">
                 <div className="absolute inset-0 bg-white/10 rounded-full filter blur-xl transform scale-75 transition-transform duration-700"></div>
                 <Image
                   src={product.image}
                   alt={product.title}
                   width={400}
                   height={400}
-                  className="w-4/5 h-4/5 object-contain p-4 drop-shadow-lg"
+                  className="w-5/5 h-5/5 object-contain p-4 drop-shadow-lg mx-auto"
                 />
               </div>
               
@@ -1471,20 +1462,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
               </h3>
               
               {/* Button with animated gradient hover effect */}
-              <Button className="bg-[#1E22AA] hover:bg-[#1E22AA]/90 rounded-full text-white px-6 py-2 text-sm font-semibold group overflow-hidden relative w-full">
+              <Link href={'/shop'} className="bg-[#1E22AA] hover:bg-[#1E22AA]/90 rounded-full text-white px-6 py-2 text-sm font-semibold group overflow-hidden relative w-full">
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   Подробнее
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <span className="absolute inset-0 bg-gradient-to-r from-[#fb4b06] to-[#fb4b06]/90 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></span>
-              </Button>
+              </Link>
             </div>
           </div>
         ) : (
           // Desktop view remains the same
           <div className="flex flex-col md:flex-row h-full">
             <div className="md:w-3/5 relative overflow-hidden group">
-              <div 
+            <div 
                 className="h-48 sm:h-64 md:h-full w-full relative flex items-center justify-center"
                 style={{ 
                   background: `linear-gradient(135deg, ${product.color} 30%, ${product.color}CC 100%)` 
@@ -1494,21 +1485,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
                 <div className="absolute top-2 sm:top-4 left-2 sm:left-4 z-20 bg-white/80 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">
                   <span className="font-bold text-xs sm:text-sm" style={{ color: product.color }}>{product.brandName}</span>
                 </div>
-
-                {/* Category badge in top right */}
-                {/* <div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-20 bg-black/30 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">
-                  <span className="text-white text-xs">{product.category}</span>
-                </div> */}
                 
                 {/* 3D perspective container for product image */}
-                <div className="relative z-10 transform transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2 perspective-1000">
+                <div className="relative z-10 transform transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2 perspective-1000 flex items-center justify-center w-full h-full">
                   <div className="absolute inset-0 bg-white/10 rounded-full filter blur-xl transform scale-75 group-hover:scale-100 transition-transform duration-700"></div>
                   <Image
                     src={product.image}
                     alt={product.title}
                     width={isMobile ? 400 : 800}
                     height={isMobile ? 400 : 800}
-                    className="w-4/5 h-4/5 object-contain p-4 sm:p-8 drop-shadow-lg"
+                    className="w-5/5 h-5/5 object-contain p-4 sm:p-8 drop-shadow-lg mx-auto"
                   />
                 </div>
                 
@@ -1532,7 +1518,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
                 <span className="text-[#fb4b06] text-xs sm:text-sm py-1 sm:py-2 font-semibold tracking-wide">Продукция Altyn Gaya</span>
               </div>
               
-              <h3 className="text-[#1E22AA] text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif' }}>
+              <h3 className="text-[#1E22AA] text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4 overflow-hidden" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif',
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+    WebkitLineClamp: 2, }}>
                 {product.title}
               </h3>
               <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-3 sm:mb-6 md:mb-8 leading-relaxed line-clamp-3 sm:line-clamp-none">
@@ -1930,8 +1919,12 @@ const ProductCarousel: React.FC = () => {
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3 sm:mb-6 md:mb-10">
               <span className="text-[#1E22AA]">Наши</span> <span className="text-[#fb4b06]">бренды</span>
             </h3>
-            
-            <div className="overflow-x-auto pb-2 sm:pb-4 -mx-3 px-3 sm:mx-0 sm:px-0">
+              <style jsx>{`
+                .hide-scrollbar::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
+            <div className="overflow-x-auto hide-scrollbar pb-2 sm:pb-4 -mx-3 px-3 sm:mx-0 sm:px-0">
               <div className={`flex ${isMobile ? 'space-x-3' : 'flex-wrap justify-center gap-4 md:gap-8'}`}
                    style={isMobile ? { minWidth: 'max-content' } : {}}>
                 {companies.map((company) => (

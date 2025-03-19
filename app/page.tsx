@@ -53,7 +53,7 @@ const SocialMediaIcons: React.FC = () => {
                   transition-all duration-300 ease-in-out
                   hover:shadow-lg hover:shadow-black/20
                   ${isHovered ? 'scale-110' : ''}
-                  ${link.href.includes('whatsapp') ? 'bg-[#34e645]' : ''}
+                  ${link.href.includes('wa.me') ? 'bg-[#36f149]' : ''}
                   ${link.href.includes('instagram') ? 'bg-[radial-gradient(circle_at_30%_107%,#fdf497_0%,#fdf497_5%,#fd5949_45%,#d6249f_60%,#285AEB_90%)]' : ''}
                   ${link.href.includes('youtube') ? 'bg-[#ff403a]' : ''}
                   ${link.href.includes('tiktok') ? 'bg-[#000000]' : ''}
