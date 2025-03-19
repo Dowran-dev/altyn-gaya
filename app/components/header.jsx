@@ -5,7 +5,6 @@
 // import { Input } from "@/app/components/ui/input";
 // import {
 //   Search,
-//   ShoppingBag,
 //   Menu,
 //   X,
 //   Moon,
@@ -153,7 +152,7 @@
 //         }`}
 //       >
 //         {/* Main header */}
-//         <div className="container mx-auto px-4">
+//         <div className="container mx-auto px-4" style={{ zIndex: 111 }}>
 //           <div className="flex items-center justify-between h-20">
 //             {/* Left section - Logo and categories */}
 //             <div className="flex items-center">
@@ -482,14 +481,93 @@
 //   );
 // }
 
+// "use client";
+// import React, { useState } from "react";
+// import { Menu, X } from "lucide-react";
+// import Link from "next/link";
+
+// const Header = () => {
+//   // Removed React.FC and just using a regular function component
+//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+//   const navItems = [
+//     { name: "Главная", href: "/" },
+//     { name: "Продукты", href: "/shop" },
+//     { name: "FAQ", href: "/faq" },
+//     { name: "Контакты", href: "/contact-us" },
+//   ];
+
+//   return (
+//     <header className="z-100 bg-black/80 backdrop-blur-md">
+//       <div className="container mx-auto px-4 py-4">
+//         <div className="flex items-center justify-between">
+//           {/* Logo */}
+//           <div className="flex items-center gap-4">
+//             <div className="text-[#fb4b06] text-xl font-bold">
+//               <Link href="/">ALTYN GAYA</Link>
+//               <span className="text-[#fb4b06] ml-2">|</span>
+//             </div>
+//           </div>
+
+//           {/* Desktop Navigation */}
+//           <nav className="hidden md:flex items-center gap-8">
+//             {navItems.map((item) => (
+//               <a
+//                 key={item.name}
+//                 href={item.href}
+//                 className="text-[#fb4b06] hover:text-white transition-colors duration-300 text-lg font-medium"
+//               >
+//                 {item.name}
+//               </a>
+//             ))}
+//           </nav>
+
+//           {/* Mobile Menu Button */}
+//           <button
+//             className="md:hidden text-[#fb4b06] focus:outline-none"
+//             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+//           >
+//             {isMobileMenuOpen ? (
+//               <X className="w-6 h-6" />
+//             ) : (
+//               <Menu className="w-6 h-6" />
+//             )}
+//           </button>
+//         </div>
+
+//         {/* Mobile Navigation */}
+//         {isMobileMenuOpen && (
+//           <nav className="md:hidden mt-4 pb-4">
+//             <div className="flex flex-col gap-4">
+//               {navItems.map((item) => (
+//                 <a
+//                   key={item.name}
+//                   href={item.href}
+//                   className="text-[#fb4b06] hover:text-white transition-colors duration-300 text-lg font-medium py-2 border-b border-white/10"
+//                   onClick={() => setIsMobileMenuOpen(false)}
+//                 >
+//                   {item.name}
+//                 </a>
+//               ))}
+//             </div>
+//           </nav>
+//         )}
+//       </div>
+//     </header>
+//   );
+// };
+
+// export default Header;
+
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 const Header = () => {
-  // Removed React.FC and just using a regular function component
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [isProductsHovered, setIsProductsHovered] = useState(false);
 
   const navItems = [
     { name: "Главная", href: "/" },
@@ -498,63 +576,149 @@ const Header = () => {
     { name: "Контакты", href: "/contact-us" },
   ];
 
+  // Fetch categories from the API
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await fetch("/api/products", {
+          cache: "no-store", // Ensures fresh data; adjust caching as needed
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch categories");
+        }
+        const data = await res.json();
+        const categoryNames = data.map((item) => item.category).slice(0, 4); // Limit to 4
+        setCategories(categoryNames);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
-    <header className="z-100 bg-black/80 backdrop-blur-md">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-4">
-            <div className="text-[#fb4b06] text-xl font-bold">
-              <Link href="/">ALTYN GAYA</Link>
-              <span className="text-[#fb4b06] ml-2">|</span>
+    <>
+      <header
+        className="bg-black/80 backdrop-blur-md fixed top-0 left-0 w-full"
+        style={{ zIndex: 111 }}
+      >
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <div className="flex items-center gap-4">
+              <div className="text-[#fb4b06] text-xl font-bold">
+                <Link href="/">ALTYN GAYA</Link>
+                <span className="text-[#fb4b06] ml-2">|</span>
+              </div>
             </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-8">
+              {navItems.map((item) => (
+                <div
+                  key={item.name}
+                  className="relative group"
+                  onMouseEnter={() =>
+                    item.name === "Продукты" && setIsProductsHovered(true)
+                  }
+                  onMouseLeave={() =>
+                    item.name === "Продукты" && setIsProductsHovered(false)
+                  }
+                >
+                  <a
+                    href={item.href}
+                    className="text-[#fb4b06] hover:text-white transition-colors duration-300 text-lg font-medium"
+                  >
+                    {item.name}
+                  </a>
+                  {/* Dropdown for Продукты */}
+                  {item.name === "Продукты" && isProductsHovered && (
+                    <div className="absolute left-0 mt-2 w-48 bg-black/90 backdrop-blur-md rounded-md shadow-lg z-50">
+                      <ul className="py-2">
+                        {categories.length > 0 ? (
+                          categories.map((category, index) => (
+                            <li key={index}>
+                              <Link
+                                href={`/shop?category=${encodeURIComponent(
+                                  category
+                                )}`}
+                                className="block px-4 py-2 bg-white text-orange-500 hover:bg-[#fb4b06] hover:text-orange-600 transition-colors duration-200"
+                              >
+                                {category}
+                              </Link>
+                            </li>
+                          ))
+                        ) : (
+                          <li className="px-4 py-2 text-white/70">
+                            Загрузка...
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-[#fb4b06] focus:outline-none"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-[#fb4b06] hover:text-white transition-colors duration-300 text-lg font-medium"
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-[#fb4b06] focus:outline-none"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          {/* Mobile Navigation */}
+          {isMobileMenuOpen && (
+            <nav className="md:hidden mt-4 pb-4">
+              <div className="flex flex-col gap-4">
+                {navItems.map((item) => (
+                  <div key={item.name}>
+                    <a
+                      href={item.href}
+                      className="text-[#fb4b06] hover:text-white transition-colors duration-300 text-lg font-medium py-2 border-b border-white/10"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                    {/* Mobile dropdown for Продукты */}
+                    {item.name === "Продукты" && (
+                      <div className="pl-4 mt-2">
+                        {categories.length > 0 ? (
+                          categories.map((category, index) => (
+                            <Link
+                              key={index}
+                              href={`/shop?category=${encodeURIComponent(
+                                category
+                              )}`}
+                              className="block text-white hover:text-[#fb4b06] py-1 text-base"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {category}
+                            </Link>
+                          ))
+                        ) : (
+                          <div className="text-white/70 py-1 text-base">
+                            Загрузка...
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </nav>
+          )}
         </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4">
-            <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-[#fb4b06] hover:text-white transition-colors duration-300 text-lg font-medium py-2 border-b border-white/10"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
-          </nav>
-        )}
-      </div>
-    </header>
+      </header>
+      <div className="h-16 pt-8"></div>
+    </>
   );
 };
 
