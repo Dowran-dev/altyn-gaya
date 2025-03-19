@@ -1713,14 +1713,14 @@ const ShopProductsPage: React.FC = () => {
   const renderListItem = (product: Products) => (
     <div key={product.id} className="border-b border-gray-200 pb-6 mb-6">
       <div className="flex flex-col sm:flex-row">
-        <div className="w-full sm:w-1/3 relative mb-4 sm:mb-0">
-          <Link href={`/product-details/${product.id}`} className="block relative"> {/* Still using product.id */}
-          {product.badge && <ProductBadge badgeText={product.badge} />}
-            <div className="relative h-56 sm:h-64 md:h-72 w-full sm:w-56 md:w-72 mx-auto">
-              {renderProductImage(product)}
-            </div>
-          </Link>
-        </div>
+      <div className="w-full sm:w-1/3 relative mb-4 sm:mb-0">
+        <Link href={`/product-details/${product.id}`} className="block relative">
+          <div className="relative h-56 sm:h-64 md:h-72 w-full sm:w-56 md:w-72 mx-auto">
+            {product.badge && <ProductBadge badgeText={product.badge} />}
+            {renderProductImage(product)}
+          </div>
+        </Link>
+      </div>
         <div className="w-full sm:w-2/3 sm:pl-4">
           <div className="text-xs text-blue-600 mb-1">{product.brandName} | {product.category}</div>
           <Link href={`/product-details/${product.id}`}> {/* Still using product.id */}
@@ -1737,13 +1737,14 @@ const ShopProductsPage: React.FC = () => {
           <div className="mb-4">
             <h3 className="font-bold text-blue-800 mb-2">Доступные размеры:</h3>
             <div className="flex flex-wrap gap-2">
-              {product.sizes.map(size => (
+            <span className="bg-blue-50 text-blue-800 px-3 py-1 rounded-full text-sm">-</span>
+              {/* {product.sizes.map(size => (
                 <span key={size.id} className="bg-blue-50 text-blue-800 px-3 py-1 rounded-full text-sm">{size.name}</span>
-              ))}
+              ))} */}
             </div>
           </div>
           <button className="bg-orange-500 text-white w-full sm:w-auto px-4 sm:px-8 py-3 rounded-full hover:bg-orange-600 transition-colors font-bold text-lg">
-            
+          Подробнее о товаре
           </button>
         </div>
       </div>
