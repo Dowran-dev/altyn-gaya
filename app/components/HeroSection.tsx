@@ -152,10 +152,10 @@ const HeroSection: React.FC = () => {
         {/* <div className="absolute bottom-1/3 left-1/3 w-40 md:w-80 h-40 md:h-80 rounded-full bg-[#1E22AA] opacity-10 filter blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div> */}
       {/* </div> */}
       
-      <div className="container mx-auto px-4 py-8 md:py-12 z-10 relative">
+      <div className="container mx-auto px-4 py-6 md:py-10 z-10 relative">
         <div className="max-w-xl md:max-w-2xl">
           {/* Логотип или название компании */}
-          <div className="mb-8 md:mb-16">
+          <div className="mb-4 md:mb-8">
             <div className="inline-block py-1 px-4 md:py-2 md:px-6 bg-white/5 backdrop-blur-md rounded-full mb-6 md:mb-8">
               <span className="text-white text-sm md:text-lg font-medium">ALTYN GAYA</span>
               <span className="mx-2 md:mx-3 text-[#fb4b06]">|</span>
@@ -163,7 +163,7 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
           
-          <div className="space-y-6 md:space-y-10">
+          <div className="space-y-4 md:space-y-6">
             <div className="overflow-hidden">
               <h1 
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white mb-1 md:mb-2 transform transition-all duration-1000 animate-in" 
@@ -181,7 +181,7 @@ const HeroSection: React.FC = () => {
             
             <div className="overflow-hidden">
               <p className="text-white/90 text-base sm:text-lg md:text-xl mb-6 md:mb-8 transform transition-all duration-1000 delay-500 translate-y-0 leading-relaxed">
-                С 2008 года <strong className="text-[#fb4b06]">Altyn Gaya</strong> производит высококачественную туалетную бумагу, бумажные салфетки и моющие средства, которые делают каждый дом уютнее и безопаснее.
+                С 2008 года <strong className="text-[#fb4b06]">Altyn Gaya</strong> производит высококачественные чистящие средства, делающие дом чище, уютнее и безопаснее, благодаря надежности и эффективности продукции.
               </p>
             </div>
             

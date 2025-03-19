@@ -67,7 +67,7 @@ const AdvantagesSection = () => {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-14 mb-8 md:mb-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -222,7 +222,7 @@ const AdvantagesSection = () => {
             variants={itemVariants}
           >
             <motion.div
-              className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-[#1E22AA] to-[#1E22AA]/80 rounded-full flex items-center justify-center mb-4 shadow-lg shadow-[#1E22AA]/20 group-hover:shadow-[#1E22AA]/30 transition-all"
+              className="w-12 h-12 md:w-16 md:h-16 bg-[#1E22AA] rounded-full flex items-center justify-center mb-4 shadow-lg shadow-[#1E22AA]/20 group-hover:shadow-[#1E22AA]/30 transition-all"
               whileHover={{ scale: 1.1 }}
             >
               <Users className="w-6 h-6 md:w-8 md:h-8 text-white" />
@@ -260,7 +260,7 @@ const AdvantagesSection = () => {
             variants={itemVariants}
           >
             <motion.div
-              className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-[#1E22AA] to-[#1E22AA]/80 rounded-full flex items-center justify-center mb-4 shadow-lg shadow-[#1E22AA]/20 group-hover:shadow-[#1E22AA]/30 transition-all"
+              className="w-12 h-12 md:w-16 md:h-16 bg-[#1E22AA] rounded-full flex items-center justify-center mb-4 shadow-lg shadow-[#1E22AA]/20 group-hover:shadow-[#1E22AA]/30 transition-all"
               whileHover={{ scale: 1.1 }}
             >
               <Shield className="w-6 h-6 md:w-8 md:h-8 text-white" />
@@ -275,7 +275,7 @@ const AdvantagesSection = () => {
         </motion.div>
 
         {/* CTA Button - Improved with animation */}
-        <motion.div
+        {/* <motion.div
           className="mt-12 md:mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -294,7 +294,7 @@ const AdvantagesSection = () => {
               </motion.span>
             </span>
           </motion.button>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

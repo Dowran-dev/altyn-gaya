@@ -360,283 +360,283 @@
 // }
 
 //test
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import {
-  X,
-  Phone,
-  Mail,
-  Sun,
-  Moon,
-  ChevronRight,
-  ChevronDown,
-  ShoppingBag,
-  Home,
-  Info,
-  HelpCircle,
-  MessageSquare,
-  Layers,
-} from "lucide-react";
-import { motion } from "framer-motion";
+// import React, { useState, useEffect } from "react";
+// import Link from "next/link";
+// import Image from "next/image";
+// import {
+//   X,
+//   Phone,
+//   Mail,
+//   Sun,
+//   Moon,
+//   ChevronRight,
+//   ChevronDown,
+//   ShoppingBag,
+//   Home,
+//   Info,
+//   HelpCircle,
+//   MessageSquare,
+//   Layers,
+// } from "lucide-react";
+// import { motion } from "framer-motion";
 
-export default function MobileNavigation({
-  onClose,
-  categories,
-  currentCategory,
-  setCurrentCategory,
-}) {
-  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+// export default function MobileNavigation({
+//   onClose,
+//   categories,
+//   currentCategory,
+//   setCurrentCategory,
+// }) {
+//   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+//   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Check initial dark mode preference
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        setIsDarkMode(true);
-      } else {
-        setIsDarkMode(false);
-      }
-    }
-  }, []);
+//   // Check initial dark mode preference
+//   useEffect(() => {
+//     if (typeof window !== "undefined") {
+//       if (
+//         localStorage.theme === "dark" ||
+//         (!("theme" in localStorage) &&
+//           window.matchMedia("(prefers-color-scheme: dark)").matches)
+//       ) {
+//         setIsDarkMode(true);
+//       } else {
+//         setIsDarkMode(false);
+//       }
+//     }
+//   }, []);
 
-  // Handle dark mode toggle
-  const toggleDarkMode = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = "light";
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-    }
-    setIsDarkMode(!isDarkMode);
-  };
+//   // Handle dark mode toggle
+//   const toggleDarkMode = () => {
+//     if (isDarkMode) {
+//       document.documentElement.classList.remove("dark");
+//       localStorage.theme = "light";
+//     } else {
+//       document.documentElement.classList.add("dark");
+//       localStorage.theme = "dark";
+//     }
+//     setIsDarkMode(!isDarkMode);
+//   };
 
-  // Handle category selection
-  const handleCategorySelect = (categoryName) => {
-    setCurrentCategory(categoryName);
-    setIsCategoryOpen(false);
-    // Optional: close the mobile nav after selecting a category
-    // onClose();
-  };
+//   // Handle category selection
+//   const handleCategorySelect = (categoryName) => {
+//     setCurrentCategory(categoryName);
+//     setIsCategoryOpen(false);
+//     // Optional: close the mobile nav after selecting a category
+//     // onClose();
+//   };
 
-  return (
-    <>
-      {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-        onClick={onClose}
-      ></motion.div>
+//   return (
+//     <>
+//       {/* Backdrop */}
+//       <motion.div
+//         initial={{ opacity: 0 }}
+//         animate={{ opacity: 1 }}
+//         exit={{ opacity: 0 }}
+//         className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+//         onClick={onClose}
+//       ></motion.div>
 
-      {/* Sidebar */}
-      <motion.div
-        initial={{ x: "-100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "-100%" }}
-        transition={{ type: "spring", damping: 25 }}
-        className="fixed top-0 left-0 w-[85%] max-w-sm h-full bg-white dark:bg-gray-900 shadow-xl flex flex-col z-50"
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
-          {/* Logo */}
-          <Link href="/" className="flex items-center group" onClick={onClose}>
-            <div className="relative overflow-hidden rounded-full h-10 w-10 border-2 border-[#fb4b06]/20 shadow-lg">
-              <Image
-                src="/image/logo.png"
-                alt="Altyn Gaya Logo"
-                layout="fill"
-                objectFit="cover"
-                className="transform transition-transform group-hover:scale-110"
-              />
-            </div>
-            <div className="ml-2">
-              <span className="block text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#0a0d42] to-[#2c2f7c] dark:from-white dark:to-gray-300">
-                Altyn <span className="text-[#fb4b06]">Gaya</span>
-              </span>
-              <span className="text-xs text-gray-500 dark:text-gray-400">
-                Качество для жизни
-              </span>
-            </div>
-          </Link>
+//       {/* Sidebar */}
+//       <motion.div
+//         initial={{ x: "-100%" }}
+//         animate={{ x: 0 }}
+//         exit={{ x: "-100%" }}
+//         transition={{ type: "spring", damping: 25 }}
+//         className="fixed top-0 left-0 w-[85%] max-w-sm h-full bg-white dark:bg-gray-900 shadow-xl flex flex-col z-50"
+//       >
+//         {/* Header */}
+//         <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
+//           {/* Logo */}
+//           <Link href="/" className="flex items-center group" onClick={onClose}>
+//             <div className="relative overflow-hidden rounded-full h-10 w-10 border-2 border-[#fb4b06]/20 shadow-lg">
+//               <Image
+//                 src="/image/logo.png"
+//                 alt="Altyn Gaya Logo"
+//                 layout="fill"
+//                 objectFit="cover"
+//                 className="transform transition-transform group-hover:scale-110"
+//               />
+//             </div>
+//             <div className="ml-2">
+//               <span className="block text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#0a0d42] to-[#2c2f7c] dark:from-white dark:to-gray-300">
+//                 Altyn <span className="text-[#fb4b06]">Gaya</span>
+//               </span>
+//               <span className="text-xs text-gray-500 dark:text-gray-400">
+//                 Качество для жизни
+//               </span>
+//             </div>
+//           </Link>
 
-          {/* Close button */}
-          <button
-            className="p-2 text-gray-500 dark:text-gray-400 hover:text-[#fb4b06] dark:hover:text-[#fb4b06] transition-colors"
-            onClick={onClose}
-            aria-label="Close menu"
-          >
-            <X className="w-6 h-6" />
-          </button>
-        </div>
+//           {/* Close button */}
+//           <button
+//             className="p-2 text-gray-500 dark:text-gray-400 hover:text-[#fb4b06] dark:hover:text-[#fb4b06] transition-colors"
+//             onClick={onClose}
+//             aria-label="Close menu"
+//           >
+//             <X className="w-6 h-6" />
+//           </button>
+//         </div>
 
-        {/* Navigation content */}
-        <div className="flex-1 overflow-y-auto">
-          {/* Categories */}
-          <div className="p-4 border-b border-gray-200 dark:border-gray-800">
-            <button
-              className="flex items-center justify-between w-full py-2 px-1"
-              onClick={() => setIsCategoryOpen(!isCategoryOpen)}
-            >
-              <div className="flex items-center">
-                <Layers className="w-5 h-5 mr-2 text-[#fb4b06]" />
-                <span className="font-medium text-gray-700 dark:text-gray-300">
-                  Категории
-                </span>
-              </div>
-              <ChevronDown
-                className={`w-5 h-5 text-gray-500 dark:text-gray-400 transition-transform duration-300 ${
-                  isCategoryOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+//         {/* Navigation content */}
+//         <div className="flex-1 overflow-y-auto">
+//           {/* Categories */}
+//           <div className="p-4 border-b border-gray-200 dark:border-gray-800">
+//             <button
+//               className="flex items-center justify-between w-full py-2 px-1"
+//               onClick={() => setIsCategoryOpen(!isCategoryOpen)}
+//             >
+//               <div className="flex items-center">
+//                 <Layers className="w-5 h-5 mr-2 text-[#fb4b06]" />
+//                 <span className="font-medium text-gray-700 dark:text-gray-300">
+//                   Категории
+//                 </span>
+//               </div>
+//               <ChevronDown
+//                 className={`w-5 h-5 text-gray-500 dark:text-gray-400 transition-transform duration-300 ${
+//                   isCategoryOpen ? "rotate-180" : ""
+//                 }`}
+//               />
+//             </button>
 
-            {isCategoryOpen && (
-              <div className="mt-2 pl-2 space-y-1">
-                {categories.map((category) => (
-                  <button
-                    key={category.name}
-                    className={`flex items-center w-full text-left py-2 px-3 rounded-lg transition-colors ${
-                      category.name === currentCategory
-                        ? "bg-orange-50 dark:bg-gray-800 text-[#fb4b06] font-medium"
-                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                    }`}
-                    onClick={() => handleCategorySelect(category.name)}
-                  >
-                    <span className="mr-2 text-[#fb4b06]">{category.icon}</span>
-                    {category.name}
-                    {category.name === currentCategory && (
-                      <span className="ml-auto">
-                        <ChevronRight size={14} className="text-[#fb4b06]" />
-                      </span>
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+//             {isCategoryOpen && (
+//               <div className="mt-2 pl-2 space-y-1">
+//                 {categories.map((category) => (
+//                   <button
+//                     key={category.name}
+//                     className={`flex items-center w-full text-left py-2 px-3 rounded-lg transition-colors ${
+//                       category.name === currentCategory
+//                         ? "bg-orange-50 dark:bg-gray-800 text-[#fb4b06] font-medium"
+//                         : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+//                     }`}
+//                     onClick={() => handleCategorySelect(category.name)}
+//                   >
+//                     <span className="mr-2 text-[#fb4b06]">{category.icon}</span>
+//                     {category.name}
+//                     {category.name === currentCategory && (
+//                       <span className="ml-auto">
+//                         <ChevronRight size={14} className="text-[#fb4b06]" />
+//                       </span>
+//                     )}
+//                   </button>
+//                 ))}
+//               </div>
+//             )}
+//           </div>
 
-          {/* Main navigation */}
-          <nav className="p-4">
-            <ul className="space-y-1">
-              <li>
-                <Link
-                  href="/"
-                  className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                  onClick={onClose}
-                >
-                  <Home className="w-5 h-5 mr-3 text-[#fb4b06]" />
-                  <span>Главная</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shop"
-                  className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                  onClick={onClose}
-                >
-                  <ShoppingBag className="w-5 h-5 mr-3 text-[#fb4b06]" />
-                  <span>Магазин продуктов</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/whats-new"
-                  className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                  onClick={onClose}
-                >
-                  <ChevronRight className="w-5 h-5 mr-3 text-[#fb4b06]" />
-                  <span>Что нового</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/faq"
-                  className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                  onClick={onClose}
-                >
-                  <HelpCircle className="w-5 h-5 mr-3 text-[#fb4b06]" />
-                  <span>FAQ</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about-us"
-                  className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                  onClick={onClose}
-                >
-                  <Info className="w-5 h-5 mr-3 text-[#fb4b06]" />
-                  <span>О компании</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contacts"
-                  className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                  onClick={onClose}
-                >
-                  <MessageSquare className="w-5 h-5 mr-3 text-[#fb4b06]" />
-                  <span>Контакты</span>
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
+//           {/* Main navigation */}
+//           <nav className="p-4">
+//             <ul className="space-y-1">
+//               <li>
+//                 <Link
+//                   href="/"
+//                   className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+//                   onClick={onClose}
+//                 >
+//                   <Home className="w-5 h-5 mr-3 text-[#fb4b06]" />
+//                   <span>Главная</span>
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="/shop"
+//                   className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+//                   onClick={onClose}
+//                 >
+//                   <ShoppingBag className="w-5 h-5 mr-3 text-[#fb4b06]" />
+//                   <span>Магазин продуктов</span>
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="/whats-new"
+//                   className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+//                   onClick={onClose}
+//                 >
+//                   <ChevronRight className="w-5 h-5 mr-3 text-[#fb4b06]" />
+//                   <span>Что нового</span>
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="/faq"
+//                   className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+//                   onClick={onClose}
+//                 >
+//                   <HelpCircle className="w-5 h-5 mr-3 text-[#fb4b06]" />
+//                   <span>FAQ</span>
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="/about-us"
+//                   className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+//                   onClick={onClose}
+//                 >
+//                   <Info className="w-5 h-5 mr-3 text-[#fb4b06]" />
+//                   <span>О компании</span>
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="/contacts"
+//                   className="flex items-center py-3 px-4 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+//                   onClick={onClose}
+//                 >
+//                   <MessageSquare className="w-5 h-5 mr-3 text-[#fb4b06]" />
+//                   <span>Контакты</span>
+//                 </Link>
+//               </li>
+//             </ul>
+//           </nav>
+//         </div>
 
-        {/* Footer actions */}
-        <div className="p-4 border-t border-gray-200 dark:border-gray-800">
-          {/* Contact info */}
-          <div className="mb-4 space-y-2">
-            <a
-              href="tel:+77471234567"
-              className="flex items-center text-gray-700 dark:text-gray-300 hover:text-[#fb4b06] dark:hover:text-[#fb4b06] transition-colors"
-            >
-              <Phone className="w-4 h-4 mr-2 text-[#fb4b06]" />
-              <span>+7 (747) 123-45-67</span>
-            </a>
-            <a
-              href="mailto:info@altyngaya.kz"
-              className="flex items-center text-gray-700 dark:text-gray-300 hover:text-[#fb4b06] dark:hover:text-[#fb4b06] transition-colors"
-            >
-              <Mail className="w-4 h-4 mr-2 text-[#fb4b06]" />
-              <span>info@altyngaya.kz</span>
-            </a>
-          </div>
+//         {/* Footer actions */}
+//         <div className="p-4 border-t border-gray-200 dark:border-gray-800">
+//           {/* Contact info */}
+//           <div className="mb-4 space-y-2">
+//             <a
+//               href="tel:+77471234567"
+//               className="flex items-center text-gray-700 dark:text-gray-300 hover:text-[#fb4b06] dark:hover:text-[#fb4b06] transition-colors"
+//             >
+//               <Phone className="w-4 h-4 mr-2 text-[#fb4b06]" />
+//               <span>+7 (747) 123-45-67</span>
+//             </a>
+//             <a
+//               href="mailto:info@altyngaya.kz"
+//               className="flex items-center text-gray-700 dark:text-gray-300 hover:text-[#fb4b06] dark:hover:text-[#fb4b06] transition-colors"
+//             >
+//               <Mail className="w-4 h-4 mr-2 text-[#fb4b06]" />
+//               <span>info@altyngaya.kz</span>
+//             </a>
+//           </div>
 
-          {/* Find stores button */}
-          <Link
-            href="/store-locator"
-            className="block w-full bg-gradient-to-r from-[#fb4b06] to-[#ff7e46] hover:from-[#e04201] hover:to-[#f17441] text-white py-3 px-4 rounded-lg text-center font-medium mb-4 transition-colors"
-            onClick={onClose}
-          >
-            Найти магазины
-          </Link>
+//           {/* Find stores button */}
+//           <Link
+//             href="/store-locator"
+//             className="block w-full bg-gradient-to-r from-[#fb4b06] to-[#ff7e46] hover:from-[#e04201] hover:to-[#f17441] text-white py-3 px-4 rounded-lg text-center font-medium mb-4 transition-colors"
+//             onClick={onClose}
+//           >
+//             Найти магазины
+//           </Link>
 
-          {/* Dark mode toggle */}
-          <div className="flex items-center justify-between">
-            <span className="text-gray-700 dark:text-gray-300">
-              Темный режим
-            </span>
-            <button
-              className="p-2 text-gray-700 dark:text-gray-300 hover:text-[#fb4b06] dark:hover:text-[#fb4b06] transition-colors"
-              onClick={toggleDarkMode}
-              aria-label={isDarkMode ? "Light mode" : "Dark mode"}
-            >
-              {isDarkMode ? (
-                <Sun className="w-5 h-5" />
-              ) : (
-                <Moon className="w-5 h-5" />
-              )}
-            </button>
-          </div>
-        </div>
-      </motion.div>
-    </>
-  );
-}
+//           {/* Dark mode toggle */}
+//           <div className="flex items-center justify-between">
+//             <span className="text-gray-700 dark:text-gray-300">
+//               Темный режим
+//             </span>
+//             <button
+//               className="p-2 text-gray-700 dark:text-gray-300 hover:text-[#fb4b06] dark:hover:text-[#fb4b06] transition-colors"
+//               onClick={toggleDarkMode}
+//               aria-label={isDarkMode ? "Light mode" : "Dark mode"}
+//             >
+//               {isDarkMode ? (
+//                 <Sun className="w-5 h-5" />
+//               ) : (
+//                 <Moon className="w-5 h-5" />
+//               )}
+//             </button>
+//           </div>
+//         </div>
+//       </motion.div>
+//     </>
+//   );
+// }

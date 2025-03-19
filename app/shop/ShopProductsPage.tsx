@@ -1792,7 +1792,7 @@ const ShopProductsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <Head>
-        <title>Магазин продуктов</title>
+        <title>Каталог товаровв</title>
         <meta name="description" content="Просмотрите нашу полную линейку продуктов" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
@@ -1800,12 +1800,12 @@ const ShopProductsPage: React.FC = () => {
 
       <main className="container mx-auto max-w-7xl px-4 sm:px-6">
         <div className="py-4">
-          <div className="text-xs text-blue-800 font-light mt-4">Магазин продуктов</div>
+          <div className="text-xs text-blue-800 font-light mt-4">Каталог товаров</div>
         </div>
 
         <div className="flex flex-col md:flex-row md:justify-between md:items-center my-2 md:my-6">
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-light text-orange-500 mb-4 md:mb-0">
-            Магазин <span className="font-bold" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>Продуктов</span>
+          Каталог <span className="font-bold" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>Товаров</span>
           </h1>
         </div>
 
