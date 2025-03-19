@@ -1786,7 +1786,7 @@ const ProductCarousel: React.FC = () => {
           {
             title: "Glass Plus Средство для очистки стекол и поверхностей",
             description: "Средство для сияющей чистоты стекол без разводов.",
-            image: "/images/category_pictures/GlassPlus.png",
+            image: "/images/category_pictures/GlassPlus_category.png",
             color: "#e80c00",
             brandName: "Glass Plus",
             category: "Средства для очистки стекол и поверхностей",
