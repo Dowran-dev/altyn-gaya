@@ -180,28 +180,28 @@ const HeroSection: React.FC = () => {
             </div>
             
             <div className="overflow-hidden">
-              <p className="text-white/90 text-base sm:text-lg md:text-xl mb-6 md:mb-8 transform transition-all duration-1000 delay-500 translate-y-0 leading-relaxed">
+              <p className="text-white/90 text-base sm:text-lg md:text-xl mb-4 md:mb-6 transform transition-all duration-1000 delay-500 translate-y-0 leading-relaxed">
                 С 2008 года <strong className="text-[#fb4b06]">Altyn Gaya</strong> производит высококачественные чистящие средства, делающие дом чище, уютнее и безопаснее, благодаря надежности и эффективности продукции.
               </p>
             </div>
             
             <div className="space-y-3 md:space-y-5 transition-all duration-1000 delay-700">
               <div className="flex items-center group">
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#fb4b06] to-[#f06937] rounded-lg flex items-center justify-center mr-3 md:mr-4 shadow-lg shadow-[#fb4b06]/20 group-hover:shadow-[#fb4b06]/30 transition-all group-hover:scale-110">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#fb4b06] to-[#f06937] rounded-xl flex items-center justify-center mr-3 md:mr-4 shadow-lg shadow-[#fb4b06]/20 group-hover:shadow-[#fb4b06]/30 transition-all group-hover:scale-110">
                   <Check className="text-white w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <span className="text-white text-base md:text-lg group-hover:text-[#fb4b06] transition-colors">Экологичные материалы</span>
               </div>
               
               <div className="flex items-center group">
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#fb4b06] to-[#f06937] rounded-lg flex items-center justify-center mr-3 md:mr-4 shadow-lg shadow-[#fb4b06]/20 group-hover:shadow-[#fb4b06]/30 transition-all group-hover:scale-110">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#fb4b06] to-[#f06937] rounded-xl flex items-center justify-center mr-3 md:mr-4 shadow-lg shadow-[#fb4b06]/20 group-hover:shadow-[#fb4b06]/30 transition-all group-hover:scale-110">
                   <Check className="text-white w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <span className="text-white text-base md:text-lg group-hover:text-[#fb4b06] transition-colors">Современные технологии производства</span>
               </div>
               
               <div className="flex items-center group">
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#fb4b06] to-[#f06937] rounded-lg flex items-center justify-center mr-3 md:mr-4 shadow-lg shadow-[#fb4b06]/20 group-hover:shadow-[#fb4b06]/30 transition-all group-hover:scale-110">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#fb4b06] to-[#f06937] rounded-xl flex items-center justify-center mr-3 md:mr-4 shadow-lg shadow-[#fb4b06]/20 group-hover:shadow-[#fb4b06]/30 transition-all group-hover:scale-110">
                   <Check className="text-white w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <span className="text-white text-base md:text-lg group-hover:text-[#fb4b06] transition-colors">Надёжность и оперативность поставок</span>
@@ -210,7 +210,7 @@ const HeroSection: React.FC = () => {
             
             <div className="mt-6 md:mt-10 transform transition-all duration-1000 delay-1000">
               <Link href="/shop">
-              <button className="relative overflow-hidden group bg-gradient-to-r from-[#fb4b06] to-[#E85D24] hover:from-[#E85D24] hover:to-[#fb4b06] text-white px-6 md:px-10 py-3 md:py-5 text-base md:text-xl rounded-full font-semibold shadow-lg shadow-[#fb4b06]/20 hover:shadow-[#fb4b06]/40 transition-all">
+              <button className="relative overflow-hidden group bg-gradient-to-r from-[#fb4b06] to-[#E85D24] hover:from-[#E85D24] hover:to-[#fb4b06] text-white px-4 md:px-8 py-3 md:py-5 text-base md:text-lg rounded-full font-semibold shadow-lg shadow-[#fb4b06]/20 hover:shadow-[#fb4b06]/40 transition-all">
                 <span className="relative z-10 flex items-center gap-2 md:gap-3">
                   ЗАКАЗАТЬ ПРОДУКЦИЮ
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
