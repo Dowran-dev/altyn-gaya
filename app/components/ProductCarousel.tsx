@@ -1425,14 +1425,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
             >
               
               {/* Product image */}
-              <div className="relative z-10 transform transition-transform duration-700 perspective-1000 flex items-center justify-center w-full h-full">
+              <div className="relative z-10 transform transition-transform duration-700 perspective-1000 flex items-center justify-center w-full h-full max-h-44">
                 <div className="absolute inset-0 bg-white/10 rounded-full filter blur-xl transform scale-75 transition-transform duration-700"></div>
                 <Image
                   src={product.image}
                   alt={product.title}
                   width={400}
                   height={400}
-                  className="w-5/5 h-5/5 object-contain p-4 drop-shadow-lg mx-auto"
+                  className="w-5/5 h-5/5 max-h-64 object-contain p-4 drop-shadow-lg mx-auto"
                 />
               </div>
               
@@ -1457,7 +1457,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
                 <span className="text-[#fb4b06] text-xs font-semibold tracking-wide">Продукция Altyn Gaya</span>
               </div>
               
-              <h3 className="text-[#1E22AA] text-xl font-bold mb-4" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif' }}>
+              <h3 className="text-[#1E22AA] text-xl font-bold mb-4 overflow-hidden" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif',
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+    WebkitLineClamp: 2, }}>
                 {product.title}
               </h3>
               
