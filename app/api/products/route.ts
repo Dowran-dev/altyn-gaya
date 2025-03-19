@@ -1222,7 +1222,7 @@ const productsData: ProductCategories[] = [
           "fullTitle": "Real Plus Черничный Йогурт - Жидкое мыло с ароматом черничного йогурта 1000 мл",
           "description": "Жидкое мыло с кремовым ароматом черничного йогурта для мягкого очищения.",
           "longDescription": "Это жидкое мыло в прозрачной бутылке объемом 1000 мл с фиолетовым оттенком жидкости и белым дозатором мягко очищает кожу, оставляя кремовый аромат черничного йогурта. Формула с увлажняющими компонентами предотвращает сухость, даря коже мягкость и ягодную свежесть.",
-          "image": "/images/RealPlus_sabyn_cernicyyogurt.png",
+          "image": "/images/RealPlus_sabyn_cernicnyyogurt",
           "color": "#800080", // Purple color based on the liquid
           "brandName": "Real Plus",
           "category": "Жидкое мыло",
