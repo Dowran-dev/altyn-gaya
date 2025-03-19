@@ -1703,7 +1703,7 @@ const ShopProductsPage: React.FC = () => {
           </div>
           <p className="text-blue-800 mb-4 text-sm line-clamp-2 flex-grow">{product.description}</p>
           <button className="bg-orange-500 text-white px-4 sm:px-8 py-2 w-full sm:w-auto my-2 rounded-full hover:bg-orange-600 transition-colors font-bold text-lg">
-            Найти магазины
+          Подробнее о товаре
           </button>
         </div>
       </div>
