@@ -564,9 +564,49 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
+interface ProductSize {
+  id: number;
+  name: string;
+  quantity: string;
+  price: string;
+}
+
+// Interface for product reviews
+interface ProductReview {
+  id: number;
+  author: string;
+  date: string;
+  rating: number;
+  title: string;
+  content: string;
+}
+
+// Interface for the products object
+interface Products {
+  id: number;
+  name: string;
+  subtitle: string;
+  fullTitle: string;
+  description: string;
+  longDescription: string;
+  image: string;
+  color: string;
+  brandName: string;
+  category: string;
+  features: string[];
+  directions: string[];
+  rating: number;
+  reviews: number;
+  badge: string;
+  sizes: ProductSize[];
+  reviewsList: ProductReview[];
+}
+
+// Note: ProductCategories interface removed as it's not being used
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<string[]>([]);
   const [isProductsHovered, setIsProductsHovered] = useState(false);
 
   const navItems = [
@@ -587,7 +627,7 @@ const Header = () => {
           throw new Error("Failed to fetch categories");
         }
         const data = await res.json();
-        const categoryNames = data.map((item) => item.category).slice(0, 4); // Limit to 4
+        const categoryNames = data.map((item: Products) => item.category).slice(0, 4);
         setCategories(categoryNames);
       } catch (error) {
         console.error("Error fetching categories:", error);
