@@ -137,7 +137,7 @@ const HeroSection: React.FC = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
-          backgroundImage: "url('https://i.ytimg.com/vi/gKauYJFDgwg/maxresdefault.jpg')",
+          backgroundImage: "url('/images/2.webp')",
           filter: "brightness(0.9)",
           transform: `translateY(0px)` // You might need to adjust this based on your scroll logic
         }}

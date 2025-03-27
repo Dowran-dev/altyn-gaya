@@ -757,7 +757,7 @@ const Header = () => {
           )}
         </div>
       </header>
-      <div className="h-16 pt-8"></div>
+      <div className="h-16 pt-6"></div>
     </>
   );
 };

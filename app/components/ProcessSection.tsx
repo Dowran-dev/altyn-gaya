@@ -352,7 +352,7 @@ const ProcessSection: React.FC = () => {
       title: "Закупка сырья",
       description: "Мы используем только высококачественное сырье от проверенных поставщиков, которое проходит строгий контроль перед поступлением в производство.",
       features: ["Экологически чистые материалы", "Сертифицированные поставщики"],
-      imageSrc: "https://www.techkorm.ru/wp-content/uploads/2024/04/raw-1024x536.jpg",
+      imageSrc: "/images/zakupka_syrya.webp",
       imageAlt: "Закупка сырья"
     },
     {
@@ -360,7 +360,7 @@ const ProcessSection: React.FC = () => {
       title: "Производство",
       description: "Современное оборудование и автоматизированные линии производства позволяют нам создавать продукцию высочайшего качества с минимальным воздействием на окружающую среду.",
       features: ["Автоматизированные процессы", "Многоуровневый контроль качества"],
-      imageSrc: "https://termobrest.ru/sitefiles/1/76/77/225/714/715/150841dsc_1611_novyi_razmer.jpg",
+      imageSrc: "/images/1.jpg",
       imageAlt: "Производство"
     },
     {
@@ -368,7 +368,7 @@ const ProcessSection: React.FC = () => {
       title: "Упаковка и доставка",
       description: "Наша продукция упаковывается в экологичные материалы и доставляется клиентам с соблюдением всех необходимых условий хранения и транспортировки.",
       features: ["Экологичная упаковка", "Оперативная логистика"],
-      imageSrc: "https://evopack.com.ua/wp-content/uploads/2020/07/streych-plivka.jpg",
+      imageSrc: "/images/upakowka.jpg",
       imageAlt: "Упаковка и доставка"
     }
   ];

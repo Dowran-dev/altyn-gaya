@@ -360,10 +360,10 @@ const ContactSection = ({ contactInfo }) => {
                   <input
                     type="text"
                     id="name"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#fb4b06]/50 focus:border-[#fb4b06] outline-none transition-all shadow-sm bg-white/80"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#fb4b06]/50 focus:border-[#fb4b06] outline-none transition-all shadow-sm bg-white"
                     placeholder="Введите ваше имя"
                   />
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#fb4b06]/0 via-[#fb4b06]/0 to-[#fb4b06]/0 group-focus-within:from-[#0b0f4a]/20 group-focus-within:via-[#fb4b06]/40 group-focus-within:to-[#0b0f4a]/20 transition-all duration-300 rounded-b-lg"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#fb4b06]/0 via-[#fb4b06]/0 to-[#fb4b06]/0 group-focus-within:from-[#0b0f4a]/20 group-focus-within:via-[#fb4b06]/40 group-focus-within:to-[#0b0f4a]/20 transition-all duration-300 rounded-b-xl"></div>
                 </motion.div>
               </div>
 
@@ -381,10 +381,10 @@ const ContactSection = ({ contactInfo }) => {
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#fb4b06]/50 focus:border-[#fb4b06] outline-none transition-all shadow-sm bg-white/80"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#fb4b06]/50 focus:border-[#fb4b06] outline-none transition-all shadow-sm bg-white"
                     placeholder="Введите ваш email"
                   />
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#fb4b06]/0 via-[#fb4b06]/0 to-[#fb4b06]/0 group-focus-within:from-[#0b0f4a]/20 group-focus-within:via-[#fb4b06]/40 group-focus-within:to-[#0b0f4a]/20 transition-all duration-300 rounded-b-lg"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#fb4b06]/0 via-[#fb4b06]/0 to-[#fb4b06]/0 group-focus-within:from-[#0b0f4a]/20 group-focus-within:via-[#fb4b06]/40 group-focus-within:to-[#0b0f4a]/20 transition-all duration-300 rounded-b-xl"></div>
                 </motion.div>
               </div>
 
@@ -402,10 +402,10 @@ const ContactSection = ({ contactInfo }) => {
                   <textarea
                     id="message"
                     rows="4"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#fb4b06]/50 focus:border-[#fb4b06] outline-none transition-all shadow-sm bg-white/80"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#fb4b06]/50 focus:border-[#fb4b06] outline-none transition-all shadow-sm bg-white"
                     placeholder="Введите ваше сообщение"
                   ></textarea>
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#fb4b06]/0 via-[#fb4b06]/0 to-[#fb4b06]/0 group-focus-within:from-[#0b0f4a]/20 group-focus-within:via-[#fb4b06]/40 group-focus-within:to-[#0b0f4a]/20 transition-all duration-300 rounded-b-lg"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#fb4b06]/0 via-[#fb4b06]/0 to-[#fb4b06]/0 group-focus-within:from-[#0b0f4a]/20 group-focus-within:via-[#fb4b06]/40 group-focus-within:to-[#0b0f4a]/20 transition-all duration-300 rounded-b-xl"></div>
                 </motion.div>
               </div>
 

@@ -446,14 +446,14 @@ const AboutCompanySection = () => {
               <motion.div
                 variants={fadeInUp}
                 whileHover={{ scale: 1.02 }}
-                className="p-4 md:p-6 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 border border-white/10"
+                className="p-4 md:p-6 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 border border-white/10"
               >
                 <div className="flex items-start">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
-                    className="w-12 h-12 md:w-16 md:h-16 bg-[#fb4b06] rounded-lg flex items-center justify-center shrink-0 mr-4 md:mr-6 transition-all"
+                    className="w-12 h-12 md:w-16 md:h-16 bg-[#fb4b06] rounded-xl flex items-center justify-center shrink-0 mr-4 md:mr-6 transition-all"
                   >
-                    <span className="text-white text-xl md:text-2xl font-bold">
+                    <span className="text-white text-xl md:text-2xl font-bold px-2 md:px-4">
                       16+
                     </span>
                   </motion.div>
@@ -472,14 +472,14 @@ const AboutCompanySection = () => {
               <motion.div
                 variants={fadeInUp}
                 whileHover={{ scale: 1.02 }}
-                className="p-4 md:p-6 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 border border-white/10"
+                className="p-4 md:p-6 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 border border-white/10"
               >
                 <div className="flex items-start">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
-                    className="w-12 h-12 md:w-16 md:h-16 bg-[#fb4b06] rounded-lg flex items-center justify-center shrink-0 mr-4 md:mr-6 transition-all"
+                    className="w-12 h-12 md:w-16 md:h-16 bg-[#fb4b06] rounded-xl flex items-center justify-center shrink-0 mr-4 md:mr-6 transition-all"
                   >
-                    <span className="text-white text-xl md:text-2xl font-bold">
+                    <span className="text-white text-xl md:text-2xl font-bold px-2 md:px-4">
                       99%
                     </span>
                   </motion.div>
@@ -498,14 +498,14 @@ const AboutCompanySection = () => {
               <motion.div
                 variants={fadeInUp}
                 whileHover={{ scale: 1.02 }}
-                className="p-4 md:p-6 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 border border-white/10"
+                className="p-4 md:p-6 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 border border-white/10"
               >
                 <div className="flex items-start">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
-                    className="w-12 h-12 md:w-16 md:h-16 bg-[#fb4b06] rounded-lg flex items-center justify-center shrink-0 mr-4 md:mr-6 transition-all"
+                    className="w-12 h-12 md:w-16 md:h-16 bg-[#fb4b06] rounded-xl flex items-center justify-center shrink-0 mr-4 md:mr-6 transition-all"
                   >
-                    <span className="text-white text-xl md:text-2xl font-bold">
+                    <span className="text-white text-xl md:text-2xl font-bold px-2 md:px-4">
                       24/7
                     </span>
                   </motion.div>
@@ -559,11 +559,11 @@ const AboutCompanySection = () => {
                 repeat: Infinity,
                 repeatType: "reverse",
               }}
-              className="absolute -inset-4 bg-[#fb4b06] rounded-lg blur-xl opacity-20"
+              className="absolute -inset-4 bg-[#fb4b06] rounded-xl blur-xl opacity-20"
             />
-            <div className="relative h-80 sm:h-80 md:h-96 w-full rounded-lg overflow-hidden shadow-lg border border-white/20">
+            <div className="relative h-80 sm:h-80 md:h-96 w-full rounded-xl overflow-hidden shadow-lg border border-white/20">
               <Image
-                src="https://i.ytimg.com/vi/gKauYJFDgwg/maxresdefault.jpg"
+                src="/images/3D_model.jpg"
                 alt="Производство Altyn Gaya"
                 width={600}
                 height={500}
