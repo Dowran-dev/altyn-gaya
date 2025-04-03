@@ -1651,36 +1651,157 @@ const ShopProductsPage: React.FC = () => {
     );
   };
 
+  // const ProductBadge = ({ badgeText }: { badgeText: string }) => {
+  //   return (
+  //     <div className="absolute top-0 right-0 z-10">
+  //       {/* Corner ribbon container */}
+  //       <div className="w-40 h-40 overflow-hidden absolute -top-6 -right-4">
+  //         {/* Ribbon with correct orientation */}
+  //         <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold 
+  //                       text-xs tracking-wider shadow-lg text-center w-56 absolute top-10 right-[-60px] 
+  //                       transform rotate-45">
+  //           {/* Inner border for depth */}
+  //           <div className="border-t border-b border-white border-opacity-20 py-1.5 px-1">
+  //             {/* Text with decorative elements */}
+  //             <span className="flex justify-center items-center">
+  //               <span className="mr-1 text-purple-300">✦</span>
+  //               <span className="uppercase tracking-widest">{badgeText}</span>
+  //               <span className="ml-1 text-purple-300">✦</span>
+  //             </span>
+  //           </div>
+            
+  //           {/* Shine effect */}
+  //           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"></div>
+  //         </div>
+  //       </div>
+        
+  //       {/* Ribbon fold shadow - left side */}
+  //       {/* <div className="absolute top-0 right-0 w-6 h-6 bg-purple-900 transform origin-bottom-left rotate-45"></div> */}
+  //     </div>
+  //   );
+  // };
+
+  // const ProductBadge = ({ badgeText }: { badgeText: string }) => {
+  //   // Slower animation speed with more reasonable duration
+  //   // Longer text needs more time to scroll
+  //   const animationDuration = Math.max(badgeText.length * 0.4, 8);
+    
+  //   return (
+  //     <div className="absolute top-0 right-0 z-10">
+  //       {/* Corner ribbon container */}
+  //       <div className="w-40 h-40 overflow-hidden absolute -top-6 -right-4">
+  //         {/* Ribbon with correct orientation */}
+  //         <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold 
+  //                       text-xs shadow-lg text-center w-56 absolute top-10 right-[-60px] 
+  //                       transform rotate-45">
+  //           {/* Inner border for depth */}
+  //           <div className="border-t border-b border-white border-opacity-20 py-1 overflow-hidden">
+  //             {/* Animated text container with masked edges */}
+  //             <div className="relative overflow-hidden w-full">
+  //               {/* Text with decorative elements */}
+  //               <div 
+  //                 className="inline-block uppercase tracking-wide text-xs whitespace-nowrap"
+  //                 style={{
+  //                   animation: `scrollBadge ${animationDuration}s linear infinite`,
+  //                   paddingLeft: "100%", // Start offscreen
+  //                 }}
+  //               >
+  //                 <span className="text-purple-300 mx-1">★</span>
+  //                 {badgeText}
+  //                 <span className="text-purple-300 mx-1">✦</span>
+  //               </div>
+  //             </div>
+  //           </div>
+            
+  //           {/* Shine effect with animation */}
+  //           <div 
+  //             className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"
+  //             style={{
+  //               animation: "shimmerEffect 3s infinite linear",
+  //             }}
+  //           ></div>
+            
+  //           {/* Gradient mask for smooth edges */}
+  //           <div className="absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-purple-700 to-transparent z-10"></div>
+  //           <div className="absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-purple-700 to-transparent z-10"></div>
+  //         </div>
+  //       </div>
+        
+  //       {/* Global CSS for the animations */}
+  //       <style dangerouslySetInnerHTML={{ __html: `
+  //         @keyframes scrollBadge {
+  //           0% { transform: translateX(0); }
+  //           100% { transform: translateX(-100%); }
+  //         }
+          
+  //         @keyframes shimmerEffect {
+  //           0% { transform: translateX(-100%); }
+  //           100% { transform: translateX(100%); }
+  //         }
+  //       `}} />
+  //     </div>
+  //   );
+  // };
+
   const ProductBadge = ({ badgeText }: { badgeText: string }) => {
+    // Slower animation speed with more reasonable duration
+    const animationDuration = Math.max(badgeText.length * 0.5, 10);
+    
     return (
       <div className="absolute top-0 right-0 z-10">
         {/* Corner ribbon container */}
         <div className="w-40 h-40 overflow-hidden absolute -top-6 -right-4">
           {/* Ribbon with correct orientation */}
           <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold 
-                        text-xs tracking-wider shadow-lg text-center w-56 absolute top-10 right-[-60px] 
+                        text-xs shadow-lg text-center w-56 absolute top-10 right-[-60px] 
                         transform rotate-45">
             {/* Inner border for depth */}
-            <div className="border-t border-b border-white border-opacity-20 py-1.5 px-1">
-              {/* Text with decorative elements */}
-              <span className="flex justify-center items-center">
-                <span className="mr-1 text-purple-300">✦</span>
-                <span className="uppercase tracking-widest">{badgeText}</span>
-                <span className="ml-1 text-purple-300">✦</span>
-              </span>
+            <div className="border-t border-b border-white border-opacity-20 py-1 overflow-hidden">
+              {/* Animated text container with masked edges */}
+              <div className="relative overflow-hidden w-full">
+                {/* Text with decorative elements - duplicate for seamless loop */}
+                <div 
+                  className="inline-block uppercase tracking-wide text-xs whitespace-nowrap"
+                  style={{
+                    animation: `scrollBadge ${animationDuration}s linear infinite`,
+                    paddingLeft: "0", // Remove padding
+                  }}
+                >
+                  <span className="text-purple-300">★</span> {badgeText} <span className="text-purple-300">✦</span> {badgeText} <span className="text-purple-300">★</span>
+                  <span className="text-purple-300"></span> {badgeText} <span className="text-purple-300">✦</span> {badgeText} <span className="text-purple-300">★</span>
+                </div>
+              </div>
             </div>
             
-            {/* Shine effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"></div>
+            {/* Shine effect with animation */}
+            <div 
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"
+              style={{
+                animation: "shimmerEffect 3s infinite linear",
+              }}
+            ></div>
+            
+            {/* Gradient mask for smooth edges */}
+            <div className="absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-purple-700 to-transparent z-10"></div>
+            <div className="absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-purple-700 to-transparent z-10"></div>
           </div>
         </div>
         
-        {/* Ribbon fold shadow - left side */}
-        {/* <div className="absolute top-0 right-0 w-6 h-6 bg-purple-900 transform origin-bottom-left rotate-45"></div> */}
+        {/* Global CSS for the animations */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes scrollBadge {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Only move half the distance for seamless loop */
+          }
+          
+          @keyframes shimmerEffect {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+          }
+        `}} />
       </div>
     );
   };
-
 
   const renderGridItem = (product: Products) => (
     <Link href={`/product-details/${product.id}`} key={product.id}> {/* Still using product.id */}
