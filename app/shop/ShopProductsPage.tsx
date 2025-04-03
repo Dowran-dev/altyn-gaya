@@ -1554,7 +1554,7 @@ const ShopProductsPage: React.FC = () => {
   const renderCategoryFilter = () => (
     <div className="mb-6">
            <h3 className="font-bold text-blue-800 mb-3">Категория</h3>
-           <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
+           <div className="space-y-2 max-h-96 overflow-y-auto pr-1">
              {availableCategories.map(category => (
                <div 
                  key={category} 
@@ -1578,7 +1578,7 @@ const ShopProductsPage: React.FC = () => {
   const renderFilterPanel = () => {
     if (!isFilterOpen) return null;
     return (
-      <div className="p-5 bg-white shadow rounded-lg border border-gray-100 md:sticky md:top-4">
+      <div className="p-5 bg-white shadow rounded-lg border border-gray-100 md:sticky md:top-16">
         <div className="flex justify-between items-center mb-5 pb-3 border-b border-gray-100">
           <h2 className="text-xl font-bold text-blue-800">Фильтры</h2>
           <div className="flex gap-2">
