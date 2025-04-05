@@ -175,13 +175,13 @@ const HeroSection: React.FC = () => {
               </h1>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 md:mb-8 transform transition-all duration-1000 delay-300 animate-in"
               style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
-                ваша миссия!
+                наша миссия!
               </h2>
             </div>
             
             <div className="overflow-hidden">
               <p className="text-white/90 text-base sm:text-lg md:text-xl mb-4 md:mb-6 transform transition-all duration-1000 delay-500 translate-y-0 leading-relaxed">
-                С 2008 года <strong className="text-[#fb4b06]">Altyn Gaya</strong> производит высококачественные чистящие средства, делающие дом чище, уютнее и безопаснее, благодаря надежности и эффективности продукции.
+                С 2008 года <strong className="text-[#fb4b06]">Altyn Gaya</strong> создаёт высококачественные чистящие средства, которые превращают дом в пространство чистоты, уюта и безопасности благодаря проверенной надежности и непревзойденной эффективности.
               </p>
             </div>
             
