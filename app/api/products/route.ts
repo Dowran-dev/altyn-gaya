@@ -111,7 +111,7 @@ const productsData: ProductCategories[] = [
         image: "/images/RealPlus_SuwukSoda_3l_Ak.png",
         color: "#3538C8",
         brandName: "Real Plus",
-        category: "Универсальные жидкие моющие средства с кондиционером",
+        category: "Жидкие средства для стирки",
         features: [
           "Делает ткани мягкими и свежими",
           "Удаляет стойкие пятна",
@@ -283,7 +283,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/RealPlus_SuwukSoda_5l_Elegance+.png",
         "color": "#800080", // Purple color based on the packaging
         "brandName": "Real Plus",
-        "category": "Универсальные моющие средства",
+        "category": "Универсальные жидкие моющие средства с кондиционером",
         "features": [
           "Очищает и кондиционирует",
           "Аромат сирени",
@@ -328,7 +328,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/RealPlus_SuwukSoda_5l_Glamour+.png",
         "color": "#FFFF00", // Yellow color based on the packaging
         "brandName": "Real Plus",
-        "category": "Универсальные моющие средства",
+        "category": "Универсальные жидкие моющие средства с кондиционером",
         "features": [
           "Очищает и кондиционирует",
           "Аромат цитруса",
@@ -373,7 +373,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/RealPlus_SuwukSoda_5l_Supreme+.png",
         "color": "#0000FF", // Blue color based on the packaging
         "brandName": "Real Plus",
-        "category": "Универсальные моющие средства",
+        "category": "Универсальные жидкие моющие средства с кондиционером",
         "features": [
           "Очищает и кондиционирует",
           "Аромат океанского бриза",
@@ -418,7 +418,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/RealPlus_SuwukSoda_5l_Romance+.png",
         "color": "#FF0000", // Red color based on the packaging
         "brandName": "Real Plus",
-        "category": "Универсальные моющие средства",
+        "category": "Универсальные жидкие моющие средства с кондиционером",
         "features": [
           "Очищает и кондиционирует",
           "Аромат ягод",
@@ -463,7 +463,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/RealPlus_SuwukSoda_5l_Sensitive+.png",
         "color": "#FF69B4", // Pink color based on the packaging
         "brandName": "Real Plus",
-        "category": "Универсальные моющие средства",
+        "category": "Универсальные жидкие моющие средства с кондиционером",
         "features": [
           "Очищает и кондиционирует",
           "Аромат сирени",
@@ -1492,9 +1492,9 @@ const productsData: ProductCategories[] = [
       "products": [
         {
           "id": 13,
-          "name": "Wim Platinum Ultra Plus",
+          "name": "Новый Wim",
           "subtitle": "Средство для мытья посуды с ароматом граната",
-          "fullTitle": "Wim Platinum Ultra Plus - Средство для мытья посуды с ароматом граната 1л",
+          "fullTitle": "Новый Wim - Средство для мытья посуды с ароматом граната 1л",
           "description": "Эффективное средство для мытья посуды с ароматом граната, удаляет жир и загрязнения.",
           "longDescription": "Это средство для мытья посуды эффективно удаляет жир и загрязнения, оставляя посуду чистой и блестящей. Обогащено ароматом граната, который придает приятный запах. Подходит для ежедневного использования, мягко воздействует на кожу рук.",
           "image": "/images/Wim_Nar+.png",
@@ -1694,7 +1694,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/Wim_sprey_antistains.png",
           "color": "#8B4513", // Brown color based on the packaging
           "brandName": "Wim",
-          "category": "Универсальные чистящие средства",
+          "category": "Бытовые чистящие спреи",
           "features": [
             "Очистка тканей и обивки",
             "Защита от бактерий",
@@ -1739,7 +1739,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/Wim_sprey_antifat.png",
           "color": "#000000", // Black color based on the packaging
           "brandName": "Wim",
-          "category": "Универсальные чистящие средства",
+          "category": "Бытовые чистящие спреи",
           "features": [
             "Удаление грязи и бактерий",
             "Глубокое очищение",
@@ -1784,7 +1784,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/Wim_sprey_ovenandgrill.png",
           "color": "#008000", // Green color based on the packaging
           "brandName": "Wim",
-          "category": "Универсальные чистящие средства",
+          "category": "Бытовые чистящие спреи",
           "features": [
             "Удаление 100% жира",
             "Подходит для духовок и грилей",
@@ -1829,7 +1829,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/Wim_sprey_antiplaque.png",
           "color": "#0000FF", // Blue color based on the packaging
           "brandName": "Wim",
-          "category": "Универсальные чистящие средства",
+          "category": "Бытовые чистящие спреи",
           "features": [
             "Удаление налета и известкового осадка",
             "Блеск для кранов и смесителей",
@@ -2006,7 +2006,7 @@ const productsData: ProductCategories[] = [
       ],
     },
     
-    // Yumşa Plus - Универсальные жидкие моющие средства с кондиционером
+    // Yumşa Plus - Кондиционеры для белья
     {
       title: "Yumşa Plus Универсальное жидкое моющее средство с кондиционером",
       description: "Мягкое моющее средство с кондиционером для деликатных тканей.",
@@ -2030,7 +2030,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/YumsaPlus_Lilyum.png",
           "color": "#0000FF", // Blue color based on the packaging
           "brandName": "Yumsa Plus",
-          "category": "Кондиционеры для белья",
+          "category": "Кондиционеры и ополаскиватели",
           "features": [
             "Нежный аромат лилии",
             "Смягчает ткани",
@@ -2074,7 +2074,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/YumsaPlus_Orkide.png",
           "color": "#0000FF", // Blue color based on the original packaging
           "brandName": "Yumsa Plus",
-          "category": "Кондиционеры для белья",
+          "category": "Кондиционеры и ополаскиватели",
           "features": [
             "Утонченный аромат орхидеи",
             "Смягчает ткани",
@@ -2118,7 +2118,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/YumsaPlus_Roza.png",
           "color": "#0000FF", // Blue color based on the original packaging
           "brandName": "Yumsa Plus",
-          "category": "Кондиционеры для белья",
+          "category": "Кондиционеры и ополаскиватели",
           "features": [
             "Нежный аромат розы",
             "Смягчает ткани",
@@ -2162,7 +2162,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/YumsaPlus_Lilyum.png",
           "color": "#0000FF", // Blue color based on the original packaging
           "brandName": "Yumsa Plus",
-          "category": "Кондиционеры для белья",
+          "category": "Кондиционеры и ополаскиватели",
           "features": [
             "Роскошный гламурный аромат",
             "Смягчает ткани",
@@ -2208,7 +2208,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/YumsaPlus_Lilyum+.png",
           "color": "#00CED1", // Light teal color based on the packaging
           "brandName": "Yumsa Plus",
-          "category": "Кондиционеры для белья",
+          "category": "Универсальные жидкие моющие средства с кондиционером",
           "features": [
             "Нежный аромат лилии",
             "Усиленное смягчение",
@@ -2252,7 +2252,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/YumsaPlus_Orkide+.png",
           "color": "#00CED1", // Light teal color based on the original packaging
           "brandName": "Yumsa Plus",
-          "category": "Кондиционеры для белья",
+          "category": "Универсальные жидкие моющие средства с кондиционером",
           "features": [
             "Утонченный аромат орхидеи",
             "Усиленное смягчение",
@@ -2296,7 +2296,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/YumsaPlus_Roza+.png",
           "color": "#00CED1", // Light teal color based on the original packaging
           "brandName": "Yumsa Plus",
-          "category": "Кондиционеры для белья",
+          "category": "Универсальные жидкие моющие средства с кондиционером",
           "features": [
             "Нежный аромат розы",
             "Усиленное смягчение",
@@ -2340,7 +2340,7 @@ const productsData: ProductCategories[] = [
           "image": "/images/YumsaPlus_Masgalam+.png",
           "color": "#00CED1", // Light teal color based on the original packaging
           "brandName": "Yumsa Plus",
-          "category": "Кондиционеры для белья",
+          "category": "Универсальные жидкие моющие средства с кондиционером",
           "features": [
             "Роскошный гламурный аромат",
             "Усиленное смягчение",
@@ -2401,7 +2401,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/YumsaPlus_sprey_rosa.png",
         "color": "#FF0000", // Red color based on the packaging
         "brandName": "Yumsa Plus",
-        "category": "Спреи для тканей",
+        "category": "Спреи-освежители для тканей",
         "features": [
           "Нежный аромат розы",
           "Освежает одежду и ткани",
@@ -2444,7 +2444,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/YumsaPlus_sprey_glamour.png",
         "color": "#FF0000", // Red color based on the original packaging
         "brandName": "Yumsa Plus",
-        "category": "Спреи для тканей",
+        "category": "Спреи-освежители для тканей",
         "features": [
           "Роскошный гламурный аромат",
           "Освежает одежду и ткани",
@@ -2487,7 +2487,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/YumsaPlus_sprey_orkide.png",
         "color": "#FF0000", // Red color based on the original packaging
         "brandName": "Yumsa Plus",
-        "category": "Спреи для тканей",
+        "category": "Спреи-освежители для тканей",
         "features": [
           "Утонченный аромат орхидеи",
           "Освежает одежду и ткани",
@@ -2530,7 +2530,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/YumsaPlus_sprey_lilyum.png",
         "color": "#FF0000", // Red color based on the original packaging
         "brandName": "Yumsa Plus",
-        "category": "Спреи для тканей",
+        "category": "Спреи-освежители для тканей",
         "features": [
           "Нежный аромат лилии",
           "Освежает одежду и ткани",
@@ -2566,7 +2566,7 @@ const productsData: ProductCategories[] = [
     ],
     },
     
-    // Yumşa Plus - Кондиционеры для белья
+    // Yumşa Plus - Универсальные жидкие моющие средства с кондиционером
     {
       title: "Yumşa Plus Кондиционеры для белья",
       description: "Средство для придания белью мягкости и стойкого аромата.",
@@ -2605,7 +2605,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/Awen_alma.png",
         "color": "#00FF00", // Green color based on the packaging
         "brandName": "Awen",
-        "category": "Средства для мытья посуды",
+        "category": "Жидкости для мытья посуды",
         "features": [
           "Эффективно удаляет жир",
           "Свежий аромат яблока",
@@ -2649,7 +2649,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/Awen_limon.png",
         "color": "#FFFF00", // Yellow color based on the packaging
         "brandName": "Awen",
-        "category": "Средства для мытья посуды",
+        "category": "Жидкости для мытья посуды",
         "features": [
           "Эффективно удаляет жир",
           "Освежающий аромат лимон-лайм",
@@ -2693,7 +2693,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/Awen_nar.png",
         "color": "#FF4500", // Red-orange color based on the packaging
         "brandName": "Awen",
-        "category": "Средства для мытья посуды",
+        "category": "Жидкости для мытья посуды",
         "features": [
           "Эффективно удаляет жир",
           "Приятный аромат граната",
@@ -2737,7 +2737,7 @@ const productsData: ProductCategories[] = [
       image: "/images/GlassPlus_Cleaner.png",
       color: "#00A8E8",
       brandName: "Glass Plus",
-      category: "Средства для очистки стекол и поверхностей",
+      category: "Средства для чистки стекол и поверхностей",
       features: [
         "Удаляет загрязнения и отпечатки пальцев",
         "Не оставляет разводов",
@@ -2753,7 +2753,7 @@ const productsData: ProductCategories[] = [
         "image": "/images/category_pictures/GlassPlus.png",
         "color": "#00B7EB", // Blue color based on the packaging
         "brandName": "Glass Plus",
-        "category": "Средства для чистки стекол",
+        "category": "Средства для чистки стекол и поверхностей",
         "features": [
           "Эффективно удаляет пятна и разводы",
           "Новая формула с 3% усилением",

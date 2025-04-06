@@ -1,7 +1,47 @@
+'use client';
+import { useState, useEffect } from "react";
 import { Phone, Mail, MapPin } from "lucide-react"
 import Link from "next/link";
 
+interface ProductSize {
+  id: number;
+  name: string;
+  quantity: string;
+  price: string;
+}
+
+interface ProductReview {
+  id: number;
+  author: string;
+  date: string;
+  rating: number;
+  title: string;
+  content: string;
+}
+
+interface Products {
+  id: number;
+  name: string;
+  subtitle: string;
+  fullTitle: string;
+  description: string;
+  longDescription: string;
+  image: string;
+  color: string;
+  brandName: string;
+  category: string;
+  features: string[];
+  directions: string[];
+  rating: number;
+  reviews: number;
+  badge: string;
+  sizes: ProductSize[];
+  reviewsList: ProductReview[];
+}
+
 export default function Footer() {
+
+  const [categories, setCategories] = useState<string[]>([]);
 
     // Contact information
   const contactInfo = {
@@ -10,6 +50,30 @@ export default function Footer() {
     address: "г. Мары, ул. Шаджахан, 22, велаят Мары, Туркменистан"
   };
 
+  // Fetch categories from the API - similar to Header component
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await fetch("/api/products", {
+          cache: "no-store",
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch categories");
+        }
+        const data = await res.json();
+        
+        // Extract unique categories with proper typing
+        const uniqueCategories = Array.from(
+          new Set(data.map((item: Products) => item.category))
+        ) as string[];
+        setCategories(uniqueCategories.slice(0, 5)); // Show up to 6 categories
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   return (
     <>
@@ -56,13 +120,27 @@ export default function Footer() {
             <div>
               <h4 className="text-xl font-bold mb-6">Продукция</h4>
               <ul className="space-y-3">
-                <li><Link href="shop" className="text-white/70 hover:text-[#fb4b06] transition-colors">Универсальный гель для стирки</Link></li>
-                <li><Link href="shop" className="text-white/70 hover:text-[#fb4b06] transition-colors">Стиральные порошки</Link></li>
-                <li><Link href="shop" className="text-white/70 hover:text-[#fb4b06] transition-colors">Освежители воздуха</Link></li>
-                <li><Link href="shop" className="text-white/70 hover:text-[#fb4b06] transition-colors">Жидкое мыло</Link></li>
+                {/* Dynamically generated category links */}
+                {categories.length > 0 ? (
+                  categories.map((category, idx) => (
+                    <li key={idx}>
+                      <Link 
+                        href={{
+                          pathname: '/shop',
+                          query: { category: category }
+                        }}
+                        className="text-white/70 hover:text-[#fb4b06] transition-colors"
+                      >
+                        {category}
+                      </Link>
+                    </li>
+                  ))
+                ) : (
+                  <li className="text-white/50">Загрузка...</li>
+                )}
               </ul>
             </div>
-            
+
             <div>
               <h4 className="text-xl font-bold mb-6">Информация</h4>
               <ul className="space-y-3">

@@ -143,7 +143,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
               </h3>
               
               {/* Button with animated gradient hover effect */}
-              <Link href={'/shop'} className="bg-[#1E22AA] hover:bg-[#1E22AA]/90 rounded-full text-white px-6 py-2 text-sm font-semibold group overflow-hidden relative w-full">
+              <Link href={{pathname: '/shop',
+    query: { category: product.category }}} className="bg-[#1E22AA] hover:bg-[#1E22AA]/90 rounded-full text-white px-6 py-2 text-sm font-semibold group overflow-hidden relative w-full">
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   Подробнее
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -242,7 +243,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
               </ul>
               
               {/* Enhanced button with animated gradient hover effect */}
-              <Link href={"/shop"} className="bg-[#1E22AA] hover:bg-[#1E22AA]/90 rounded-full text-white px-4 sm:px-6 md:px-8 py-1.5 sm:py-2 md:py-6 text-xs sm:text-sm md:text-md font-semibold group overflow-hidden relative w-full md:w-auto">
+              <Link href={{pathname: '/shop',
+                query: { category: product.category }}} className="bg-[#1E22AA] hover:bg-[#1E22AA]/90 rounded-full text-white px-4 sm:px-6 md:px-8 py-1.5 sm:py-2 md:py-6 text-xs sm:text-sm md:text-md font-semibold group overflow-hidden relative w-full md:w-auto">
                 <span className="relative z-10 flex items-center justify-center gap-1 sm:gap-2">
                   Подробнее
                   <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
@@ -265,13 +267,14 @@ const ProductCarousel: React.FC = () => {
       color: "#3538C8",
       logoUrl: "/images/logo/RealPlus.png",
       categories: [
-        "Порошки",
-        "Универсальные жидкие моющие средства с кондиционером",
         "Стиральные порошки",
+        "Универсальные жидкие моющие средства с кондиционером",
+        "Жидкие средства для стирки",
         "Освежители воздуха",
         "Жидкое мыло",
         "Универсальный гель для стирки",
-        "Гели для стирки"
+        "Гели для стирки",
+        "Универсальные жидкие моющие средства с кондиционером"
       ]
     },
     {
@@ -281,7 +284,7 @@ const ProductCarousel: React.FC = () => {
       categories: [
         "Универсальные чистящие средства",
         "Бытовые чистящие спреи",
-        "Моющие средства",
+        "Средства для мытья посуды",
         "Универсальные чистящие средства спрей"
       ]
     },
@@ -292,7 +295,7 @@ const ProductCarousel: React.FC = () => {
       categories: [
         "Универсальные жидкие моющие средства с кондиционером",
         "Спреи-освежители для тканей",
-        "Кондиционеры для белья",
+        "Спреи-освежители для тканей",
         "Кондиционеры и ополаскиватели"
       ]
     },
@@ -309,7 +312,15 @@ const ProductCarousel: React.FC = () => {
       color: "#e80c00",
       logoUrl: "/images/logo/Glass.png",
       categories: [
-        "Средства для очистки стекол и поверхностей"
+        "Средства для чистки стекол и поверхностей"
+      ]
+    },
+    {
+      name: "Lagis",
+      color: "#00cdd1",
+      logoUrl: "/images/logo/Lagis.png",
+      categories: [
+        "Порошки"
       ]
     }
   ], []);
@@ -320,10 +331,10 @@ const ProductCarousel: React.FC = () => {
           {
             title: "Real Plus Порошок для стирки",
             description: "Мощный стиральный порошок для белого и цветного белья, эффективно удаляет загрязнения.",
-            image: "/images/RealPlus_Soda.png",
+            image: "/images/category_pictures/RealPlus_Soda.png",
             color: "#3538C8",
             brandName: "Real Plus",
-            category: "Порошки",
+            category: "Стиральные порошки",
             features: [
               "Глубокая очистка тканей",
               "Сохранение цвета",
@@ -349,7 +360,7 @@ const ProductCarousel: React.FC = () => {
             image: "/images/category_pictures/RealPlus_SuwukSoda_3l_.png",
             color: "#3538C8",
             brandName: "Real Plus",
-            category: "Универсальные жидкие моющие средства с кондиционером",
+            category: "Жидкие средства для стирки",
             features: [
               "Делает ткани мягкими и свежими",
               "Удаляет стойкие пятна",
@@ -370,16 +381,17 @@ const ProductCarousel: React.FC = () => {
             ]
           },
           {
-            title: "Real Plus Жидкое мыло",
-            description: "Увлажняющее жидкое мыло с мягким очищающим эффектом.",
-            image: "/images/category_pictures/RealPlus_ElSabyn.png",
+            title: "Real Plus универсальные жидкие моющие средства с кондиционером",
+            description: "Суперконцентрированное средство 2-в-1: для стирки и кондиционирования одежды.",
+            image: "/images/category_pictures/RealPlus_PerfumeCollection.png",
             color: "#3538C8",
             brandName: "Real Plus",
-            category: "Жидкое мыло",
+            category: "Универсальные жидкие моющие средства с кондиционером",
             features: [
-              "Гипоаллергенный состав",
-              "Не сушит кожу",
-              "Приятный аромат"
+              "Содержит кондиционер для мягкости ткани",
+    "Яркие и стойкие ароматы",
+    "Эффективен при низких температурах",
+    "Экономичный расход — суперконцентрат"
             ]
           },
           {
@@ -416,7 +428,7 @@ const ProductCarousel: React.FC = () => {
             image: "/images/category_pictures/Wim_moyussy.png",
             color: "#03a31e",
             brandName: "Wim",
-            category: "Моющие средства",
+            category: "Средства для мытья посуды",
             features: [
               "Удаляет жир и загрязнения",
               "Придает блеск",
@@ -477,12 +489,12 @@ const ProductCarousel: React.FC = () => {
             ]
           },
           {
-            title: "Yumşa Plus Кондиционер для белья",
+            title: "Yumşa Plus Спреи-освежители для тканей",
             description: "Придает белью мягкость и приятный аромат.",
             image: "/images/category_pictures/YumsaPlus_sprey.png",
             color: "#1138b7",
             brandName: "Yumşa Plus",
-            category: "Кондиционеры для белья",
+            category: "Спреи-освежители для тканей",
             features: [
               "Антистатический эффект",
               "Долговременная свежесть",
@@ -525,11 +537,27 @@ const ProductCarousel: React.FC = () => {
             image: "/images/category_pictures/GlassPlus_category.png",
             color: "#e80c00",
             brandName: "Glass Plus",
-            category: "Средства для очистки стекол и поверхностей",
+            category: "Средства для чистки стекол и поверхностей",
             features: [
               "Быстрое испарение",
               "Удаление пыли и грязи",
               "Не оставляет разводов"
+            ]
+          },
+
+          // Lagis
+          {
+            title: "Lagis Стиральный порошок для ручной стирки",
+            description: "Стиральный порошок с насыщенным ароматом и лёгкой стиркой.",
+            image: "/images/category_pictures/Lagis.png",
+            color: "#00cdd1",
+            brandName: "Lagis",
+            category: "Порошки",
+            features: [
+              "Подходит для ручной стирки",
+              "Лёгкое полоскание и отстирывание",
+              "Долговечный аромат",
+              "Эффективен даже в холодной воде"
             ]
           }
   ], []);
@@ -703,51 +731,6 @@ const ProductCarousel: React.FC = () => {
             </div>
           </FadeInView>
         </div>
-        
-        {/* Categories section - when a brand is selected */}
-        {/* {filterBrand && (
-          <div className="my-2 sm:my-4 md:my-8">
-            <FadeInView delay={200}>
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-center mb-3 sm:mb-4">
-                <span className="text-gray-700">Категории</span> <span style={{ color: companies.find(c => c.name === filterBrand)?.color }}>{filterBrand}</span>
-              </h3>
-              
-              <div className="overflow-x-auto pb-2 sm:pb-4 -mx-3 px-3 sm:mx-0 sm:px-0">
-                <div className={`flex ${isMobile ? 'space-x-2' : 'flex-wrap justify-center gap-2 md:gap-4'}`}
-                     style={isMobile ? { minWidth: 'max-content' } : {}}>
-                  {companies
-                    .find(company => company.name === filterBrand)
-                    ?.categories.map((category) => (
-                      <div
-                        key={category}
-                        onClick={() => setFilterCategory(category === filterCategory ? null : category)}
-                        className={`p-2 sm:p-3 rounded-full cursor-pointer transition-all duration-200 text-xs sm:text-sm md:text-base ${
-                          category === filterCategory
-                            ? 'bg-[#1E22AA] text-white'
-                            : 'bg-white/80 text-gray-700 hover:bg-white hover:shadow-md'
-                        }`}
-                      >
-                        {category}
-                      </div>
-                    ))}
-                </div>
-              </div>
-            </FadeInView>
-          </div>
-        )} */}
-        
-        {/* Filter reset button */}
-        {/* {(filterBrand || filterCategory) && (
-          <div className="text-center mb-6 sm:mb-8 md:mb-10">
-            <Button
-              onClick={() => { setFilterBrand(null); setFilterCategory(null); }}
-              className="text-xs sm:text-sm bg-white text-gray-600 hover:bg-gray-100 flex items-center gap-1 mx-auto rounded-full px-4 py-2"
-            >
-              <Filter className="w-3 h-3 sm:w-4 sm:h-4" />
-              Сбросить фильтры
-            </Button>
-          </div>
-        )} */}
 
         {/* Product cards */}
         <FadeInView delay={300}>

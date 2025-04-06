@@ -560,8 +560,8 @@
 // export default Header;
 
 "use client";
-import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
 
 interface ProductSize {
@@ -571,7 +571,6 @@ interface ProductSize {
   price: string;
 }
 
-// Interface for product reviews
 interface ProductReview {
   id: number;
   author: string;
@@ -581,7 +580,6 @@ interface ProductReview {
   content: string;
 }
 
-// Interface for the products object
 interface Products {
   id: number;
   name: string;
@@ -602,12 +600,12 @@ interface Products {
   reviewsList: ProductReview[];
 }
 
-// Note: ProductCategories interface removed as it's not being used
-
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [categories, setCategories] = useState<string[]>([]);
   const [isProductsHovered, setIsProductsHovered] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const navItems = [
     { name: "Главная", href: "/" },
@@ -616,19 +614,49 @@ const Header = () => {
     { name: "Контакты", href: "/contact-us" },
   ];
 
+  // Improved hover handling with delay
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setIsProductsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsProductsHovered(false);
+    }, 300); // Small delay before hiding to improve UX
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsProductsHovered(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   // Fetch categories from the API
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const res = await fetch("/api/products", {
-          cache: "no-store", // Ensures fresh data; adjust caching as needed
+          cache: "no-store",
         });
         if (!res.ok) {
           throw new Error("Failed to fetch categories");
         }
         const data = await res.json();
-        const categoryNames = data.map((item: Products) => item.category).slice(0, 4);
-        setCategories(categoryNames);
+        
+        // Extract unique categories with proper typing
+        const uniqueCategories = Array.from(
+          new Set(data.map((item: Products) => item.category))
+        ) as string[];
+        setCategories(uniqueCategories.slice(0, 8)); // Show up to 6 categories
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
@@ -640,16 +668,18 @@ const Header = () => {
   return (
     <>
       <header
-        className="bg-black/80 backdrop-blur-md fixed top-0 left-0 w-full"
+        className="bg-black/90 backdrop-blur-md fixed top-0 left-0 w-full shadow-lg"
         style={{ zIndex: 111 }}
       >
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center gap-4">
-              <div className="text-[#fb4b06] text-xl font-bold">
-                <Link href="/">ALTYN GAYA</Link>
-                <span className="text-[#fb4b06] ml-2">|</span>
+            <div className="flex items-center">
+              <div className="text-[#fb4b06] text-2xl font-bold transition-transform duration-300 hover:scale-105">
+                <Link href="/">
+                  ALTYN GAYA
+                  <span className="text-[#fb4b06] ml-2 font-light">|</span>
+                </Link>
               </div>
             </div>
 
@@ -659,42 +689,53 @@ const Header = () => {
                 <div
                   key={item.name}
                   className="relative group"
-                  onMouseEnter={() =>
-                    item.name === "Продукты" && setIsProductsHovered(true)
-                  }
-                  onMouseLeave={() =>
-                    item.name === "Продукты" && setIsProductsHovered(false)
-                  }
+                  ref={item.name === "Продукты" ? dropdownRef : null}
+                  onMouseEnter={item.name === "Продукты" ? handleMouseEnter : undefined}
+                  onMouseLeave={item.name === "Продукты" ? handleMouseLeave : undefined}
                 >
-                  <a
-                    href={item.href}
-                    className="text-[#fb4b06] hover:text-white transition-colors duration-300 text-lg font-medium"
-                  >
-                    {item.name}
-                  </a>
-                  {/* Dropdown for Продукты */}
+                  {item.name === "Продукты" ? (
+                    <div className="flex items-center cursor-pointer text-[#fb4b06] hover:text-white transition-colors duration-300 text-lg font-medium">
+                      {item.name}
+                      <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-300 ${isProductsHovered ? 'rotate-180' : ''}`} />
+                    </div>
+                  ) : (
+                    <Link 
+                      href={item.href}
+                      className="text-[#fb4b06] hover:text-white transition-colors duration-300 text-lg font-medium relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-white after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                  
+                  {/* Improved dropdown for Продукты */}
                   {item.name === "Продукты" && isProductsHovered && (
-                    <div className="absolute left-0 mt-2 w-48 bg-black/90 backdrop-blur-md rounded-md shadow-lg z-50">
-                      <ul className="py-2">
+                    <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-56 bg-white rounded-md shadow-xl overflow-hidden z-50 transition-all duration-300 ease-in-out origin-top">
+                      <div className="py-1">
+                        <Link 
+                          href="/shop"
+                          className="block px-4 py-2 text-orange-600 hover:bg-orange-50 font-medium border-b border-orange-100"
+                        >
+                          Все продукты
+                        </Link>
                         {categories.length > 0 ? (
                           categories.map((category, index) => (
-                            <li key={index}>
-                              <Link
-                                href={`/shop?category=${encodeURIComponent(
-                                  category
-                                )}`}
-                                className="block px-4 py-2 bg-white text-orange-500 hover:bg-[#fb4b06] hover:text-orange-600 transition-colors duration-200"
-                              >
-                                {category}
-                              </Link>
-                            </li>
+                            <Link
+                              key={index}
+                              href={{
+                                pathname: '/shop',
+                                query: { category: category }
+                              }}
+                              className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors duration-200"
+                            >
+                              {category}
+                            </Link>
                           ))
                         ) : (
-                          <li className="px-4 py-2 text-white/70">
+                          <div className="px-4 py-2 text-gray-500">
                             Загрузка...
-                          </li>
+                          </div>
                         )}
-                      </ul>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -703,8 +744,9 @@ const Header = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-[#fb4b06] focus:outline-none"
+              className="md:hidden text-[#fb4b06] focus:outline-none p-2 rounded-full hover:bg-orange-900/20 transition-colors duration-300"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -714,41 +756,61 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Improved Mobile Navigation */}
           {isMobileMenuOpen && (
-            <nav className="md:hidden mt-4 pb-4">
-              <div className="flex flex-col gap-4">
-                {navItems.map((item) => (
-                  <div key={item.name}>
-                    <a
-                      href={item.href}
-                      className="text-[#fb4b06] hover:text-white transition-colors duration-300 text-lg font-medium py-2 border-b border-white/10"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </a>
-                    {/* Mobile dropdown for Продукты */}
-                    {item.name === "Продукты" && (
-                      <div className="pl-4 mt-2">
-                        {categories.length > 0 ? (
-                          categories.map((category, index) => (
+            <nav className="md:hidden mt-4 pb-2 border-t border-white/10 pt-2">
+              <div className="flex flex-col">
+                {navItems.map((item, index) => (
+                  <div key={item.name} className={`${index > 0 ? 'border-t border-white/10' : ''}`}>
+                    {item.name === "Продукты" ? (
+                      <>
+                        <div 
+                          className="flex justify-between items-center text-[#fb4b06] py-3 text-lg font-medium"
+                          onClick={() => setIsProductsHovered(!isProductsHovered)}
+                        >
+                          <span>{item.name}</span>
+                          <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isProductsHovered ? 'rotate-180' : ''}`} />
+                        </div>
+                        
+                        {isProductsHovered && (
+                          <div className="pl-4 pb-2 space-y-2">
                             <Link
-                              key={index}
-                              href={`/shop?category=${encodeURIComponent(
-                                category
-                              )}`}
-                              className="block text-white hover:text-[#fb4b06] py-1 text-base"
+                              href="/shop"
+                              className="block text-white hover:text-[#fb4b06] py-1 font-medium"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
-                              {category}
+                              Все продукты
                             </Link>
-                          ))
-                        ) : (
-                          <div className="text-white/70 py-1 text-base">
-                            Загрузка...
+                            {categories.length > 0 ? (
+                              categories.map((category, idx) => (
+                                <Link
+                                  key={idx}
+                                  href={{
+                                    pathname: '/shop',
+                                    query: { category: category }
+                                  }}
+                                  className="block text-gray-300 hover:text-[#fb4b06] py-1"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  {category}
+                                </Link>
+                              ))
+                            ) : (
+                              <div className="text-gray-500 py-1">
+                                Загрузка...
+                              </div>
+                            )}
                           </div>
                         )}
-                      </div>
+                      </>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="block text-[#fb4b06] hover:text-white transition-colors duration-300 text-lg font-medium py-3"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
                     )}
                   </div>
                 ))}
@@ -757,7 +819,7 @@ const Header = () => {
           )}
         </div>
       </header>
-      <div className="h-16 pt-6"></div>
+      <div className="h-10"></div>
     </>
   );
 };
