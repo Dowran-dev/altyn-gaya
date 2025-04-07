@@ -360,172 +360,172 @@
 // }
 
 // MobileNavigation.jsx
-// import React, { useState, useEffect } from "react";
-// import Link from "next/link";
-// import Image from "next/image";
-// import {
-//   X,
-//   Phone,
-//   Mail,
-//   Sun,
-//   Moon,
-//   ChevronDown,
-//   Home,
-//   ShoppingBag,
-//   Info,
-// } from "lucide-react";
-// import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import {
+  X,
+  Phone,
+  Mail,
+  Sun,
+  Moon,
+  ChevronDown,
+  Home,
+  ShoppingBag,
+  Info,
+} from "lucide-react";
+import { motion } from "framer-motion";
 
-// export default function MobileNavigation({
-//   onClose,
-//   categories,
-//   currentCategory,
-//   setCurrentCategory,
-// }) {
-//   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
-//   const [isDarkMode, setIsDarkMode] = useState(false);
+export default function MobileNavigation({
+  onClose,
+  categories,
+  currentCategory,
+  setCurrentCategory,
+}) {
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-//   useEffect(() => {
-//     const isDark =
-//       localStorage.theme === "dark" ||
-//       (!("theme" in localStorage) &&
-//         window.matchMedia("(prefers-color-scheme: dark)").matches);
-//     setIsDarkMode(isDark);
-//   }, []);
+  useEffect(() => {
+    const isDark =
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    setIsDarkMode(isDark);
+  }, []);
 
-//   const toggleDarkMode = () => {
-//     setIsDarkMode((prev) => {
-//       const newMode = !prev;
-//       localStorage.theme = newMode ? "dark" : "light";
-//       document.documentElement.classList.toggle("dark", newMode);
-//       return newMode;
-//     });
-//   };
+  const toggleDarkMode = () => {
+    setIsDarkMode((prev) => {
+      const newMode = !prev;
+      localStorage.theme = newMode ? "dark" : "light";
+      document.documentElement.classList.toggle("dark", newMode);
+      return newMode;
+    });
+  };
 
-//   const navItems = [
-//     { href: "/", icon: Home, label: "Главная" },
-//     { href: "/shop", icon: ShoppingBag, label: "Магазин" },
-//     { href: "/about", icon: Info, label: "О нас" },
-//   ];
+  const navItems = [
+    { href: "/", icon: Home, label: "Главная" },
+    { href: "/shop", icon: ShoppingBag, label: "Магазин" },
+    { href: "/about", icon: Info, label: "О нас" },
+  ];
 
-//   return (
-//     <>
-//       <motion.div
-//         initial={{ opacity: 0 }}
-//         animate={{ opacity: 1 }}
-//         exit={{ opacity: 0 }}
-//         className="fixed inset-0 bg-black/60 z-50"
-//         onClick={onClose}
-//       />
-//       <motion.div
-//         initial={{ x: "-100%" }}
-//         animate={{ x: 0 }}
-//         exit={{ x: "-100%" }}
-//         className="fixed top-0 left-0 w-80 h-full bg-white dark:bg-gray-900 z-50 shadow-xl"
-//       >
-//         <div className="flex flex-col h-full">
-//           {/* Header */}
-//           <div className="p-4 flex items-center justify-between border-b dark:border-gray-800">
-//             <Link
-//               href="/"
-//               className="flex items-center gap-2"
-//               onClick={onClose}
-//             >
-//               <Image
-//                 src="/image/logo.png"
-//                 alt="Altyn Gaya"
-//                 width={36}
-//                 height={36}
-//                 className="rounded-full border-2 border-orange-500/20"
-//               />
-//               <span className="font-bold text-lg text-gray-800 dark:text-white">
-//                 Altyn <span className="text-orange-600">Gaya</span>
-//               </span>
-//             </Link>
-//             <button onClick={onClose} className="p-2 hover:text-orange-600">
-//               <X className="w-6 h-6" />
-//             </button>
-//           </div>
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 bg-black/60 z-50"
+        onClick={onClose}
+      />
+      <motion.div
+        initial={{ x: "-100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "-100%" }}
+        className="fixed top-0 left-0 w-80 h-full bg-white dark:bg-gray-900 z-50 shadow-xl"
+      >
+        <div className="flex flex-col h-full">
+          {/* Header */}
+          <div className="p-4 flex items-center justify-between border-b dark:border-gray-800">
+            <Link
+              href="/"
+              className="flex items-center gap-2"
+              onClick={onClose}
+            >
+              <Image
+                src="/image/logo.png"
+                alt="Altyn Gaya"
+                width={36}
+                height={36}
+                className="rounded-full border-2 border-orange-500/20"
+              />
+              <span className="font-bold text-lg text-gray-800 dark:text-white">
+                Altyn <span className="text-orange-600">Gaya</span>
+              </span>
+            </Link>
+            <button onClick={onClose} className="p-2 hover:text-orange-600">
+              <X className="w-6 h-6" />
+            </button>
+          </div>
 
-//           {/* Navigation */}
-//           <div className="flex-1 overflow-y-auto p-4">
-//             <button
-//               className="flex items-center justify-between w-full p-2"
-//               onClick={() => setIsCategoryOpen(!isCategoryOpen)}
-//             >
-//               <span className="font-medium">Категории</span>
-//               <ChevronDown
-//                 className={`w-5 h-5 ${isCategoryOpen ? "rotate-180" : ""}`}
-//               />
-//             </button>
-//             {isCategoryOpen && (
-//               <div className="mt-2 space-y-1">
-//                 {categories.map((cat) => (
-//                   <button
-//                     key={cat.name}
-//                     onClick={() => {
-//                       setCurrentCategory(cat.name);
-//                       onClose();
-//                     }}
-//                     className={`w-full text-left p-2 rounded-lg ${
-//                       cat.name === currentCategory
-//                         ? "bg-orange-50 text-orange-600"
-//                         : "hover:bg-gray-100 dark:hover:bg-gray-800"
-//                     }`}
-//                   >
-//                     {cat.name}
-//                   </button>
-//                 ))}
-//               </div>
-//             )}
-//             <nav className="mt-6 space-y-1">
-//               {navItems.map((item) => (
-//                 <Link
-//                   key={item.href}
-//                   href={item.href}
-//                   className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100
-//                     dark:hover:bg-gray-800"
-//                   onClick={onClose}
-//                 >
-//                   <item.icon className="w-5 h-5 text-orange-600" />
-//                   {item.label}
-//                 </Link>
-//               ))}
-//             </nav>
-//           </div>
+          {/* Navigation */}
+          <div className="flex-1 overflow-y-auto p-4">
+            <button
+              className="flex items-center justify-between w-full p-2"
+              onClick={() => setIsCategoryOpen(!isCategoryOpen)}
+            >
+              <span className="font-medium">Категории</span>
+              <ChevronDown
+                className={`w-5 h-5 ${isCategoryOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {isCategoryOpen && (
+              <div className="mt-2 space-y-1">
+                {categories.map((cat) => (
+                  <button
+                    key={cat.name}
+                    onClick={() => {
+                      setCurrentCategory(cat.name);
+                      onClose();
+                    }}
+                    className={`w-full text-left p-2 rounded-lg ${
+                      cat.name === currentCategory
+                        ? "bg-orange-50 text-orange-600"
+                        : "hover:bg-gray-100 dark:hover:bg-gray-800"
+                    }`}
+                  >
+                    {cat.name}
+                  </button>
+                ))}
+              </div>
+            )}
+            <nav className="mt-6 space-y-1">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100
+                    dark:hover:bg-gray-800"
+                  onClick={onClose}
+                >
+                  <item.icon className="w-5 h-5 text-orange-600" />
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
-//           {/* Footer */}
-//           <div className="p-4 border-t dark:border-gray-800">
-//             <div className="space-y-3">
-//               <a
-//                 href="tel:+77471234567"
-//                 className="flex items-center gap-2 hover:text-orange-600"
-//               >
-//                 <Phone className="w-4 h-4 text-orange-600" />
-//                 +7 (747) 123-45-67
-//               </a>
-//               <a
-//                 href="mailto:info@altyngaya.kz"
-//                 className="flex items-center gap-2 hover:text-orange-600"
-//               >
-//                 <Mail className="w-4 h-4 text-orange-600" />
-//                 info@altyngaya.kz
-//               </a>
-//             </div>
-//             <button
-//               onClick={toggleDarkMode}
-//               className="flex items-center justify-between w-full p-2 mt-4"
-//             >
-//               <span>Темный режим</span>
-//               {isDarkMode ? (
-//                 <Sun className="w-5 h-5" />
-//               ) : (
-//                 <Moon className="w-5 h-5" />
-//               )}
-//             </button>
-//           </div>
-//         </div>
-//       </motion.div>
-//     </>
-//   );
-// }
+          {/* Footer */}
+          <div className="p-4 border-t dark:border-gray-800">
+            <div className="space-y-3">
+              <a
+                href="tel:+77471234567"
+                className="flex items-center gap-2 hover:text-orange-600"
+              >
+                <Phone className="w-4 h-4 text-orange-600" />
+                +7 (747) 123-45-67
+              </a>
+              <a
+                href="mailto:info@altyngaya.kz"
+                className="flex items-center gap-2 hover:text-orange-600"
+              >
+                <Mail className="w-4 h-4 text-orange-600" />
+                info@altyngaya.kz
+              </a>
+            </div>
+            <button
+              onClick={toggleDarkMode}
+              className="flex items-center justify-between w-full p-2 mt-4"
+            >
+              <span>Темный режим</span>
+              {isDarkMode ? (
+                <Sun className="w-5 h-5" />
+              ) : (
+                <Moon className="w-5 h-5" />
+              )}
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </>
+  );
+}
