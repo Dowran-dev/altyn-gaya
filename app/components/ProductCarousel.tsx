@@ -383,7 +383,7 @@ const ProductCarousel: React.FC = () => {
           {
             title: "Real Plus универсальные жидкие моющие средства с кондиционером",
             description: "Суперконцентрированное средство 2-в-1: для стирки и кондиционирования одежды.",
-            image: "/images/category_pictures/RealPlus_PerfumeCollection.png",
+            image: "/images/category_pictures/RealPlus_perfume_collection.png",
             color: "#3538C8",
             brandName: "Real Plus",
             category: "Универсальные жидкие моющие средства с кондиционером",
