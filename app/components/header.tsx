@@ -843,7 +843,7 @@ export default function Header() {
                 {showSearchResults && searchResults.length > 0 && (
                   <div 
                     ref={searchResultsRef}
-                    className="absolute top-full right-0 mt-1 bg-white dark:bg-gray-800 shadow-xl rounded-xl overflow-hidden w-80 z-20 border dark:border-gray-700 max-h-96 overflow-y-auto"
+                    className="absolute top-full right-0 mt-1 bg-white dark:bg-gray-800 shadow-xl rounded-xl overflow-hidden w-[600px] z-20 border dark:border-gray-700 max-h-96 overflow-y-auto"
                   >
                     <div className="p-2 text-sm font-medium text-gray-500 dark:text-gray-400 border-b dark:border-gray-700">
                       Результаты поиска
