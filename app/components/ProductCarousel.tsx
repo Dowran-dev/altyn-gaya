@@ -74,7 +74,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
     "opacity-100 z-20 transform-none" : 
     "opacity-0 z-0 scale-95";
     
-  // Check if we're on mobile
   const [isMobile, setIsMobile] = useState(false);
   
   useEffect(() => {
@@ -92,80 +91,88 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
     <div className={`absolute inset-0 transition-all duration-700 ease-out ${cardPosition}`}>
       <div className="bg-white rounded-xl sm:rounded-3xl overflow-hidden shadow-lg sm:shadow-2xl mx-auto h-full border border-gray-100 hover:shadow-[0_20px_50px_rgba(30,34,170,0.1)] transition-shadow duration-500">
         {isMobile ? (
-          // Mobile view with bigger image and simplified info
+          // Mobile view with consistent alignment
           <div className="flex flex-col h-full">
-            {/* Product image takes up more space */}
-            <div 
-              className="h-72 w-full relative flex items-center justify-center"
-              style={{ 
-                background: `linear-gradient(135deg, ${product.color} 30%, ${product.color}CC 100%)` 
-              }}
-            >
-              
-              {/* Product image */}
-              <div className="relative z-10 transform transition-transform duration-700 perspective-1000 flex items-center justify-center w-full h-full max-h-44">
-                <div className="absolute inset-0 bg-white/10 rounded-full filter blur-xl transform scale-75 transition-transform duration-700"></div>
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  width={400}
-                  height={400}
-                  className="w-5/5 h-5/5 max-h-64 object-contain p-4 drop-shadow-lg mx-auto"
-                />
-              </div>
-              
-              {/* Animated decorative elements */}
-              <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-                <div className="absolute top-10 left-10 w-10 h-10 rounded-full bg-white/10 animate-pulse"></div>
-                <div className="absolute bottom-10 right-10 w-8 h-8 rounded-full bg-white/10 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-white/10 animate-pulse" style={{ animationDelay: '1s' }}></div>
-                <div className="absolute -bottom-10 -left-10 w-20 h-20 rounded-full bg-white/5 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-                
-                {/* Dynamic floating particles */}
-                <div className="absolute w-2 h-2 rounded-full bg-white/20 animate-float" style={{ top: '20%', left: '30%', animationDuration: '6s', animationDelay: '0s' }}></div>
-                <div className="absolute w-1 h-1 rounded-full bg-white/20 animate-float" style={{ top: '70%', left: '20%', animationDuration: '8s', animationDelay: '1s' }}></div>
-                <div className="absolute w-2 h-2 rounded-full bg-white/20 animate-float" style={{ top: '40%', left: '80%', animationDuration: '7s', animationDelay: '2s' }}></div>
-              </div>
+          {/* Product image area - slightly reduced height */}
+          <div 
+            className="h-56 w-full relative flex items-center justify-center"
+            style={{ 
+              background: `linear-gradient(135deg, ${product.color} 30%, ${product.color}CC 100%)` 
+            }}
+          >
+            {/* Product image */}
+            <div className="relative z-10 transform transition-transform duration-700 perspective-1000 flex items-center justify-center w-full h-full">
+              <div className="absolute inset-0 bg-white/10 rounded-full filter blur-xl transform scale-75 transition-transform duration-700"></div>
+              <Image
+                src={product.image}
+                alt={product.title}
+                width={400}
+                height={400}
+                className="w-5/5 h-5/5 object-contain p-4 drop-shadow-lg mx-auto"
+              />
             </div>
             
-            {/* Just show title and button for mobile */}
-            <div className="p-4 flex flex-col justify-center">
-              {/* Enhanced category tag with gradient */}
-              <div className="inline-flex items-center bg-gradient-to-r from-[#fb4b06]/10 to-[#fb4b06]/5 rounded-full px-3 py-1.5 mb-2">
-                <span className="text-[#fb4b06] text-xs font-semibold tracking-wide">Продукция Altyn Gaya</span>
-              </div>
-              
-              <h3 className="text-[#1E22AA] text-xl font-bold mb-4 overflow-hidden" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif',
-    display: "-webkit-box",
-    WebkitBoxOrient: "vertical",
-    WebkitLineClamp: 2, }}>
-                {product.title}
-              </h3>
-              
-              {/* Button with animated gradient hover effect */}
-              <Link href={{pathname: '/shop',
-    query: { category: product.category }}} className="bg-[#1E22AA] hover:bg-[#1E22AA]/90 rounded-full text-white px-6 py-2 text-sm font-semibold group overflow-hidden relative w-full">
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  Подробнее
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-[#fb4b06] to-[#fb4b06]/90 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></span>
-              </Link>
+            {/* Simplified decorative elements for mobile */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+              <div className="absolute top-10 left-10 w-6 h-6 rounded-full bg-white/10 animate-pulse"></div>
+              <div className="absolute bottom-10 right-10 w-4 h-4 rounded-full bg-white/10 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
             </div>
           </div>
+          
+          {/* Product information with auto height */}
+          <div className="p-4 flex flex-col flex-grow">
+            <h3 className="text-[#1E22AA] text-lg font-bold mb-2 line-clamp-1" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif' }}>
+              {product.title}
+            </h3>
+            
+            <p className="text-gray-600 text-xs mb-3 line-clamp-2">
+              {product.description}
+            </p>
+            
+            <div className="space-y-1.5 mb-3">
+              {product.features && product.features.length > 0 ? (
+                // Show only the first feature on mobile to save space
+                <div className="flex items-center">
+                  <div className="bg-[#fb4b06]/10 flex-shrink-0 rounded-full p-1 mr-2">
+                    <Check className="text-[#fb4b06] w-3 h-3" />
+                  </div>
+                  <span className="text-gray-700 text-xs">{product.features[0]}</span>
+                </div>
+              ) : (
+                // Show only one default feature to save space
+                <div className="flex items-center">
+                  <div className="bg-[#fb4b06]/10 flex-shrink-0 rounded-full p-1 mr-2">
+                    <Check className="text-[#fb4b06] w-3 h-3" />
+                  </div>
+                  <span className="text-gray-700 text-xs">Быстрое действие</span>
+                </div>
+              )}
+            </div>
+            
+            {/* Smaller button with tighter padding */}
+            <Link href={{pathname: '/shop', query: { category: product.category }}} 
+                className="bg-[#1E22AA] hover:bg-[#1E22AA]/90 rounded-full text-white px-4 py-2 text-xs font-semibold group overflow-hidden relative w-full text-center mt-auto">
+              <span className="relative z-10 flex items-center justify-center gap-1">
+                Подробнее
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-[#fb4b06] to-[#fb4b06]/90 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></span>
+            </Link>
+          </div>
+        </div>
         ) : (
-          // Desktop view remains the same
+          // Desktop view with consistent alignment
           <div className="flex flex-col md:flex-row h-full">
-            <div className="md:w-3/5 relative overflow-hidden group">
-            <div 
-                className="h-48 sm:h-64 md:h-full w-full relative flex items-center justify-center"
+            <div className="md:w-2/3 relative overflow-hidden group">
+              <div 
+                className="h-64 md:h-full w-full relative flex items-center justify-center"
                 style={{ 
                   background: `linear-gradient(135deg, ${product.color} 30%, ${product.color}CC 100%)` 
                 }}
               >
                 {/* Brand badge in top left */}
-                <div className="absolute top-2 sm:top-4 left-2 sm:left-4 z-20 bg-white/80 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">
-                  <span className="font-bold text-xs sm:text-sm" style={{ color: product.color }}>{product.brandName}</span>
+                <div className="absolute top-4 left-4 z-20 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                  <span className="font-bold text-sm" style={{ color: product.color }}>{product.brandName}</span>
                 </div>
                 
                 {/* 3D perspective container for product image */}
@@ -174,80 +181,77 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
                   <Image
                     src={product.image}
                     alt={product.title}
-                    width={isMobile ? 400 : 800}
-                    height={isMobile ? 400 : 800}
-                    className="w-5/5 h-5/5 object-contain p-4 sm:p-8 drop-shadow-lg mx-auto"
+                    width={1000}
+                    height={1000}
+                    className="w-5/5 h-5/5 object-contain p-6 drop-shadow-lg mx-auto"
                   />
                 </div>
                 
                 {/* Enhanced animated decorative elements */}
                 <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-                  <div className="absolute top-10 left-10 w-10 sm:w-20 h-10 sm:h-20 rounded-full bg-white/10 animate-pulse"></div>
-                  <div className="absolute bottom-10 right-10 w-8 sm:w-16 h-8 sm:h-16 rounded-full bg-white/10 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="absolute top-1/3 right-1/4 w-6 sm:w-12 h-6 sm:h-12 rounded-full bg-white/10 animate-pulse" style={{ animationDelay: '1s' }}></div>
-                  <div className="absolute -bottom-10 -left-10 w-20 sm:w-40 h-20 sm:h-40 rounded-full bg-white/5 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+                  <div className="absolute top-10 left-10 w-16 h-16 rounded-full bg-white/10 animate-pulse"></div>
+                  <div className="absolute bottom-10 right-10 w-12 h-12 rounded-full bg-white/10 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="absolute top-1/3 right-1/4 w-10 h-10 rounded-full bg-white/10 animate-pulse" style={{ animationDelay: '1s' }}></div>
+                  <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-white/5 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
                   
                   {/* Dynamic floating particles */}
-                  <div className="absolute w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-white/20 animate-float" style={{ top: '20%', left: '30%', animationDuration: '6s', animationDelay: '0s' }}></div>
-                  <div className="absolute w-1 sm:w-2 h-1 sm:h-2 rounded-full bg-white/20 animate-float" style={{ top: '70%', left: '20%', animationDuration: '8s', animationDelay: '1s' }}></div>
-                  <div className="absolute w-2 sm:w-4 h-2 sm:h-4 rounded-full bg-white/20 animate-float" style={{ top: '40%', left: '80%', animationDuration: '7s', animationDelay: '2s' }}></div>
+                  <div className="absolute w-3 h-3 rounded-full bg-white/20 animate-float" style={{ top: '20%', left: '30%', animationDuration: '6s', animationDelay: '0s' }}></div>
+                  <div className="absolute w-2 h-2 rounded-full bg-white/20 animate-float" style={{ top: '70%', left: '20%', animationDuration: '8s', animationDelay: '1s' }}></div>
+                  <div className="absolute w-4 h-4 rounded-full bg-white/20 animate-float" style={{ top: '40%', left: '80%', animationDuration: '7s', animationDelay: '2s' }}></div>
                 </div>
               </div>
             </div>
-            <div className="md:w-3/6 p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-              {/* Enhanced category tag with gradient */}
-              <div className="inline-flex items-center bg-gradient-to-r from-[#fb4b06]/10 to-[#fb4b06]/5 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 mb-2 sm:mb-3">
-                <span className="text-[#fb4b06] text-xs sm:text-sm py-1 sm:py-2 font-semibold tracking-wide">Продукция Altyn Gaya</span>
+            
+            <div className="md:w-2/4 p-6 md:p-8 flex flex-col justify-between">
+              <div>
+                <h3 className="text-[#1E22AA] text-2xl md:text-3xl font-bold mb-3 line-clamp-2 min-h-[4rem]" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif' }}>
+                  {product.title}
+                </h3>
+                
+                <p className="text-gray-600 md:text-lg mb-6 line-clamp-3 min-h-[4.5rem]">
+                  {product.description}
+                </p>
               </div>
               
-              <h3 className="text-[#1E22AA] text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4 overflow-hidden" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif',
-    display: "-webkit-box",
-    WebkitBoxOrient: "vertical",
-    WebkitLineClamp: 2, }}>
-                {product.title}
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-3 sm:mb-6 md:mb-8 leading-relaxed line-clamp-3 sm:line-clamp-none">
-                {product.description}
-              </p>
-              <ul className="mb-3 sm:mb-6 md:mb-8 space-y-2 sm:space-y-3 md:space-y-4">
+              <div className="space-y-4 mb-8">
                 {product.features && product.features.map((feature, index) => (
-                  <li key={index} className="flex items-start group">
-                    <div className="bg-[#fb4b06]/10 p-1 sm:p-2 rounded-full mr-2 sm:mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300 mt-0.5">
-                      <Check className="text-[#fb4b06] w-3 h-3 sm:w-4 sm:h-4 group-hover:text-white transition-colors duration-300" />
+                  <div key={index} className="flex items-center">
+                    <div className="bg-[#fb4b06]/10 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
+                      <Check className="text-[#fb4b06] w-4 h-4 group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <span className="text-gray-700 text-xs sm:text-sm md:text-base">{feature}</span>
-                  </li>
+                    <span className="text-gray-700 text-base">{feature}</span>
+                  </div>
                 ))}
                 {!product.features && (
                   <>
-                    <li className="flex items-start group">
-                      <div className="bg-[#fb4b06]/10 p-1 sm:p-2 rounded-full mr-2 sm:mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300 mt-0.5">
-                        <Check className="text-[#fb4b06] w-3 h-3 sm:w-4 sm:h-4 group-hover:text-white transition-colors duration-300" />
+                    <div className="flex items-center group">
+                      <div className="bg-[#fb4b06]/10 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
+                        <Check className="text-[#fb4b06] w-4 h-4 group-hover:text-white transition-colors duration-300" />
                       </div>
-                      <span className="text-gray-700 text-xs sm:text-sm md:text-base">Высокое качество</span>
-                    </li>
-                    <li className="flex items-start group">
-                      <div className="bg-[#fb4b06]/10 p-1 sm:p-2 rounded-full mr-2 sm:mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300 mt-0.5">
-                        <Check className="text-[#fb4b06] w-3 h-3 sm:w-4 sm:h-4 group-hover:text-white transition-colors duration-300" />
+                      <span className="text-gray-700 text-base">Делает ткани мягкими и свежими</span>
+                    </div>
+                    <div className="flex items-center group">
+                      <div className="bg-[#fb4b06]/10 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
+                        <Check className="text-[#fb4b06] w-4 h-4 group-hover:text-white transition-colors duration-300" />
                       </div>
-                      <span className="text-gray-700 text-xs sm:text-sm md:text-base">Экологичные материалы</span>
-                    </li>
-                    <li className="flex items-start group">
-                      <div className="bg-[#fb4b06]/10 p-1 sm:p-2 rounded-full mr-2 sm:mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300 mt-0.5">
-                        <Check className="text-[#fb4b06] w-3 h-3 sm:w-4 sm:h-4 group-hover:text-white transition-colors duration-300" />
+                      <span className="text-gray-700 text-base">Удаляет стойкие пятна</span>
+                    </div>
+                    <div className="flex items-center group">
+                      <div className="bg-[#fb4b06]/10 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
+                        <Check className="text-[#fb4b06] w-4 h-4 group-hover:text-white transition-colors duration-300" />
                       </div>
-                      <span className="text-gray-700 text-xs sm:text-sm md:text-base">Оптимальная цена</span>
-                    </li>
+                      <span className="text-gray-700 text-base">Подходит для ручной и машинной стирки</span>
+                    </div>
                   </>
                 )}
-              </ul>
+              </div>
               
               {/* Enhanced button with animated gradient hover effect */}
-              <Link href={{pathname: '/shop',
-                query: { category: product.category }}} className="bg-[#1E22AA] hover:bg-[#1E22AA]/90 rounded-full text-white px-4 sm:px-6 md:px-8 py-1.5 sm:py-2 md:py-6 text-xs sm:text-sm md:text-md font-semibold group overflow-hidden relative w-full md:w-auto">
-                <span className="relative z-10 flex items-center justify-center gap-1 sm:gap-2">
+              <Link href={{pathname: '/shop', query: { category: product.category }}} 
+                  className="bg-[#1E22AA] hover:bg-[#1E22AA]/90 rounded-full text-white px-8 py-4 text-base font-semibold group overflow-hidden relative md:w-auto self-start">
+                <span className="relative z-10 flex items-center justify-center gap-2">
                   Подробнее
-                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <span className="absolute inset-0 bg-gradient-to-r from-[#fb4b06] to-[#fb4b06]/90 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></span>
               </Link>
@@ -395,12 +399,12 @@ const ProductCarousel: React.FC = () => {
             ]
           },
           {
-            title: "Real Plus Универсальный гель для стирки",
+            title: "Real Plus Универсальные гели для стирки",
             description: "Эффективный гель для стирки, придающий белью свежесть и мягкость.",
             image: "/images/category_pictures/RealPlus_SuwukSoda_1l.png",
             color: "#3538C8",
             brandName: "Real Plus",
-            category: "Универсальный гель для стирки",
+            category: "Универсальные гели для стирки",
             features: [
               "Глубокая очистка тканей",
               "Экономичный расход",
@@ -454,7 +458,7 @@ const ProductCarousel: React.FC = () => {
             image: "/images/category_pictures/Wim_antizir.png",
             color: "#03a31e",
             brandName: "Wim",
-            category: "Универсальные чистящие средства спрей",
+            category: "Бытовые чистящие спреи",
             features: [
               "Удаляет жир, пятна и известковый налет",
               "Безопасный состав без разводов",
@@ -481,7 +485,7 @@ const ProductCarousel: React.FC = () => {
             image: "/images/category_pictures/YumsaPlus_sprey2.png",
             color: "#1138b7",
             brandName: "Yumşa Plus",
-            category: "Спреи-освежители для тканей",
+            category: "Ароматизаторы для дома и белья",
             features: [
               "Быстрое действие",
               "Не оставляет следов",
@@ -552,7 +556,7 @@ const ProductCarousel: React.FC = () => {
             image: "/images/category_pictures/Lagis.png",
             color: "#00cdd1",
             brandName: "Lagis",
-            category: "Порошки",
+            category: "Стиральные порошки",
             features: [
               "Подходит для ручной стирки",
               "Лёгкое полоскание и отстирывание",
