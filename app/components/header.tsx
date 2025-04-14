@@ -567,8 +567,9 @@ export default function Header() {
   const navItems = [
     { name: "Главная", href: "/" },
     { name: "Продукты", href: "/shop" },
+    { name: "Новости", href: "/news-page" },
     { name: "FAQ", href: "/faq" },
-    { name: "Контакты", href: "/contact-us" },
+    { name: "Контакты", href: "/contacts-page" },
   ];
 
   // Handle dark mode toggle
@@ -769,8 +770,9 @@ export default function Header() {
                 <div
                   key={item.name}
                   className="relative"
-                  onMouseEnter={() => item.name === "Продукты" ? setIsProductsDropdownOpen(true) : null}
-                  onMouseLeave={() => item.name === "Продукты" ? setIsProductsDropdownOpen(false) : null}
+                  onClick={() => item.name === "Продукты" ? setIsProductsDropdownOpen(prev => !prev) : null}
+                  // onClick={() => item.name === "Продукты" ? setIsProductsDropdownOpen(true) : null}
+                  // onMouseLeave={() => item.name === "Продукты" ? setIsProductsDropdownOpen(false) : null}
                 >
                   {item.name === "Продукты" ? (
                     <>

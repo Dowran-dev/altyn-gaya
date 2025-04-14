@@ -32,9 +32,9 @@ const SocialMediaIcons: React.FC = () => {
         {socialLinks.map((link, index) => {
           const IconComponent = link.icon;
           const isHovered = hoveredIndex === index;
-          
+
           return (
-            <li 
+            <li
               key={index}
               className="transform transition-all duration-300 hover:-translate-x-1"
               onMouseEnter={() => setHoveredIndex(index)}
@@ -48,8 +48,8 @@ const SocialMediaIcons: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`
-                  text-white rounded-full w-[30px] h-[30px] sm:w-[40px] sm:h-[40px] mt-[5px] 
-                  flex items-center justify-center no-underline 
+                  text-white rounded-full w-[30px] h-[30px] sm:w-[40px] sm:h-[40px] mt-[5px]
+                  flex items-center justify-center no-underline
                   transition-all duration-300 ease-in-out
                   hover:shadow-lg hover:shadow-black/20
                   ${isHovered ? 'scale-110' : ''}
@@ -63,12 +63,12 @@ const SocialMediaIcons: React.FC = () => {
                   boxShadow: isHovered ? '0 4px 10px rgba(0,0,0,0.25)' : 'none'
                 }}
               >
-                <IconComponent 
+                <IconComponent
                   className={`
-                    w-4 h-4 sm:w-6 sm:h-6 
-                    transition-all duration-300 
+                    w-4 h-4 sm:w-6 sm:h-6
+                    transition-all duration-300
                     ${isHovered ? 'animate-pulse scale-110' : ''}
-                  `} 
+                  `}
                 />
               </a>
             </li>
@@ -88,7 +88,7 @@ const SocialMediaIcons: React.FC = () => {
             transform: translateX(0);
           }
         }
-        
+
         @keyframes float {
           0% {
             transform: translateY(0px);
@@ -113,15 +113,15 @@ const contactInfo = {
 };
 
 export default function Page() {
-  
+
   return (
     <div className="min-h-screen overflow-hidden">
       <SocialMediaIcons />
       <HeroSection />
-      <AdvancedWaveSeparator 
-        color="#1E22AA" 
+      <AdvancedWaveSeparator
+        color="#1E22AA"
         secondaryColor="#3D41CC"
-        height={120} 
+        height={120}
         animationSpeed={8}
         complexity={1}
         layers={3}
@@ -129,15 +129,16 @@ export default function Page() {
       <ProductCarousel />
 
       <AboutCompanySection />
-      
+
       <ProcessSection />
 
       <ContactSection contactInfo={contactInfo} />
-      
-      <AdvancedWaveSeparator 
-        color="#1E22AA" 
+
+
+      <AdvancedWaveSeparator
+        color="#1E22AA"
         secondaryColor="#3D41CC"
-        height={100} 
+        height={100}
         animationSpeed={14}
         complexity={3}
         layers={3}

@@ -144,9 +144,9 @@ export default function Footer() {
             <div>
               <h4 className="text-xl font-bold mb-6">Информация</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-white/70 hover:text-[#fb4b06] transition-colors">Новости</a></li>
-                <li><a href="#" className="text-white/70 hover:text-[#fb4b06] transition-colors">FAQ</a></li>
-                <li><a href="#" className="text-white/70 hover:text-[#fb4b06] transition-colors">Контакты</a></li>
+                <li><a href="news-page" className="text-white/70 hover:text-[#fb4b06] transition-colors">Новости</a></li>
+                <li><a href="faq" className="text-white/70 hover:text-[#fb4b06] transition-colors">FAQ</a></li>
+                <li><a href="contacts-page" className="text-white/70 hover:text-[#fb4b06] transition-colors">Контакты</a></li>
               </ul>
             </div>
             

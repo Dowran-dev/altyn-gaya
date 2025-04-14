@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Subscriber {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  name         String?
+  subscribedAt DateTime @default(now())
+  active       Boolean  @default(true)
+}
+
+model ProductCategory {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
+  image       String
+  color       String
+  brandName   String
+  category    String
+  features    String[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+}
+
+model Product {
+  id              Int             @id @default(autoincrement())
+  name            String
+  subtitle        String
+  fullTitle       String
+  description     String
+  longDescription String
+  image           String
+  color           String
+  brandName       String
+  category        String
+  features        String[]
+  directions      String[]
+  rating          Float
+  reviews         Int
+  badge           String?
+  categoryId      Int
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  productCategory ProductCategory @relation(fields: [categoryId], references: [id])
+  reviewsList     ProductReview[]
+  sizes           ProductSize[]
+}
+
+model ProductSize {
+  id        Int     @id @default(autoincrement())
+  name      String
+  quantity  String
+  price     String
+  productId Int
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model ProductReview {
+  id        Int      @id @default(autoincrement())
+  author    String
+  date      String
+  rating    Float
+  title     String
+  content   String
+  productId Int
+  createdAt DateTime @default(now())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  replied   Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

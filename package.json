@@ -4,22 +4,30 @@
     "private": true,
     "scripts": {
         "dev": "next dev --turbopack",
-        "build": "next build",
+        "build": "prisma generate && next build",
         "start": "next start",
         "lint": "next lint",
         "pages:build": "npx @cloudflare/next-on-pages"
     },
+    "prisma": {
+        "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+    },
     "dependencies": {
+        "@prisma/client": "^6.6.0",
         "@radix-ui/react-slot": "^1.1.2",
         "@shadcn/ui": "^0.0.4",
         "class-variance-authority": "^0.7.1",
+        "cloudinary": "^2.6.0",
         "clsx": "^2.1.1",
         "framer-motion": "^12.5.0",
+        "leaflet": "^1.9.4",
+        "leaflet-defaulticon-compatibility": "^0.1.2",
         "lucide-react": "^0.475.0",
         "next": "15.1.7",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-icons": "^5.5.0",
+        "react-leaflet": "^5.0.0",
         "shadcn-ui": "^0.9.4",
         "tailwind-merge": "^3.0.1",
         "tailwindcss-animate": "^1.0.7"
@@ -27,13 +35,57 @@
     "devDependencies": {
         "@cloudflare/next-on-pages": "^1.13.10",
         "@eslint/eslintrc": "^3",
+        "@types/leaflet": "^1.9.17",
         "@types/node": "^20",
         "@types/react": "^19",
         "@types/react-dom": "^19",
         "eslint": "^9",
         "eslint-config-next": "15.1.7",
         "postcss": "^8",
+        "prisma": "^6.6.0",
         "tailwindcss": "^3.4.1",
+        "ts-node": "^10.9.2",
         "typescript": "^5"
+    },
+    "eslintConfig": {
+        "extends": "next/core-web-vitals",
+        "rules": {
+            "@typescript-eslint/no-unused-vars": [
+                "error",
+                {
+                    "argsIgnorePattern": "^_",
+                    "varsIgnorePattern": "^_",
+                    "caughtErrorsIgnorePattern": "^_"
+                }
+            ],
+            "@typescript-eslint/no-unused-expressions": [
+                "error",
+                {
+                    "allowShortCircuit": true,
+                    "allowTernary": true,
+                    "allowTaggedTemplates": true
+                }
+            ],
+            "@typescript-eslint/no-explicit-any": [
+                "error",
+                {
+                    "ignoreRestArgs": true
+                }
+            ]
+        },
+        "overrides": [
+            {
+                "files": [
+                    "lib/generated/prisma/**/*",
+                    "node_modules/@prisma/client/**/*"
+                ],
+                "rules": {
+                    "@typescript-eslint/no-unused-vars": "off",
+                    "@typescript-eslint/no-unused-expressions": "off",
+                    "@typescript-eslint/no-require-imports": "off",
+                    "@typescript-eslint/no-explicit-any": "off"
+                }
+            }
+        ]
     }
 }
