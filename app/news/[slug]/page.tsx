@@ -237,9 +237,9 @@ export default function NewsDetailPage() {
   const [loading, setLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
   const [shareMenuOpen, setShareMenuOpen] = useState(false);
-  const [isBookmarked, setIsBookmarked] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(Math.floor(Math.random() * 50) + 10);
+  // const [isBookmarked, setIsBookmarked] = useState(false);
+  // const [isLiked, setIsLiked] = useState(false);
+  // const [likeCount, setLikeCount] = useState(Math.floor(Math.random() * 50) + 10);
   const [viewCount, _setViewCount] = useState(Math.floor(Math.random() * 1000) + 100);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showTableOfContents, setShowTableOfContents] = useState(false);
@@ -466,7 +466,7 @@ export default function NewsDetailPage() {
               )}
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-7 leading-tight">
               {newsItem.title}
             </h1>
             
@@ -491,7 +491,7 @@ export default function NewsDetailPage() {
         
         {/* Плавающие кнопки действий */}
         <div className="hidden md:flex fixed right-6 top-1/3 flex-col gap-3 z-20">
-          <button 
+          {/* <button 
             onClick={() => {setIsLiked(!isLiked); setLikeCount(isLiked ? likeCount - 1 : likeCount + 1)}}
             className={`group p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 ${
               isLiked ? 'bg-red-500 text-white' : 'bg-white/90 text-blue-800 hover:bg-red-500 hover:text-white'
@@ -501,9 +501,9 @@ export default function NewsDetailPage() {
             <span className="absolute right-full mr-2 bg-white/90 text-blue-800 rounded-md px-2 py-1 text-sm opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap shadow-md">
               {likeCount} лайков
             </span>
-          </button>
+          </button> */}
           
-          <button 
+          {/* <button 
             onClick={() => setIsBookmarked(!isBookmarked)}
             className={`group p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 ${
               isBookmarked ? 'bg-blue-600 text-white' : 'bg-white/90 text-blue-800 hover:bg-blue-600 hover:text-white'
@@ -513,7 +513,7 @@ export default function NewsDetailPage() {
             <span className="absolute right-full mr-2 bg-white/90 text-blue-800 rounded-md px-2 py-1 text-sm opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap shadow-md">
               {isBookmarked ? 'Сохранено' : 'Сохранить статью'}
             </span>
-          </button>
+          </button> */}
           
           <button 
             onClick={() => setShareMenuOpen(!shareMenuOpen)}
@@ -608,7 +608,7 @@ export default function NewsDetailPage() {
       {/* Мобильная панель действий */}
       <div className="md:hidden flex items-center justify-between bg-white sticky top-0 z-30 px-4 py-3 border-b border-gray-200 shadow-sm">
         <div className="flex gap-2">
-          <button 
+          {/* <button 
             onClick={() => {setIsLiked(!isLiked); setLikeCount(isLiked ? likeCount - 1 : likeCount + 1)}}
             className={`flex items-center gap-1 px-3 py-1 rounded-full text-sm ${
               isLiked ? 'bg-red-100 text-red-500' : 'bg-gray-100 text-gray-600'
@@ -616,16 +616,16 @@ export default function NewsDetailPage() {
           >
             <Heart className="h-4 w-4" fill={isLiked ? "#ef4444" : "none"} />
             <span>{likeCount}</span>
-          </button>
+          </button> */}
           
-          <button 
+          {/* <button 
             onClick={() => setIsBookmarked(!isBookmarked)}
             className={`flex items-center gap-1 px-3 py-1 rounded-full text-sm ${
               isBookmarked ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-600'
             }`}
           >
             {isBookmarked ? <BookmarkPlus className="h-4 w-4" /> : <Bookmark className="h-4 w-4" />}
-          </button>
+          </button> */}
         </div>
         
         <div className="flex gap-2">
@@ -718,7 +718,7 @@ export default function NewsDetailPage() {
           <div className="mt-12 pt-8 border-t border-gray-200">
             <div className="flex flex-wrap justify-between items-center gap-4">
               <div className="flex items-center gap-4">
-                <button 
+                {/* <button 
                   onClick={() => {setIsLiked(!isLiked); setLikeCount(isLiked ? likeCount - 1 : likeCount + 1)}}
                   className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${
                     isLiked 
@@ -728,7 +728,7 @@ export default function NewsDetailPage() {
                 >
                   <Heart className="h-5 w-5" fill={isLiked ? "white" : "none"} />
                   <span>{likeCount} лайков</span>
-                </button>
+                </button> */}
                 
                 <div className="flex items-center text-gray-500">
                   <Eye className="h-5 w-5 mr-1" />
@@ -737,7 +737,7 @@ export default function NewsDetailPage() {
               </div>
               
               <div className="flex gap-3">
-                <button 
+                {/* <button 
                   onClick={() => setIsBookmarked(!isBookmarked)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${
                     isBookmarked 
@@ -747,7 +747,7 @@ export default function NewsDetailPage() {
                 >
                   {isBookmarked ? <BookmarkPlus className="h-5 w-5" /> : <Bookmark className="h-5 w-5" />}
                   <span>{isBookmarked ? 'Сохранено' : 'Сохранить статью'}</span>
-                </button>
+                </button> */}
                 
                 <button 
                   onClick={() => setShareMenuOpen(!shareMenuOpen)}
@@ -766,7 +766,7 @@ export default function NewsDetailPage() {
           <div className="mb-16">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-blue-800">Связанные статьи</h2>
-              <Link href="/news" className="flex items-center text-orange-500 font-medium hover:text-orange-600 transition-colors">
+              <Link href="/news-page" className="flex items-center text-orange-500 font-medium hover:text-orange-600 transition-colors">
                 Все новости
                 <ChevronRight className="h-5 w-5 ml-1" />
               </Link>

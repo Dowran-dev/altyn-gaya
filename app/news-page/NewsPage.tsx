@@ -186,12 +186,51 @@ const NewsPageContent = () => {
   };
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
+    // Check if the date string format is valid
+    // Try different formats based on your data
+    
+    try {
+      // First, check if the date is in a standard format
+      const date = new Date(dateString);
+      
+      // Check if the date is valid
+      if (isNaN(date.getTime())) {
+        // If the standard parsing fails, try to parse manually
+        // This assumes your date might be in format 'DD.MM.YYYY' or similar
+        const parts = dateString.split(/[./-]/);
+        
+        // Check if we have the expected parts (day, month, year)
+        if (parts.length === 3) {
+          // Try to rearrange to YYYY-MM-DD for proper parsing
+          // This depends on your actual date format
+          const year = parts[2].length === 4 ? parts[2] : `20${parts[2]}`;
+          const month = parts[1].padStart(2, '0');
+          const day = parts[0].padStart(2, '0');
+          
+          const reformattedDate = new Date(`${year}-${month}-${day}`);
+          
+          if (!isNaN(reformattedDate.getTime())) {
+            return reformattedDate.toLocaleDateString('ru-RU', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            });
+          }
+        }
+        
+        // If all parsing attempts fail, return a placeholder
+        return 'Дата не указана';
+      }
+      
+      return date.toLocaleDateString('ru-RU', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+    } catch (error) {
+      console.error('Error formatting date:', error);
+      return 'Дата не указана';
+    }
   };
 
   const renderNewsImage = (newsItem: News) => {
