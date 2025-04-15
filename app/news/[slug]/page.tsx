@@ -6,9 +6,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
-  Calendar, Clock, ArrowLeft, Share2, Bookmark, 
+  Calendar, Clock, ArrowLeft, Share2, 
   Facebook, Twitter, Linkedin, Mail, ChevronRight,
-  Heart, Eye, MessageCircle, Copy, BookmarkPlus, 
+  Eye, MessageCircle, Copy, 
   ArrowUpRight, ChevronDown, AlertTriangle
 } from 'lucide-react';
 

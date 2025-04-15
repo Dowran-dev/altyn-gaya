@@ -3450,9 +3450,34 @@
 // }
 
 
+// // app/api/products/route.ts
+// import { NextResponse } from 'next/server';
+// import prisma from '@/lib/prisma'; // Adjust the import path based on your structure
+
+// export async function GET() {
+//   try {
+//     const categories = await prisma.productCategory.findMany({
+//       include: {
+//         products: {
+//           include: {
+//             sizes: true,
+//             reviewsList: true
+//           }
+//         }
+//       }
+//     });
+
+//     return NextResponse.json(categories);
+//   } catch (error) {
+//     console.error('Failed to fetch products:', error);
+//     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+//   }
+// }
+
+
 // app/api/products/route.ts
 import { NextResponse } from 'next/server';
-import prisma from '@/lib/prisma'; // Adjust the import path based on your structure
+import prisma from '@/lib/prisma';
 
 export async function GET() {
   try {
@@ -3468,8 +3493,17 @@ export async function GET() {
     });
 
     return NextResponse.json(categories);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Failed to fetch products:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    
+    // Convert unknown error to a typed error object
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    const errorStack = error instanceof Error && process.env.NODE_ENV === 'development' ? error.stack : undefined;
+    
+    return NextResponse.json({ 
+      error: 'Internal Server Error', 
+      message: errorMessage,
+      stack: errorStack
+    }, { status: 500 });
   }
 }
