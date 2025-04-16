@@ -10,6 +10,7 @@
         "pages:build": "npx @cloudflare/next-on-pages"
     },
     "prisma": {
+        "generate": "prisma generate",
         "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
     },
     "dependencies": {
@@ -73,19 +74,17 @@
                 }
             ]
         },
-        "overrides": [
-            {
-                "files": [
-                    "lib/generated/prisma/**/*",
-                    "node_modules/@prisma/client/**/*"
-                ],
-                "rules": {
-                    "@typescript-eslint/no-unused-vars": "off",
-                    "@typescript-eslint/no-unused-expressions": "off",
-                    "@typescript-eslint/no-require-imports": "off",
-                    "@typescript-eslint/no-explicit-any": "off"
-                }
+        "overrides": [{
+            "files": [
+                "lib/generated/prisma/**/*",
+                "node_modules/@prisma/client/**/*"
+            ],
+            "rules": {
+                "@typescript-eslint/no-unused-vars": "off",
+                "@typescript-eslint/no-unused-expressions": "off",
+                "@typescript-eslint/no-require-imports": "off",
+                "@typescript-eslint/no-explicit-any": "off"
             }
-        ]
+        }]
     }
 }
