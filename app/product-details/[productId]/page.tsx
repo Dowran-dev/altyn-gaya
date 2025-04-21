@@ -179,7 +179,7 @@
 //       <div className="container mx-auto max-w-7xl px-3 sm:px-4 py-4 sm:py-6 flex justify-center items-center h-64">
 //         <div className="animate-pulse flex flex-col items-center">
 //           <div className="h-8 w-32 bg-gray-200 rounded mb-4"></div>
-//           <div className="text-gray-500">Загрузка информации о продукте...</div>
+//           <div className="text-gray-500 dark:text-gray-400">Загрузка информации о продукте...</div>
 //         </div>
 //       </div>
 //     );
@@ -189,7 +189,7 @@
 //   if (error) {
 //     return (
 //       <div className="container mx-auto max-w-7xl px-3 sm:px-4 py-4 sm:py-6">
-//         <Link href="/shop" className="flex items-center text-gray-600 hover:text-blue-800 mb-3 sm:mb-4">
+//         <Link href="/shop" className="flex items-center text-gray-600 hover:text-blue-800 dark:text-blue-100 mb-3 sm:mb-4">
 //           <ArrowLeft className="h-4 w-4 mr-1" />
 //           <span className="text-xs sm:text-sm">Вернуться в магазин</span>
 //         </Link>
@@ -197,7 +197,7 @@
 //         <div className="flex flex-col items-center justify-center h-64">
 //           <h2 className="text-xl font-bold text-red-500 mb-2">Не удалось загрузить продукт</h2>
 //           <p className="text-gray-600 mb-4">{error}</p>
-//           <Link href="/shop" className="text-blue-800 hover:underline">
+//           <Link href="/shop" className="text-blue-800 dark:text-blue-100 hover:underline">
 //             Посмотреть другие продукты
 //           </Link>
 //         </div>
@@ -233,15 +233,15 @@
 //   return (
 //     <main className="container mx-auto max-w-7xl px-3 sm:px-4 py-4 sm:py-6">
 //       <div className="bg-white rounded-lg shadow-sm p-4 mb-4">
-//         <Link href="/shop" className="flex items-center text-gray-600 hover:text-blue-800 mb-3">
+//         <Link href="/shop" className="flex items-center text-gray-600 hover:text-blue-800 dark:text-blue-100 mb-3">
 //           <ArrowLeft className="h-4 w-4 mr-1" />
 //           <span className="text-xs sm:text-sm">Вернуться в магазин</span>
 //         </Link>
 //         <div className="py-1 mb-4">
-//           <div className="text-xs text-blue-800 font-light">
-//             <Link href="/" className="text-blue-800 hover:text-orange-500">Главная</Link> / 
-//             <Link href="/shop" className="text-blue-800 hover:text-orange-500 ml-1">Магазин</Link> / 
-//             <span className="text-gray-500 ml-1">{details.name}</span>
+//           <div className="text-xs text-blue-800 dark:text-blue-100 font-light">
+//             <Link href="/" className="text-blue-800 dark:text-blue-100 hover:text-orange-500">Главная</Link> / 
+//             <Link href="/shop" className="text-blue-800 dark:text-blue-100 hover:text-orange-500 ml-1">Магазин</Link> / 
+//             <span className="text-gray-500 dark:text-gray-400 ml-1">{details.name}</span>
 //           </div>
 //         </div>
 //       </div>
@@ -269,7 +269,7 @@
 //           <div className="md:w-1/2">
 //             <div className="mb-6">
 //               <div className="flex items-center gap-2 mb-2">
-//                 <div className="flex items-center text-gray-500 text-xs">
+//                 <div className="flex items-center text-gray-500 dark:text-gray-400 text-xs">
 //                   {renderRatingStars(details.rating)}
 //                   <span className="ml-2">{details.reviews} отзывов</span>
 //                 </div>
@@ -324,8 +324,8 @@
 //               onClick={() => setActiveTab('description')}
 //               className={`py-3 px-4 text-sm font-medium whitespace-nowrap border-b-2 transition-colors flex items-center ${
 //                 activeTab === 'description'
-//                   ? 'text-blue-800 border-blue-800'
-//                   : 'text-gray-500 border-transparent hover:text-blue-800 hover:border-blue-300'
+//                   ? 'text-blue-800 dark:text-blue-100 border-blue-800'
+//                   : 'text-gray-500 dark:text-gray-400 border-transparent hover:text-blue-800 dark:text-blue-100 hover:border-blue-300'
 //               }`}
 //             >
 //               <Info className="w-4 h-4 mr-2" />
@@ -335,8 +335,8 @@
 //               onClick={() => setActiveTab('instructions')}
 //               className={`py-3 px-4 text-sm font-medium whitespace-nowrap border-b-2 transition-colors flex items-center ${
 //                 activeTab === 'instructions'
-//                   ? 'text-blue-800 border-blue-800'
-//                   : 'text-gray-500 border-transparent hover:text-blue-800 hover:border-blue-300'
+//                   ? 'text-blue-800 dark:text-blue-100 border-blue-800'
+//                   : 'text-gray-500 dark:text-gray-400 border-transparent hover:text-blue-800 dark:text-blue-100 hover:border-blue-300'
 //               }`}
 //             >
 //               <List className="w-4 h-4 mr-2" />
@@ -346,8 +346,8 @@
 //               onClick={() => setActiveTab('reviews')}
 //               className={`py-3 px-4 text-sm font-medium whitespace-nowrap border-b-2 transition-colors flex items-center ${
 //                 activeTab === 'reviews'
-//                   ? 'text-blue-800 border-blue-800'
-//                   : 'text-gray-500 border-transparent hover:text-blue-800 hover:border-blue-300'
+//                   ? 'text-blue-800 dark:text-blue-100 border-blue-800'
+//                   : 'text-gray-500 dark:text-gray-400 border-transparent hover:text-blue-800 dark:text-blue-100 hover:border-blue-300'
 //               }`}
 //             >
 //               <MessageCircle className="w-4 h-4 mr-2" />
@@ -379,7 +379,7 @@
 //                 <div className="flex items-center">
 //                   <div className="mr-2 text-lg font-semibold text-blue-900">{details.rating}</div>
 //                   {renderRatingStars(details.rating)}
-//                   <span className="ml-2 text-xs text-gray-500">на основе {details.reviews} отзывов</span>
+//                   <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">на основе {details.reviews} отзывов</span>
 //                 </div>
 //                 <button className="text-xs text-white bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded-full transition-colors">
 //                   Написать отзыв
@@ -394,7 +394,7 @@
 //                         {renderRatingStars(review.rating)}
 //                         <span className="ml-2 font-medium text-xs">{review.author}</span>
 //                       </div>
-//                       <span className="text-xs text-gray-500">{review.date}</span>
+//                       <span className="text-xs text-gray-500 dark:text-gray-400">{review.date}</span>
 //                     </div>
 //                     <h4 className="text-sm font-medium text-blue-900 mb-1">{review.title}</h4>
 //                     <p className="text-xs text-gray-600">{review.content}</p>
@@ -403,7 +403,7 @@
 
 //                 {details.reviewsList.length > 2 && (
 //                   <div className="pt-4 text-center">
-//                     <button className="text-xs text-blue-800 hover:text-orange-500 font-medium border border-blue-800 rounded-full px-4 py-2 transition-colors hover:border-orange-500">
+//                     <button className="text-xs text-blue-800 dark:text-blue-100 hover:text-orange-500 font-medium border border-blue-800 rounded-full px-4 py-2 transition-colors hover:border-orange-500">
 //                       Посмотреть все отзывы
 //                     </button>
 //                   </div>
@@ -442,7 +442,7 @@
 //               <div className="p-4 flex flex-col justify-between">
 //                 <div className="mb-3">
 //                   <h3 className="text-sm font-bold text-blue-900 line-clamp-2">{relatedProduct.name}</h3>
-//                   <div className="flex items-center text-gray-500 text-xs mb-1">
+//                   <div className="flex items-center text-gray-500 dark:text-gray-400 text-xs mb-1">
 //                     {renderRatingStars(relatedProduct.rating)}
 //                     <span className="ml-1">({relatedProduct.reviews})</span>
 //                   </div>
@@ -692,7 +692,7 @@
 //             className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
 //             style={{ backgroundColor: `${brandInfo.color}10` }}
 //           ></div>
-//           <div className="absolute bottom-0 w-full text-center p-4 text-sm text-gray-500">
+//           <div className="absolute bottom-0 w-full text-center p-4 text-sm text-gray-500 dark:text-gray-400">
 //             Изображение недоступно
 //           </div>
 //         </div>
@@ -718,7 +718,7 @@
 //             className={`px-4 py-3 font-bold text-lg whitespace-nowrap ${
 //               activeTab === 'description' 
 //                 ? 'text-orange-500 border-b-2 border-orange-500' 
-//                 : 'text-blue-800 hover:text-orange-400'
+//                 : 'text-blue-800 dark:text-blue-100 hover:text-orange-400'
 //             }`}
 //             onClick={() => setActiveTab('description')}
 //           >
@@ -728,7 +728,7 @@
 //             className={`px-4 py-3 font-bold text-lg whitespace-nowrap ${
 //               activeTab === 'features' 
 //                 ? 'text-orange-500 border-b-2 border-orange-500' 
-//                 : 'text-blue-800 hover:text-orange-400'
+//                 : 'text-blue-800 dark:text-blue-100 hover:text-orange-400'
 //             }`}
 //             onClick={() => setActiveTab('features')}
 //           >
@@ -738,7 +738,7 @@
 //             className={`px-4 py-3 font-bold text-lg whitespace-nowrap ${
 //               activeTab === 'directions' 
 //                 ? 'text-orange-500 border-b-2 border-orange-500' 
-//                 : 'text-blue-800 hover:text-orange-400'
+//                 : 'text-blue-800 dark:text-blue-100 hover:text-orange-400'
 //             }`}
 //             onClick={() => setActiveTab('directions')}
 //           >
@@ -748,7 +748,7 @@
 //             className={`px-4 py-3 font-bold text-lg whitespace-nowrap ${
 //               activeTab === 'reviews' 
 //                 ? 'text-orange-500 border-b-2 border-orange-500' 
-//                 : 'text-blue-800 hover:text-orange-400'
+//                 : 'text-blue-800 dark:text-blue-100 hover:text-orange-400'
 //             }`}
 //             onClick={() => setActiveTab('reviews')}
 //           >
@@ -765,13 +765,13 @@
 //     switch (activeTab) {
 //       case 'description':
 //         return (
-//           <div className="text-blue-800">
+//           <div className="text-blue-800 dark:text-blue-100">
 //             <p className="mb-4">{product.details.longDescription}</p>
 //           </div>
 //         );
 //       case 'features':
 //         return (
-//           <div className="text-blue-800">
+//           <div className="text-blue-800 dark:text-blue-100">
 //             <ul className="list-disc pl-5 space-y-2">
 //               {product.details.features.map((feature, index) => (
 //                 <li key={index}>{feature}</li>
@@ -781,7 +781,7 @@
 //         );
 //       case 'directions':
 //         return (
-//           <div className="text-blue-800">
+//           <div className="text-blue-800 dark:text-blue-100">
 //             <ol className="list-decimal pl-5 space-y-2">
 //               {product.details.directions.map((direction, index) => (
 //                 <li key={index}>{direction}</li>
@@ -803,17 +803,17 @@
 //                   return (
 //                     <div key={review.id} className="border-b border-gray-200 pb-6">
 //                       <div className="flex items-center mb-2">
-//                         <div className="bg-blue-100 text-blue-800 rounded-full w-10 h-10 flex items-center justify-center mr-3 font-bold">
+//                         <div className="bg-blue-100 text-blue-800 dark:text-blue-100 rounded-full w-10 h-10 flex items-center justify-center mr-3 font-bold">
 //                           {review.author.substring(0, 1).toUpperCase()}
 //                         </div>
 //                         <div>
-//                           <div className="font-bold text-blue-800">{review.author}</div>
-//                           <div className="text-sm text-gray-500">{review.date}</div>
+//                           <div className="font-bold text-blue-800 dark:text-blue-100">{review.author}</div>
+//                           <div className="text-sm text-gray-500 dark:text-gray-400">{review.date}</div>
 //                         </div>
 //                       </div>
 //                       <div className="mb-2">{renderRatingStars(review.rating)}</div>
-//                       <h4 className="font-bold text-blue-800 mb-2">{review.title}</h4>
-//                       <p className="text-blue-800 mb-2">{reviewContent}</p>
+//                       <h4 className="font-bold text-blue-800 dark:text-blue-100 mb-2">{review.title}</h4>
+//                       <p className="text-blue-800 dark:text-blue-100 mb-2">{reviewContent}</p>
 //                       {review.content.length > 200 && (
 //                         <button 
 //                           className="text-orange-500 font-medium"
@@ -828,7 +828,7 @@
 //               </div>
 //             ) : (
 //               <div className="text-center py-8">
-//                 <p className="text-lg text-blue-800 mb-4">Нет отзывов для этого продукта</p>
+//                 <p className="text-lg text-blue-800 dark:text-blue-100 mb-4">Нет отзывов для этого продукта</p>
 //                 <button className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors">
 //                   Написать отзыв
 //                 </button>
@@ -852,14 +852,14 @@
 //             className="w-full flex justify-between items-center text-left" 
 //             onClick={() => toggleSection('description')}
 //           >
-//             <h3 className="font-bold text-lg text-blue-800">Описание</h3>
+//             <h3 className="font-bold text-lg text-blue-800 dark:text-blue-100">Описание</h3>
 //             {expandedSection === 'description' ? 
 //               <ChevronUp className="h-5 w-5 text-orange-500" /> : 
 //               <ChevronDown className="h-5 w-5 text-orange-500" />
 //             }
 //           </button>
 //           {expandedSection === 'description' && (
-//             <div className="mt-4 text-blue-800">
+//             <div className="mt-4 text-blue-800 dark:text-blue-100">
 //               <p>{product.details.longDescription}</p>
 //             </div>
 //           )}
@@ -870,14 +870,14 @@
 //             className="w-full flex justify-between items-center text-left" 
 //             onClick={() => toggleSection('features')}
 //           >
-//             <h3 className="font-bold text-lg text-blue-800">Особенности</h3>
+//             <h3 className="font-bold text-lg text-blue-800 dark:text-blue-100">Особенности</h3>
 //             {expandedSection === 'features' ? 
 //               <ChevronUp className="h-5 w-5 text-orange-500" /> : 
 //               <ChevronDown className="h-5 w-5 text-orange-500" />
 //             }
 //           </button>
 //           {expandedSection === 'features' && (
-//             <div className="mt-4 text-blue-800">
+//             <div className="mt-4 text-blue-800 dark:text-blue-100">
 //               <ul className="list-disc pl-5 space-y-2">
 //                 {product.details.features.map((feature, index) => (
 //                   <li key={index}>{feature}</li>
@@ -892,14 +892,14 @@
 //             className="w-full flex justify-between items-center text-left" 
 //             onClick={() => toggleSection('directions')}
 //           >
-//             <h3 className="font-bold text-lg text-blue-800">Инструкция</h3>
+//             <h3 className="font-bold text-lg text-blue-800 dark:text-blue-100">Инструкция</h3>
 //             {expandedSection === 'directions' ? 
 //               <ChevronUp className="h-5 w-5 text-orange-500" /> : 
 //               <ChevronDown className="h-5 w-5 text-orange-500" />
 //             }
 //           </button>
 //           {expandedSection === 'directions' && (
-//             <div className="mt-4 text-blue-800">
+//             <div className="mt-4 text-blue-800 dark:text-blue-100">
 //               <ol className="list-decimal pl-5 space-y-2">
 //                 {product.details.directions.map((direction, index) => (
 //                   <li key={index}>{direction}</li>
@@ -914,7 +914,7 @@
 //             className="w-full flex justify-between items-center text-left" 
 //             onClick={() => toggleSection('reviews')}
 //           >
-//             <h3 className="font-bold text-lg text-blue-800">
+//             <h3 className="font-bold text-lg text-blue-800 dark:text-blue-100">
 //               Отзывы ({product.details.reviews})
 //             </h3>
 //             {expandedSection === 'reviews' ? 
@@ -935,17 +935,17 @@
 //                     return (
 //                       <div key={review.id} className="border-b border-gray-200 pb-6 last:border-0">
 //                         <div className="flex items-center mb-2">
-//                           <div className="bg-blue-100 text-blue-800 rounded-full w-10 h-10 flex items-center justify-center mr-3 font-bold">
+//                           <div className="bg-blue-100 text-blue-800 dark:text-blue-100 rounded-full w-10 h-10 flex items-center justify-center mr-3 font-bold">
 //                             {review.author.substring(0, 1).toUpperCase()}
 //                           </div>
 //                           <div>
-//                             <div className="font-bold text-blue-800">{review.author}</div>
-//                             <div className="text-sm text-gray-500">{review.date}</div>
+//                             <div className="font-bold text-blue-800 dark:text-blue-100">{review.author}</div>
+//                             <div className="text-sm text-gray-500 dark:text-gray-400">{review.date}</div>
 //                           </div>
 //                         </div>
 //                         <div className="mb-2">{renderRatingStars(review.rating)}</div>
-//                         <h4 className="font-bold text-blue-800 mb-2">{review.title}</h4>
-//                         <p className="text-blue-800 mb-2">{reviewContent}</p>
+//                         <h4 className="font-bold text-blue-800 dark:text-blue-100 mb-2">{review.title}</h4>
+//                         <p className="text-blue-800 dark:text-blue-100 mb-2">{reviewContent}</p>
 //                         {review.content.length > 200 && (
 //                           <button 
 //                             className="text-orange-500 font-medium"
@@ -960,7 +960,7 @@
 //                 </div>
 //               ) : (
 //                 <div className="text-center py-4">
-//                   <p className="text-lg text-blue-800 mb-4">Нет отзывов для этого продукта</p>
+//                   <p className="text-lg text-blue-800 dark:text-blue-100 mb-4">Нет отзывов для этого продукта</p>
 //                   <button className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors">
 //                     Написать отзыв
 //                   </button>
@@ -976,7 +976,7 @@
 //   if (loading) {
 //     return (
 //       <div className="min-h-screen flex items-center justify-center">
-//         <div className="text-blue-800 text-xl">Загрузка продукта...</div>
+//         <div className="text-blue-800 dark:text-blue-100 text-xl">Загрузка продукта...</div>
 //       </div>
 //     );
 //   }
@@ -984,7 +984,7 @@
 //   if (!product) {
 //     return (
 //       <div className="min-h-screen flex flex-col items-center justify-center">
-//         <div className="text-blue-800 text-2xl mb-4">Продукт не найден</div>
+//         <div className="text-blue-800 dark:text-blue-100 text-2xl mb-4">Продукт не найден</div>
 //         <button 
 //           className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors"
 //           onClick={() => router.push('/shop-products')}
@@ -1007,12 +1007,12 @@
 //       <main className="container mx-auto max-w-7xl px-4 sm:px-6">
 //         {/* Breadcrumbs */}
 //         <div className="py-4">
-//           <div className="flex items-center text-xs text-blue-800 font-light">
+//           <div className="flex items-center text-xs text-blue-800 dark:text-blue-100 font-light">
 //             <Link href="/shop-products" className="hover:text-orange-500">
 //               Магазин продуктов
 //             </Link>
 //             <span className="mx-2">/</span>
-//             <span className="text-blue-800">{product.details.fullTitle}</span>
+//             <span className="text-blue-800 dark:text-blue-100">{product.details.fullTitle}</span>
 //           </div>
 //         </div>
 
@@ -1020,7 +1020,7 @@
 //         <div className="md:hidden mb-4">
 //           <button
 //             onClick={() => router.back()}
-//             className="flex items-center text-blue-800 font-medium hover:text-orange-500"
+//             className="flex items-center text-blue-800 dark:text-blue-100 font-medium hover:text-orange-500"
 //           >
 //             <ChevronLeft className="h-5 w-5 mr-1" />
 //             Назад
@@ -1053,34 +1053,34 @@
 //               {product.details.brandName} | {product.details.category}
 //             </div>
             
-//             <h1 className="text-2xl sm:text-3xl mb-2 text-blue-800">
+//             <h1 className="text-2xl sm:text-3xl mb-2 text-blue-800 dark:text-blue-100">
 //               <span>{product.details.name} </span>
 //               <span className="font-bold">{product.details.subtitle}</span>
 //             </h1>
             
 //             <div className="flex items-center mb-4">
 //               {renderRatingStars(product.details.rating, 'md')}
-//               <span className="text-blue-800 ml-2">({product.details.reviews} отзывов)</span>
+//               <span className="text-blue-800 dark:text-blue-100 ml-2">({product.details.reviews} отзывов)</span>
 //             </div>
             
-//             <p className="text-lg text-blue-800 mb-6">
+//             <p className="text-lg text-blue-800 dark:text-blue-100 mb-6">
 //               {product.details.description}
 //             </p>
             
 //             {/* Sizes Section */}
 //             <div className="mb-6">
-//               <h3 className="font-bold text-blue-800 text-lg mb-3">Доступные размеры:</h3>
+//               <h3 className="font-bold text-blue-800 dark:text-blue-100 text-lg mb-3">Доступные размеры:</h3>
 //               <div className="flex flex-wrap gap-2">
 //                 {product.details.sizes && product.details.sizes.length > 0 ? (
 //                   product.details.sizes.map(size => (
 //                     <div key={size.id} className="border border-gray-200 rounded-lg p-4 flex-grow max-w-[150px]">
-//                       <div className="font-bold text-blue-800 mb-1">{size.name}</div>
-//                       <div className="text-sm text-gray-500 mb-1">{size.quantity}</div>
-//                       <div className="text-sm font-bold text-blue-800">{size.price}</div>
+//                       <div className="font-bold text-blue-800 dark:text-blue-100 mb-1">{size.name}</div>
+//                       <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">{size.quantity}</div>
+//                       <div className="text-sm font-bold text-blue-800 dark:text-blue-100">{size.price}</div>
 //                     </div>
 //                   ))
 //                 ) : (
-//                   <span className="bg-blue-50 text-blue-800 px-4 py-2 rounded-lg">
+//                   <span className="bg-blue-50 text-blue-800 dark:text-blue-100 px-4 py-2 rounded-lg">
 //                     Нет доступных размеров
 //                   </span>
 //                 )}
@@ -1093,7 +1093,7 @@
 //             </button>
             
 //             {/* Share Button */}
-//             <button className="flex items-center text-blue-800 hover:text-orange-500 font-medium">
+//             <button className="flex items-center text-blue-800 dark:text-blue-100 hover:text-orange-500 font-medium">
 //               <Share2 className="h-5 w-5 mr-2" />
 //               Поделиться
 //             </button>
@@ -1115,9 +1115,9 @@
 
 //         {/* Related Products Section Placeholder */}
 //         <div className="mb-16">
-//           <h2 className="text-2xl font-bold text-blue-800 mb-6">Похожие продукты</h2>
+//           <h2 className="text-2xl font-bold text-blue-800 dark:text-blue-100 mb-6">Похожие продукты</h2>
 //           <div className="text-center py-10 bg-gray-50 rounded">
-//             <p className="text-lg text-blue-800">Похожие продукты будут здесь</p>
+//             <p className="text-lg text-blue-800 dark:text-blue-100">Похожие продукты будут здесь</p>
 //           </div>
 //         </div>
 //       </main>
@@ -1271,7 +1271,7 @@
 //             className="h-5 w-5" 
 //           />
 //         ))}
-//         <span className="text-blue-800 ml-2 text-sm font-normal">({rating})</span>
+//         <span className="text-blue-800 dark:text-blue-100 ml-2 text-sm font-normal">({rating})</span>
 //       </div>
 //     );
 //   };
@@ -1296,7 +1296,7 @@
 //             className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
 //             style={{ backgroundColor: `${brandInfo.color}10` }}
 //           ></div>
-//           <div className="absolute bottom-0 w-full text-center p-4 text-sm text-gray-500">
+//           <div className="absolute bottom-0 w-full text-center p-4 text-sm text-gray-500 dark:text-gray-400">
 //             Изображение недоступно
 //           </div>
 //         </div>
@@ -1317,7 +1317,7 @@
 //   if (loading) {
 //     return (
 //       <div className="min-h-screen flex items-center justify-center">
-//         <div className="text-blue-800 text-xl">Загрузка продукта...</div>
+//         <div className="text-blue-800 dark:text-blue-100 text-xl">Загрузка продукта...</div>
 //       </div>
 //     );
 //   }
@@ -1325,7 +1325,7 @@
 //   if (!product) {
 //     return (
 //       <div className="min-h-screen flex items-center justify-center">
-//         <div className="text-blue-800 text-xl">Продукт не найден</div>
+//         <div className="text-blue-800 dark:text-blue-100 text-xl">Продукт не найден</div>
 //       </div>
 //     );
 //   }
@@ -1341,7 +1341,7 @@
 
 //       <main className="container mx-auto max-w-7xl px-4 sm:px-6 py-6">
 //         {/* Breadcrumb */}
-//         <div className="flex items-center text-sm text-blue-800 mb-6">
+//         <div className="flex items-center text-sm text-blue-800 dark:text-blue-100 mb-6">
 //           <Link href="/" className="hover:text-orange-500">Главная</Link>
 //           <span className="mx-2">/</span>
 //           <Link href="/shop" className="hover:text-orange-500">Магазин</Link>
@@ -1376,25 +1376,25 @@
 //           {/* Product Info */}
 //           <div className="w-full md:w-1/2">
 //             <div className="text-xs text-blue-600 mb-2">{product.brandName} | {product.category}</div>
-//             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 mb-4">
+//             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 dark:text-blue-100 mb-4">
 //               {product.name} {product.subtitle}
 //             </h1>
             
 //             {/* Rating */}
 //             <div className="flex items-center mb-4">
 //               {renderRatingStars(product.rating)}
-//               <span className="text-blue-800 ml-2">({product.reviews} отзывов)</span>
+//               <span className="text-blue-800 dark:text-blue-100 ml-2">({product.reviews} отзывов)</span>
 //             </div>
 
 //             {/* Description */}
-//             <p className="text-blue-800 mb-6 text-lg" style={{ fontFamily: '"Kamber Medium", sans-serif' }}>
+//             <p className="text-blue-800 dark:text-blue-100 mb-6 text-lg" style={{ fontFamily: '"Kamber Medium", sans-serif' }}>
 //               {product.longDescription}
 //             </p>
 
 //             {/* Features */}
 //             <div className="mb-6">
-//               <h3 className="font-bold text-blue-800 mb-3 text-lg">Особенности:</h3>
-//               <ul className="list-disc pl-5 text-blue-800">
+//               <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">Особенности:</h3>
+//               <ul className="list-disc pl-5 text-blue-800 dark:text-blue-100">
 //                 {product.features.map((feature, index) => (
 //                   <li key={index} className="mb-2">{feature}</li>
 //                 ))}
@@ -1403,12 +1403,12 @@
 
 //             {/* Sizes */}
 //             <div className="mb-6">
-//               <h3 className="font-bold text-blue-800 mb-3 text-lg">Доступные размеры:</h3>
+//               <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">Доступные размеры:</h3>
 //               <div className="flex flex-wrap gap-3">
 //                 {product.sizes.map(size => (
 //                   <div 
 //                     key={size.id} 
-//                     className="bg-blue-50 text-blue-800 px-4 py-2 rounded-full text-sm flex items-center"
+//                     className="bg-blue-50 text-blue-800 dark:text-blue-100 px-4 py-2 rounded-full text-sm flex items-center"
 //                   >
 //                     <span>{size.name}</span>
 //                     <span className="ml-2 font-bold">{size.price}</span>
@@ -1420,8 +1420,8 @@
 //             {/* Directions */}
 //             {product.directions.length > 0 && (
 //               <div className="mb-6">
-//                 <h3 className="font-bold text-blue-800 mb-3 text-lg">Инструкции:</h3>
-//                 <ul className="list-decimal pl-5 text-blue-800">
+//                 <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">Инструкции:</h3>
+//                 <ul className="list-decimal pl-5 text-blue-800 dark:text-blue-100">
 //                   {product.directions.map((direction, index) => (
 //                     <li key={index} className="mb-2">{direction}</li>
 //                   ))}
@@ -1439,7 +1439,7 @@
 //         {/* Reviews */}
 //         {product.reviewsList.length > 0 && (
 //           <div className="mt-12">
-//             <h2 className="text-2xl font-bold text-blue-800 mb-6" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
+//             <h2 className="text-2xl font-bold text-blue-800 dark:text-blue-100 mb-6" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
 //               Отзывы ({product.reviewsList.length})
 //             </h2>
 //             <div className="space-y-6">
@@ -1447,11 +1447,11 @@
 //                 <div key={review.id} className="border-b border-gray-200 pb-6">
 //                   <div className="flex items-center mb-2">
 //                     {renderRatingStars(review.rating)}
-//                     <span className="text-blue-800 ml-2 font-bold">{review.author}</span>
+//                     <span className="text-blue-800 dark:text-blue-100 ml-2 font-bold">{review.author}</span>
 //                   </div>
-//                   <h4 className="text-blue-800 font-semibold mb-1">{review.title}</h4>
-//                   <p className="text-blue-800">{review.content}</p>
-//                   <span className="text-xs text-gray-500">{review.date}</span>
+//                   <h4 className="text-blue-800 dark:text-blue-100 font-semibold mb-1">{review.title}</h4>
+//                   <p className="text-blue-800 dark:text-blue-100">{review.content}</p>
+//                   <span className="text-xs text-gray-500 dark:text-gray-400">{review.date}</span>
 //                 </div>
 //               ))}
 //             </div>
@@ -1585,7 +1585,7 @@ const ProductDetailsPage: React.FC = () => {
             className="h-5 w-5" 
           />
         ))}
-        <span className="text-blue-800 ml-2 text-sm font-normal">({rating})</span>
+        <span className="text-blue-800 dark:text-blue-100 ml-2 text-sm font-normal">({rating})</span>
       </div>
     );
   };
@@ -1610,7 +1610,7 @@ const ProductDetailsPage: React.FC = () => {
             className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
             style={{ backgroundColor: `${brandInfo.color}10` }}
           ></div>
-          <div className="absolute bottom-0 w-full text-center p-4 text-sm text-gray-500">
+          <div className="absolute bottom-0 w-full text-center p-4 text-sm text-gray-500 dark:text-gray-400">
             Изображение недоступно
           </div>
         </div>
@@ -1631,7 +1631,7 @@ const ProductDetailsPage: React.FC = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-blue-800 text-xl">Загрузка продукта...</div>
+        <div className="text-blue-800 dark:text-blue-100 text-xl">Загрузка продукта...</div>
       </div>
     );
   }
@@ -1639,7 +1639,7 @@ const ProductDetailsPage: React.FC = () => {
   if (!product) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-blue-800 text-xl">Продукт не найден</div>
+        <div className="text-blue-800 dark:text-blue-100 text-xl">Продукт не найден</div>
       </div>
     );
   }
@@ -1735,7 +1735,7 @@ const ProductDetailsPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
       <Head>
         <title>{product.fullTitle}</title>
         <meta name="description" content={product.description} />
@@ -1744,7 +1744,7 @@ const ProductDetailsPage: React.FC = () => {
       </Head>
 
       <main className="container mx-auto max-w-7xl px-4 sm:px-6 py-6">
-        <div className="flex items-center text-sm text-blue-800 mb-6">
+        <div className="flex items-center text-sm text-blue-800 dark:text-blue-100 mb-6">
           <Link href="/" className="hover:text-orange-500">Главная</Link>
           <span className="mx-2">/</span>
           <Link href="/shop" className="hover:text-orange-500">Магазин</Link>
@@ -1767,38 +1767,38 @@ const ProductDetailsPage: React.FC = () => {
 
           <div className="w-full md:w-1/2">
             <div className="text-xs text-blue-600 mb-2">{product.brandName} | {product.category}</div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 dark:text-blue-100 mb-4">
               {product.name} {product.subtitle}
             </h1>
             <div className="flex items-center mb-4">
               {renderRatingStars(product.rating)}
-              <span className="text-blue-800 ml-2">({product.reviews} отзывов)</span>
+              <span className="text-blue-800 dark:text-blue-100 ml-2">({product.reviews} отзывов)</span>
             </div>
-            <p className="text-blue-800 mb-6 text-lg" style={{ fontFamily: '"Kamber Medium", sans-serif' }}>
+            <p className="text-blue-800 dark:text-blue-100 mb-6 text-lg" style={{ fontFamily: '"Kamber Medium", sans-serif' }}>
               {product.longDescription}
             </p>
             <div className="mb-6">
-              <h3 className="font-bold text-blue-800 mb-3 text-lg">Особенности:</h3>
-              <ul className="list-disc pl-5 text-blue-800">
+              <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">Особенности:</h3>
+              <ul className="list-disc pl-5 text-blue-800 dark:text-blue-100">
                 {product.features.map((feature, index) => (
                   <li key={index} className="mb-2">{feature}</li>
                 ))}
               </ul>
             </div>
             <div className="mb-6">
-              <h3 className="font-bold text-blue-800 mb-3 text-lg">Доступные размеры:</h3>
+              <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">Доступные размеры:</h3>
               <div className="flex flex-wrap gap-3">
                 {/* {product.sizes.map(size => (
                   <div 
                     key={size.id} 
-                    className="bg-blue-50 text-blue-800 px-4 py-2 rounded-full text-sm flex items-center"
+                    className="bg-blue-50 text-blue-800 dark:text-blue-100 px-4 py-2 rounded-full text-sm flex items-center"
                   >
                     <span>{size.name}</span>
                     <span className="ml-2 font-bold">{size.price}</span>
                   </div>
                 ))} */}
                 <div 
-                    className="bg-blue-50 text-blue-800 px-4 py-2 rounded-full text-sm flex items-center"
+                    className="bg-blue-50 text-blue-800 dark:text-blue-100 px-4 py-2 rounded-full text-sm flex items-center"
                   >
                     <span>-</span>
                   </div>
@@ -1806,8 +1806,8 @@ const ProductDetailsPage: React.FC = () => {
             </div>
             {product.directions.length > 0 && (
               <div className="mb-6">
-                <h3 className="font-bold text-blue-800 mb-3 text-lg">Инструкции:</h3>
-                <ul className="list-decimal pl-5 text-blue-800">
+                <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">Инструкции:</h3>
+                <ul className="list-decimal pl-5 text-blue-800 dark:text-blue-100">
                   {product.directions.map((direction, index) => (
                     <li key={index} className="mb-2">{direction}</li>
                   ))}
@@ -1819,19 +1819,19 @@ const ProductDetailsPage: React.FC = () => {
 
         {product.reviewsList.length > 0 && (
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-blue-800 mb-6" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
+            <h2 className="text-2xl font-bold text-blue-800 dark:text-blue-100 mb-6" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
               Отзывы ({product.reviewsList.length})
             </h2>
             <div className="space-y-6">
               {product.reviewsList.map(review => (
-                <div key={review.id} className="border-b border-gray-200 pb-6">
+                <div key={review.id} className="border-b border-gray-200 dark:border-gray-700 pb-6">
                   <div className="flex items-center mb-2">
                     {renderRatingStars(review.rating)}
-                    <span className="text-blue-800 ml-2 font-bold">{review.author}</span>
+                    <span className="text-blue-800 dark:text-blue-100 ml-2 font-bold">{review.author}</span>
                   </div>
-                  <h4 className="text-blue-800 font-semibold mb-1">{review.title}</h4>
-                  <p className="text-blue-800">{review.content}</p>
-                  <span className="text-xs text-gray-500">{review.date}</span>
+                  <h4 className="text-blue-800 dark:text-blue-100 font-semibold mb-1">{review.title}</h4>
+                  <p className="text-blue-800 dark:text-blue-100">{review.content}</p>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">{review.date}</span>
                 </div>
               ))}
             </div>

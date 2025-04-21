@@ -833,7 +833,7 @@ export default function Header() {
                     ref={searchInputRef}
                     type="search"
                     placeholder="Поиск продукции..."
-                    className="w-40 lg:w-64 pl-8 rounded-full border-2 border-gray-200 dark:border-gray-700 focus:border-[#fb4b06] dark:focus:border-[#fb4b06]"
+                    className="w-40 lg:w-64 pl-8 rounded-full border-2 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 focus:border-[#fb4b06] dark:focus:border-[#fb4b06]"
                     value={searchQuery}
                     onChange={handleSearchInputChange}
                     onFocus={() => searchQuery.trim() !== "" && setShowSearchResults(true)}
@@ -932,7 +932,7 @@ export default function Header() {
                 ref={searchInputRef}
                 type="search"
                 placeholder="Поиск продукции..."
-                className="pl-9 pr-9 py-2 rounded-full border-2 border-gray-200 dark:border-gray-700 focus:border-[#fb4b06] dark:focus:border-[#fb4b06]"
+                className="pl-9 pr-9 py-2 rounded-full border-2 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 focus:border-[#fb4b06] dark:focus:border-[#fb4b06]"
                 value={searchQuery}
                 onChange={handleSearchInputChange}
               />

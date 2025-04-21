@@ -397,11 +397,11 @@ const ProcessSection: React.FC = () => {
   };
 
   return (
-    <section className="py-12 md:py-24 bg-white relative overflow-hidden">
-      {/* Background decoration */}
+    <section className="py-12 md:py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
+      {/* Background decoration - updated for dark mode */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-radial from-[#fb4b06]/5 to-transparent rounded-full"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-[#1E22AA]/5 to-transparent rounded-full"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-radial from-[#fb4b06]/5 dark:from-[#fb4b06]/10 to-transparent rounded-full"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-[#1E22AA]/5 dark:from-[#1E22AA]/10 to-transparent rounded-full"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -412,20 +412,20 @@ const ProcessSection: React.FC = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-block mb-4 bg-[#fb4b06]/10 rounded-full px-6 py-2">
-            <span className="text-[#fb4b06] text-sm font-medium uppercase tracking-wider">Как мы работаем</span>
+          <div className="inline-block mb-4 bg-[#fb4b06]/10 dark:bg-[#fb4b06]/20 rounded-full px-6 py-2">
+            <span className="text-[#fb4b06] dark:text-[#ff6a2c] text-sm font-medium uppercase tracking-wider">Как мы работаем</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#1E22AA] mb-6 leading-tight" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
-            ПРОИЗВОДСТВЕННЫЙ <span className="text-[#fb4b06]">ПРОЦЕСС</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-[#1E22AA] dark:text-blue-400 mb-6 leading-tight" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
+            ПРОИЗВОДСТВЕННЫЙ <span className="text-[#fb4b06] dark:text-orange-500">ПРОЦЕСС</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
             От закупки сырья до доставки готовой продукции - каждый этап производства контролируется нашими экспертами для обеспечения наивысшего качества.
           </p>
         </motion.div>
 
         <div className="relative">
-          {/* Process timeline - hidden on mobile */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 transform -translate-x-1/2"></div>
+          {/* Process timeline - hidden on mobile, updated for dark mode */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 dark:bg-gray-700 transform -translate-x-1/2"></div>
 
           <motion.div 
             className="space-y-16 md:space-y-24 relative"
@@ -440,34 +440,34 @@ const ProcessSection: React.FC = () => {
                   variants={itemVariants}
                   className="w-full"
                 >
-                  <div className="hidden md:flex absolute left-1/2 top-0 w-12 h-12 bg-[#fb4b06] rounded-full transform -translate-x-1/2 items-center justify-center text-xl font-bold text-white shadow-lg z-20">
+                  <div className="hidden md:flex absolute left-1/2 top-0 w-12 h-12 bg-[#fb4b06] dark:bg-orange-500 rounded-full transform -translate-x-1/2 items-center justify-center text-xl font-bold text-white shadow-lg z-20">
                     {step.id}
                   </div>
 
                   <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-16 items-center">
                     <div className={`w-full ${index % 2 === 0 ? 'md:text-right md:pr-16 order-2 md:order-1' : 'md:order-2 md:pl-16 order-2'}`}>
                       <div className="flex items-center md:hidden mb-4">
-                        <div className="w-10 h-10 bg-[#fb4b06] rounded-full flex items-center justify-center text-lg font-bold text-white shadow-lg mr-3">
+                        <div className="w-10 h-10 bg-[#fb4b06] dark:bg-orange-500 rounded-full flex items-center justify-center text-lg font-bold text-white shadow-lg mr-3">
                           {step.id}
                         </div>
-                        <h3 className="text-xl md:text-2xl font-bold text-[#1E22AA]">{step.title}</h3>
+                        <h3 className="text-xl md:text-2xl font-bold text-[#1E22AA] dark:text-blue-400">{step.title}</h3>
                       </div>
-                      <h3 className="hidden md:block text-2xl font-bold text-[#1E22AA] mb-4">{step.title}</h3>
-                      <p className="text-gray-600 leading-relaxed mb-6">
+                      <h3 className="hidden md:block text-2xl font-bold text-[#1E22AA] dark:text-blue-400 mb-4">{step.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
                         {step.description}
                       </p>
-                      <ul className="space-y-2 text-gray-600">
+                      <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                         {step.features.map((feature, featIndex) => (
                           <li key={featIndex} className={`flex items-center ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
                             {index % 2 !== 0 && (
-                              <div className="w-6 h-6 rounded-full bg-[#fb4b06]/10 flex items-center justify-center mr-2">
-                                <Check className="w-3 h-3 text-[#fb4b06]" />
+                              <div className="w-6 h-6 rounded-full bg-[#fb4b06]/10 dark:bg-[#fb4b06]/20 flex items-center justify-center mr-2">
+                                <Check className="w-3 h-3 text-[#fb4b06] dark:text-orange-500" />
                               </div>
                             )}
                             <span>{feature}</span>
                             {index % 2 === 0 && (
-                              <div className="w-6 h-6 rounded-full bg-[#fb4b06]/10 flex items-center justify-center ml-2">
-                                <Check className="w-3 h-3 text-[#fb4b06]" />
+                              <div className="w-6 h-6 rounded-full bg-[#fb4b06]/10 dark:bg-[#fb4b06]/20 flex items-center justify-center ml-2">
+                                <Check className="w-3 h-3 text-[#fb4b06] dark:text-orange-500" />
                               </div>
                             )}
                           </li>

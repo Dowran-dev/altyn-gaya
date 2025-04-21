@@ -311,6 +311,7 @@ const AdvancedWaveSeparator: React.FC<AdvancedWaveSeparatorProps> = ({
         overflow: 'hidden',
         transform: 'rotate(180deg)'
       }}
+      className='dark:bg-gray-900'
     >
       <canvas
         ref={canvasRef}

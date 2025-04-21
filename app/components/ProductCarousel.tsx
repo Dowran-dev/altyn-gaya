@@ -34,7 +34,7 @@ const FadeInView: React.FC<{
   return (
     <div
       ref={domRef}
-      className={`${className} transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+      className={`${className} transition-all duration-1000 ease-out dark:text-gray-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -89,7 +89,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
 
   return (
     <div className={`absolute inset-0 transition-all duration-700 ease-out ${cardPosition}`}>
-      <div className="bg-white rounded-xl sm:rounded-3xl overflow-hidden shadow-lg sm:shadow-2xl mx-auto h-full border border-gray-100 hover:shadow-[0_20px_50px_rgba(30,34,170,0.1)] transition-shadow duration-500">
+      <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-3xl overflow-hidden shadow-lg sm:shadow-2xl mx-auto h-full border border-gray-100 dark:border-gray-700 hover:shadow-[0_20px_50px_rgba(30,34,170,0.1)] dark:hover:shadow-[0_20px_50px_rgba(30,34,170,0.2)] transition-shadow duration-500">
         {isMobile ? (
           // Mobile view with consistent alignment
           <div className="flex flex-col h-full">
@@ -121,11 +121,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
           
           {/* Product information with auto height */}
           <div className="p-4 flex flex-col flex-grow">
-            <h3 className="text-[#1E22AA] text-lg font-bold mb-2 line-clamp-1" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif' }}>
+            <h3 className="text-[#1E22AA] dark:text-blue-400 text-lg font-bold mb-2 line-clamp-1" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif' }}>
               {product.title}
             </h3>
             
-            <p className="text-gray-600 text-xs mb-3 line-clamp-2">
+            <p className="text-gray-600 dark:text-gray-300 text-xs mb-3 line-clamp-2">
               {product.description}
             </p>
             
@@ -136,7 +136,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
                   <div className="bg-[#fb4b06]/10 flex-shrink-0 rounded-full p-1 mr-2">
                     <Check className="text-[#fb4b06] w-3 h-3" />
                   </div>
-                  <span className="text-gray-700 text-xs">{product.features[0]}</span>
+                  <span className="text-gray-700 dark:text-gray-200 text-xs">{product.features[0]}</span>
                 </div>
               ) : (
                 // Show only one default feature to save space
@@ -202,13 +202,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
               </div>
             </div>
             
-            <div className="md:w-2/4 p-6 md:p-8 flex flex-col justify-between">
+            <div className="md:w-2/4 p-6 md:p-8 flex flex-col justify-between dark:bg-gray-800">
               <div>
-                <h3 className="text-[#1E22AA] text-2xl md:text-3xl font-bold mb-3 line-clamp-2 min-h-[4rem]" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif' }}>
+                <h3 className="text-[#1E22AA] dark:text-blue-400 text-2xl md:text-3xl font-bold mb-3 line-clamp-2 min-h-[4rem]" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif' }}>
                   {product.title}
                 </h3>
                 
-                <p className="text-gray-600 md:text-lg mb-6 line-clamp-3 min-h-[4.5rem]">
+                <p className="text-gray-600 dark:text-gray-300 md:text-lg mb-6 line-clamp-3 min-h-[4.5rem]">
                   {product.description}
                 </p>
               </div>
@@ -216,31 +216,31 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isActive }) => {
               <div className="space-y-4 mb-8">
                 {product.features && product.features.map((feature, index) => (
                   <div key={index} className="flex items-center">
-                    <div className="bg-[#fb4b06]/10 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
+                    <div className="bg-[#fb4b06]/10 dark:bg-[#fb4b06]/20 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
                       <Check className="text-[#fb4b06] w-4 h-4 group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <span className="text-gray-700 text-base">{feature}</span>
+                    <span className="text-gray-700 dark:text-gray-200 text-base">{feature}</span>
                   </div>
                 ))}
                 {!product.features && (
                   <>
                     <div className="flex items-center group">
-                      <div className="bg-[#fb4b06]/10 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
+                      <div className="bg-[#fb4b06]/10 dark:bg-[#fb4b06]/20 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
                         <Check className="text-[#fb4b06] w-4 h-4 group-hover:text-white transition-colors duration-300" />
                       </div>
-                      <span className="text-gray-700 text-base">Делает ткани мягкими и свежими</span>
+                      <span className="text-gray-700 dark:text-gray-200 text-base">Делает ткани мягкими и свежими</span>
                     </div>
                     <div className="flex items-center group">
-                      <div className="bg-[#fb4b06]/10 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
+                      <div className="bg-[#fb4b06]/10 dark:bg-[#fb4b06]/20 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
                         <Check className="text-[#fb4b06] w-4 h-4 group-hover:text-white transition-colors duration-300" />
                       </div>
-                      <span className="text-gray-700 text-base">Удаляет стойкие пятна</span>
+                      <span className="text-gray-700 dark:text-gray-200 text-base">Удаляет стойкие пятна</span>
                     </div>
                     <div className="flex items-center group">
-                      <div className="bg-[#fb4b06]/10 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
+                      <div className="bg-[#fb4b06]/10 dark:bg-[#fb4b06]/20 flex-shrink-0 rounded-full p-2 mr-3 group-hover:bg-[#fb4b06] transition-colors duration-300">
                         <Check className="text-[#fb4b06] w-4 h-4 group-hover:text-white transition-colors duration-300" />
                       </div>
-                      <span className="text-gray-700 text-base">Подходит для ручной и машинной стирки</span>
+                      <span className="text-gray-700 dark:text-gray-200 text-base">Подходит для ручной и машинной стирки</span>
                     </div>
                   </>
                 )}
@@ -656,7 +656,7 @@ const ProductCarousel: React.FC = () => {
   }, [nextProduct, prevProduct]);
 
   return (
-    <section className="relative py-8 sm:py-10 md:py-14 md:pb-20 lg:pb-32 bg-white overflow-hidden">
+    <section className="relative py-8 sm:py-10 md:py-14 md:pb-20 lg:pb-32 bg-white dark:bg-gray-900 overflow-hidden">
       
       {/* Enhanced background elements with animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -672,10 +672,10 @@ const ProductCarousel: React.FC = () => {
               <span className="text-[#fb4b06] text-xs md:text-sm font-medium uppercase tracking-wider">Наша продукция</span>
             </div>
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-2 sm:mb-4 md:mb-6 leading-tight" style={{ fontFamily: '"Avenir Next Heavy", system-ui, sans-serif' }}>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1E22AA] to-[#3538C8]">КАЧЕСТВО, СОЗДАННОЕ </span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#fb4b06] to-[#E85D24]">С ЗАБОТОЙ О ВАС</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1E22AA] to-[#3538C8] dark:from-blue-500 dark:to-blue-400">КАЧЕСТВО, СОЗДАННОЕ </span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#fb4b06] to-[#E85D24] dark:from-orange-500 dark:to-orange-400">С ЗАБОТОЙ О ВАС</span>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               Каждый продукт компании Altyn Gaya разработан с заботой о комфорте и здоровье наших клиентов. Мы используем только лучшие материалы и современные технологии производства.
             </p>
           </FadeInView>
@@ -701,8 +701,8 @@ const ProductCarousel: React.FC = () => {
                     onClick={() => setFilterBrand(company.name === filterBrand ? null : company.name)}
                     className={`flex flex-col items-center p-2 sm:p-4 md:p-6 rounded-lg sm:rounded-xl cursor-pointer transition-all duration-300 ${
                       company.name === filterBrand
-                        ? 'bg-white shadow-lg transform scale-105'
-                        : 'bg-white/50 hover:bg-white hover:shadow-md hover:scale-105'
+                        ? 'bg-white dark:bg-gray-800 shadow-lg transform scale-105'
+                        : 'bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md hover:scale-105'
                     }`}
                     style={{
                       width: isMobile ? '120px' : 'auto',
@@ -710,7 +710,7 @@ const ProductCarousel: React.FC = () => {
                     }}
                   >
                     <div
-                      className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full mb-2 sm:mb-3 flex items-center justify-center bg-white shadow-sm"
+                      className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full mb-2 sm:mb-3 flex items-center justify-center bg-white dark:bg-gray-700 shadow-sm"
                       style={{
                         border: `2px solid ${company.color}`,
                       }}
@@ -726,7 +726,7 @@ const ProductCarousel: React.FC = () => {
                     <h4 className="text-xs sm:text-sm md:text-base font-semibold text-center" style={{ color: company.color }}>
                       {company.name}
                     </h4>
-                    <span className="text-xs text-gray-500 mt-1">
+                    <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                       {company.categories.length} {company.categories.length === 1 ? 'категория' : company.categories.length < 5 ? 'категории' : 'категорий'}
                     </span>
                   </div>
@@ -759,18 +759,19 @@ const ProductCarousel: React.FC = () => {
               
                 {/* Navigation buttons */}
                 <div className="absolute z-30 w-full top-1/2 left-0 transform -translate-y-1/2 flex justify-between px-0 sm:px-4">
-                  <Button 
-                    onClick={prevProduct}
-                    className="bg-white/80 hover:bg-white text-gray-700 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transform hover:scale-110 transition-all"
-                  >
-                    <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
-                  </Button>
-                  <Button 
-                    onClick={nextProduct}
-                    className="bg-white/80 hover:bg-white text-gray-700 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transform hover:scale-110 transition-all"
-                  >
-                    <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
-                  </Button>
+                <Button 
+  onClick={prevProduct}
+  className="bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transform hover:scale-110 transition-all"
+>
+  <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
+</Button>
+
+<Button 
+  onClick={nextProduct}
+  className="bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transform hover:scale-110 transition-all"
+>
+  <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
+</Button>
                 </div>
               
                 {/* Pagination dots */}
@@ -791,13 +792,13 @@ const ProductCarousel: React.FC = () => {
                 </div>
               </>
             ) : (
-              <div className="flex items-center justify-center h-full bg-white/50 rounded-lg">
+              <div className="flex items-center justify-center h-full bg-white/50 dark:bg-gray-800/50 rounded-lg">
                 <div className="text-center p-6">
                   <div className="text-5xl mb-4">🔍</div>
-                  <h3 className="text-xl font-bold text-gray-700 mb-2">Продукты не найдены</h3>
-                  <p className="text-gray-500">Попробуйте изменить параметры фильтра</p>
+                  <h3 className="text-xl font-bold text-gray-700 dark:text-gray-200 mb-2">Продукты не найдены</h3>
+                  <p className="text-gray-500 dark:text-gray-400">Попробуйте изменить параметры фильтра</p>
                 </div>
-              </div>
+              </div>  
             )}
           </div>
         </FadeInView>

@@ -71,8 +71,8 @@ type ViewMode = 'grid' | 'list';
 
 // Loading component to display while suspense is active
 const ProductsLoading = () => (
-  <div className="min-h-screen flex items-center justify-center">
-    <div className="text-blue-800 text-xl">Загрузка продуктов...</div>
+  <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
+    <div className="text-blue-800 dark:text-blue-100 text-xl">Загрузка продуктов...</div>
   </div>
 );
 
@@ -180,7 +180,7 @@ const ShopProductsContent = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center p-8">
           <div className="text-red-500 text-xl mb-4">Ошибка загрузки данных</div>
-          <p className="text-blue-800 mb-4">{error}</p>
+          <p className="text-blue-800 dark:text-blue-100 mb-4">{error}</p>
           <button 
             onClick={() => window.location.reload()}
             className="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition-colors"
@@ -255,13 +255,13 @@ const ShopProductsContent = () => {
           className="h-4 w-4" 
         />
       ))}
-      <span className="text-blue-800 ml-2 text-xs font-normal">({rating})</span>
+      <span className="text-blue-800 dark:text-blue-100 ml-2 text-xs font-normal">({rating})</span>
     </div>
   );
 
   const renderBrandFilter = () => (
     <div className="mb-6">
-      <h3 className="font-bold text-blue-800 mb-3">Бренд</h3>
+      <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3">Бренд</h3>
       <div className="space-y-2 max-h-56 overflow-y-auto">
         {availableBrands.map(brand => (
           <div 
@@ -272,7 +272,7 @@ const ShopProductsContent = () => {
             <div className={`w-5 h-5 mr-2 border rounded flex items-center justify-center ${filterOptions.brands.includes(brand) ? 'bg-orange-500 border-orange-500' : 'border-gray-300'}`}>
               {filterOptions.brands.includes(brand) && <Check className="w-4 h-4 text-white" />}
             </div>
-            <span className="text-blue-800 text-sm">{brand}</span>
+            <span className="text-blue-800 dark:text-blue-100 text-sm">{brand}</span>
           </div>
         ))}
       </div>
@@ -281,7 +281,7 @@ const ShopProductsContent = () => {
 
   const renderCategoryFilter = () => (
     <div className="mb-6">
-      <h3 className="font-bold text-blue-800 mb-3">Категория</h3>
+      <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3">Категория</h3>
       <div className="space-y-2 max-h-96 overflow-y-auto pr-1">
         {availableCategories.map(category => (
           <div 
@@ -296,7 +296,7 @@ const ShopProductsContent = () => {
             }`}>
               {filterOptions.categories.includes(category) && <Check className="w-3 h-3 text-white" />}
             </div>
-            <span className="text-blue-800 text-sm">{category}</span>
+            <span className="text-blue-800 dark:text-blue-100 text-sm">{category}</span>
           </div>
         ))}
       </div>
@@ -306,9 +306,9 @@ const ShopProductsContent = () => {
   const renderFilterPanel = () => {
     if (!isFilterOpen) return null;
     return (
-      <div className="p-5 bg-white shadow rounded-lg border border-gray-100 md:sticky md:top-16">
+      <div className="p-5 bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 md:sticky md:top-16">
         <div className="flex justify-between items-center mb-5 pb-3 border-b border-gray-100">
-          <h2 className="text-xl font-bold text-blue-800">Фильтры</h2>
+          <h2 className="text-xl font-bold text-blue-800 dark:text-blue-100">Фильтры</h2>
           <div className="flex gap-2">
             <button 
               className="text-blue-600 hover:text-orange-500 text-sm font-medium transition-colors" 
@@ -334,11 +334,11 @@ const ShopProductsContent = () => {
     if (!isMobileFilterOpen) return null;
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-end">
-        <div className="bg-white w-4/5 max-w-sm h-full overflow-y-auto p-4">
+        <div className="bg-white dark:bg-gray-800 w-4/5 max-w-sm h-full overflow-y-auto p-4">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-bold text-blue-800">Фильтры</h2>
+            <h2 className="text-xl font-bold text-blue-800 dark:text-blue-100">Фильтры</h2>
             <X 
-              className="w-6 h-6 text-blue-800 cursor-pointer" 
+              className="w-6 h-6 text-blue-800 dark:text-blue-100 cursor-pointer" 
               onClick={() => setIsMobileFilterOpen(false)}
             />
           </div>
@@ -346,7 +346,7 @@ const ShopProductsContent = () => {
           {renderCategoryFilter()}
           <div className="mt-6 flex justify-between">
             <button 
-              className="px-4 py-2 bg-gray-200 text-blue-800 rounded-full"
+              className="px-4 py-2 bg-gray-200 text-blue-800 dark:text-blue-100 rounded-full"
               onClick={clearAllFilters}
             >
               Очистить все
@@ -372,7 +372,7 @@ const ShopProductsContent = () => {
           <Image src={brandInfo.logoUrl} alt={brandInfo.name} layout="fill" objectFit="contain" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" style={{ backgroundColor: `${brandInfo.color}10` }}></div>
-        <div className="absolute bottom-0 w-full text-center p-4 text-sm text-gray-500">Изображение недоступно</div>
+        <div className="absolute bottom-0 w-full text-center p-4 text-sm text-gray-500 dark:text-gray-400">Изображение недоступно</div>
       </div>
     ) : (
       <Image src={product.image} alt={product.fullTitle} layout="fill" objectFit="contain" onError={() => handleImageError(product.id)} />
@@ -441,7 +441,7 @@ const ShopProductsContent = () => {
 
   const renderGridItem = (product: Products) => (
     <Link href={`/product-details/${product.id}`} key={product.id}>
-      <div className="bg-white p-4 rounded shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+      <div className="bg-white dark:bg-gray-800 p-4 rounded shadow-sm hover:shadow-md transition-shadow h-full flex flex-col dark:bg-gray-800">
         <div className="relative h-48 sm:h-56 md:h-64 w-full mb-4 flex-shrink-0">
           {product.badge && <ProductBadge badgeText={product.badge} />}
           <div className="w-full h-full relative">
@@ -451,14 +451,14 @@ const ShopProductsContent = () => {
         <div className="text-left flex-grow flex flex-col">
           <div className="text-xs text-blue-600 mb-1">{product.brandName}</div>
           <h2 className="text-lg sm:text-xl mb-1">
-            <span className="text-blue-800">{product.name} </span>
-            <span className="text-blue-800 font-bold">{product.subtitle}</span>
+            <span className="text-blue-800 dark:text-blue-100">{product.name} </span>
+            <span className="text-blue-800 dark:text-blue-100 font-bold">{product.subtitle}</span>
           </h2>
           <div className="flex justify-start items-center mb-3">
             {renderRatingStars(product.rating)}
-            <span className="text-blue-800 ml-2 text-xs font-normal">({product.reviews})</span>
+            <span className="text-blue-800 dark:text-blue-100 ml-2 text-xs font-normal">({product.reviews})</span>
           </div>
-          <p className="text-blue-800 mb-4 text-sm line-clamp-2 flex-grow">{product.description}</p>
+          <p className="text-blue-800 dark:text-blue-100 mb-4 text-sm line-clamp-2 flex-grow">{product.description}</p>
           <button className="bg-orange-500 text-white px-4 sm:px-8 py-2 w-full sm:w-auto my-2 rounded-full hover:bg-orange-600 transition-colors font-bold text-lg">
             Подробнее о товаре
           </button>
@@ -468,7 +468,7 @@ const ShopProductsContent = () => {
   );
 
   const renderListItem = (product: Products) => (
-    <div key={product.id} className="border-b border-gray-200 pb-6 mb-6">
+    <div key={product.id} className="border-b border-gray-200 dark:border-gray-700 pb-6 mb-6">
       <div className="flex flex-col sm:flex-row">
         <div className="w-full sm:w-1/3 relative mb-4 sm:mb-0">
           <Link href={`/product-details/${product.id}`} className="block relative">
@@ -482,19 +482,19 @@ const ShopProductsContent = () => {
           <div className="text-xs text-blue-600 mb-1">{product.brandName} | {product.category}</div>
           <Link href={`/product-details/${product.id}`}>
             <h2 className="text-xl sm:text-2xl mb-1">
-              <span className="text-blue-800">{product.name} </span>
-              <span className="text-blue-800 font-bold">{product.subtitle}</span>
+              <span className="text-blue-800 dark:text-blue-100">{product.name} </span>
+              <span className="text-blue-800 dark:text-blue-100 font-bold">{product.subtitle}</span>
             </h2>
           </Link>
           <div className="flex items-center mb-3">
             {renderRatingStars(product.rating)}
-            <span className="text-blue-800 ml-2">({product.reviews})</span>
+            <span className="text-blue-800 dark:text-blue-100 ml-2">({product.reviews})</span>
           </div>
-          <p className="text-blue-800 mb-4 sm:mb-6" style={{ fontFamily: '"Kamber Medium", sans-serif' }}>{product.description}</p>
+          <p className="text-blue-800 dark:text-blue-100 mb-4 sm:mb-6" style={{ fontFamily: '"Kamber Medium", sans-serif' }}>{product.description}</p>
           <div className="mb-4">
-            <h3 className="font-bold text-blue-800 mb-2">Доступные размеры:</h3>
+            <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-2">Доступные размеры:</h3>
             <div className="flex flex-wrap gap-2">
-              <span className="bg-blue-50 text-blue-800 px-3 py-1 rounded-full text-sm">-</span>
+              <span className="bg-blue-50 text-blue-800 dark:text-blue-100 px-3 py-1 rounded-full text-sm">-</span>
             </div>
           </div>
           <button className="bg-orange-500 text-white w-full sm:w-auto px-4 sm:px-8 py-3 rounded-full hover:bg-orange-600 transition-colors font-bold text-lg">
@@ -512,11 +512,11 @@ const ShopProductsContent = () => {
           className="flex items-center cursor-pointer bg-blue-50 px-3 py-2 rounded-lg"
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          <span className="text-blue-800 text-sm mr-1">Сортировка:</span>
+          <span className="text-blue-800 dark:text-blue-100 text-sm mr-1">Сортировка:</span>
           <span className="text-blue-900 text-sm font-medium">{getSortOptionText(sortBy)}</span>
           {isDropdownOpen ? <ChevronUp className="text-orange-500 ml-1 h-4 w-4" /> : <ChevronDown className="text-orange-500 ml-1 h-4 w-4" />}
         </div>
-        <div className="flex border-2 border-gray-200">
+        <div className="flex border-2 border-gray-200 dark:border-gray-700">
           <button className={`p-2 ${viewMode === 'grid' ? 'bg-orange-100' : ''}`} onClick={() => setViewMode('grid')}>
             <Grid className={`h-5 w-5 ${viewMode === 'grid' ? 'text-orange-500' : 'text-gray-400'}`} />
           </button>
@@ -526,7 +526,7 @@ const ShopProductsContent = () => {
         </div>
       </div>
       {isDropdownOpen && (
-        <div className="absolute mt-1 bg-white border border-gray-200 shadow-lg z-10 w-full left-0 px-4">
+        <div className="absolute mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg z-10 w-full left-0 px-4">
           {(['popularity', 'rating', 'a-z', 'z-a'] as SortOption[]).map(option => (
             <div 
               key={option} 
@@ -545,7 +545,7 @@ const ShopProductsContent = () => {
   );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-800 dark:bg-gray-900 text-gray-800 dark:text-gray-100 dark:text-gray-100">
       <Head>
         <title>Каталог товаров</title>
         <meta name="description" content="Просмотрите нашу полную линейку продуктов" />
@@ -555,7 +555,7 @@ const ShopProductsContent = () => {
 
       <main className="container mx-auto max-w-7xl px-4 sm:px-6">
         <div className="py-4">
-          <div className="text-xs text-blue-800 font-light mt-4">Каталог товаров</div>
+          <div className="text-xs text-blue-800 dark:text-blue-100 font-light mt-4">Каталог товаров</div>
         </div>
 
         <div className="flex flex-col md:flex-row md:justify-between md:items-center my-2 md:my-6">
@@ -566,7 +566,7 @@ const ShopProductsContent = () => {
 
         <div className="md:hidden mb-4">
           <button 
-            className="w-full bg-blue-50 text-blue-800 py-3 rounded flex items-center justify-center font-bold"
+            className="w-full bg-blue-50 text-blue-800 dark:text-blue-100 py-3 rounded flex items-center justify-center font-bold"
             onClick={() => setIsMobileFilterOpen(true)}
           >
             <Filter className="mr-2 h-5 w-5" />
@@ -578,7 +578,7 @@ const ShopProductsContent = () => {
           <div className="hidden md:block w-64 flex-shrink-0">
             {!isFilterOpen && (
               <button
-                className="mb-4 bg-blue-50 text-blue-800 py-2 px-4 rounded flex items-center font-bold"
+                className="mb-4 bg-blue-50 text-blue-800 dark:text-blue-100 py-2 px-4 rounded flex items-center font-bold"
                 onClick={() => setIsFilterOpen(true)}
               >
                 <Filter className="mr-2 h-5 w-5" />
@@ -591,23 +591,23 @@ const ShopProductsContent = () => {
           {renderMobileFilterPanel()}
 
           <div className="flex-grow relative">
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 md:mb-6 border-b border-gray-200 pb-4">
-              <div className="text-blue-800 font-bold text-lg sm:text-xl mb-2 md:mb-0" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 md:mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
+              <div className="text-blue-800 dark:text-blue-100 font-bold text-lg sm:text-xl mb-2 md:mb-0" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
                 {sortedProducts.length} Продуктов
               </div>
               <div className="hidden md:flex items-center gap-6">
                 <div className="flex items-center gap-2 relative">
-                  <span className="text-blue-900 font-semibold" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>Сортировать по:</span>
+                  <span className="text-blue-900 dark:text-gray-100 font-semibold" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>Сортировать по:</span>
                   <div className="flex items-center cursor-pointer" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                    <span className="text-blue-900">{getSortOptionText(sortBy)}</span>
+                    <span className="text-blue-900 dark:text-gray-100">{getSortOptionText(sortBy)}</span>
                     {isDropdownOpen ? <ChevronUp className="text-orange-500 ml-1 h-4 w-4" /> : <ChevronDown className="text-orange-500 ml-1 h-4 w-4" />}
                   </div>
                   {isDropdownOpen && (
-                    <div className="absolute top-full right-0 mt-1 bg-white border border-gray-200 shadow-lg z-10 w-40">
+                    <div className="absolute top-full right-0 mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg z-10 w-40">
                       {(['popularity', 'rating', 'a-z', 'z-a'] as SortOption[]).map(option => (
                         <div 
                           key={option} 
-                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-blue-900"
+                          className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer text-blue-900 dark:text-gray-100"
                           onClick={() => {
                             setSortBy(option);
                             setIsDropdownOpen(false);
@@ -619,11 +619,11 @@ const ShopProductsContent = () => {
                     </div>
                   )}
                 </div>
-                <div className="flex border-2 border-gray-200">
-                  <button className={`p-2 ${viewMode === 'grid' ? 'bg-orange-100' : ''}`} onClick={() => setViewMode('grid')}>
+                <div className="flex border-2 border-gray-200 dark:border-gray-700">
+                  <button className={`p-2 ${viewMode === 'grid' ? 'bg-orange-100 dark:bg-gray-700' : ''}`} onClick={() => setViewMode('grid')}>
                     <Grid className={`h-5 w-5 ${viewMode === 'grid' ? 'text-orange-500' : 'text-gray-400'}`} />
                   </button>
-                  <button className={`p-2 ${viewMode === 'list' ? 'bg-orange-100' : ''}`} onClick={() => setViewMode('list')}>
+                  <button className={`p-2 ${viewMode === 'list' ? 'bg-orange-100 dark:bg-gray-700' : ''}`} onClick={() => setViewMode('list')}>
                     <List className={`h-5 w-5 ${viewMode === 'list' ? 'text-orange-500' : 'text-gray-400'}`} />
                   </button>
                 </div>
@@ -635,7 +635,7 @@ const ShopProductsContent = () => {
             {sortedProducts.length === 0 ? (
               <div className="text-center py-10 sm:py-16 bg-gray-50 rounded">
                 <div className="text-4xl sm:text-5xl text-gray-300 mb-4">¯\_(ツ)_/¯</div>
-                <p className="text-lg sm:text-xl text-blue-800 mb-2">Не найдено продуктов, соответствующих вашим фильтрам</p>
+                <p className="text-lg sm:text-xl text-blue-800 dark:text-blue-100 mb-2">Не найдено продуктов, соответствующих вашим фильтрам</p>
                 <button 
                   onClick={clearAllFilters}
                   className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors"

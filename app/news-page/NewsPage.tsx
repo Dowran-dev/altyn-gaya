@@ -31,7 +31,7 @@ type ViewMode = 'grid' | 'list';
 // Loading component to display while suspense is active
 const NewsLoading = () => (
   <div className="min-h-screen flex items-center justify-center">
-    <div className="text-blue-800 text-xl">Загрузка новостных статей...</div>
+    <div className="text-blue-800 dark:text-white text-xl">Загрузка новостных статей...</div>
   </div>
 );
 
@@ -256,7 +256,7 @@ const NewsPageContent = () => {
 
   const renderCategoryFilter = () => (
     <div className="mb-6">
-      <h3 className="font-bold text-blue-800 mb-3">Категории</h3>
+      <h3 className="font-bold text-blue-800 dark:text-white mb-3">Категории</h3>
       <div className="space-y-2 max-h-96 overflow-y-auto pr-1">
         {availableCategories.map(category => (
           <div 
@@ -271,7 +271,7 @@ const NewsPageContent = () => {
             }`}>
               {filterOptions.categories.includes(category) && <Check className="w-3 h-3 text-white" />}
             </div>
-            <span className="text-blue-800 text-sm">{category}</span>
+            <span className="text-blue-800 dark:text-white text-sm">{category}</span>
           </div>
         ))}
       </div>
@@ -280,7 +280,7 @@ const NewsPageContent = () => {
 
   const renderDateFilter = () => (
     <div className="mb-6">
-      <h3 className="font-bold text-blue-800 mb-3">Период времени</h3>
+      <h3 className="font-bold text-blue-800 dark:text-white mb-3">Период времени</h3>
       <div className="space-y-2">
         {['all', 'week', 'month', 'year'].map(range => (
           <div 
@@ -293,9 +293,9 @@ const NewsPageContent = () => {
                 ? 'bg-orange-500 border-orange-500' 
                 : 'border-gray-300'
             }`}>
-              {filterOptions.dateRange === range && <div className="w-3 h-3 rounded-full bg-white"></div>}
+              {filterOptions.dateRange === range && <div className="w-3 h-3 rounded-full bg-white dark:bg-gray-800"></div>}
             </div>
-            <span className="text-blue-800 text-sm">
+            <span className="text-blue-800 dark:text-white text-sm">
               {range === 'all' ? 'За всё время' : 
                range === 'week' ? 'За неделю' : 
                range === 'month' ? 'За месяц' : 'За год'}
@@ -308,14 +308,14 @@ const NewsPageContent = () => {
 
   const renderSearchFilter = () => (
     <div className="mb-6">
-      <h3 className="font-bold text-blue-800 mb-3">Поиск</h3>
+      <h3 className="font-bold text-blue-800 dark:text-white mb-3">Поиск</h3>
       <div className="relative">
         <input
           type="text"
           placeholder="Поиск новостей..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-full text-blue-800 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-full text-blue-800 dark:text-blue-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
         />
         <Search className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
       </div>
@@ -325,9 +325,9 @@ const NewsPageContent = () => {
   const renderFilterPanel = () => {
     if (!isFilterOpen) return null;
     return (
-      <div className="p-5 bg-white shadow rounded-lg border border-gray-100 md:sticky md:top-16">
+      <div className="p-5 bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 md:sticky md:top-16 dark:border-gray-700">
         <div className="flex justify-between items-center mb-5 pb-3 border-b border-gray-100">
-          <h2 className="text-xl font-bold text-blue-800">Фильтры</h2>
+          <h2 className="text-xl font-bold text-blue-800 dark:text-white">Фильтры</h2>
           <div className="flex gap-2">
             <button 
               className="text-blue-600 hover:text-orange-500 text-sm font-medium transition-colors" 
@@ -354,11 +354,11 @@ const NewsPageContent = () => {
     if (!isMobileFilterOpen) return null;
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-end">
-        <div className="bg-white w-4/5 max-w-sm h-full overflow-y-auto p-4">
+        <div className="bg-white dark:bg-gray-800 w-4/5 max-w-sm h-full overflow-y-auto p-4">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-bold text-blue-800">Фильтры</h2>
+            <h2 className="text-xl font-bold text-blue-800 dark:text-white">Фильтры</h2>
             <X 
-              className="w-6 h-6 text-blue-800 cursor-pointer" 
+              className="w-6 h-6 text-blue-800 dark:text-white cursor-pointer" 
               onClick={() => setIsMobileFilterOpen(false)}
             />
           </div>
@@ -367,7 +367,7 @@ const NewsPageContent = () => {
           {renderDateFilter()}
           <div className="mt-6 flex justify-between">
             <button 
-              className="px-4 py-2 bg-gray-200 text-blue-800 rounded-full"
+              className="px-4 py-2 bg-gray-200 text-blue-800 dark:text-white rounded-full"
               onClick={clearAllFilters}
             >
               Очистить все
@@ -386,7 +386,7 @@ const NewsPageContent = () => {
 
   const renderGridItem = (newsItem: News) => (
     <Link href={`/news/${newsItem.slug}`} key={newsItem.id}>
-      <div className="bg-white p-4 rounded shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+      <div className="bg-white dark:bg-gray-800 p-4 rounded shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
         <div className="relative h-48 sm:h-56 md:h-64 w-full mb-4 flex-shrink-0">
           {newsItem.featured && renderFeaturedBadge()}
           <div className="w-full h-full relative rounded-lg overflow-hidden">
@@ -395,18 +395,18 @@ const NewsPageContent = () => {
         </div>
         <div className="text-left flex-grow flex flex-col">
           <div className="flex justify-between items-center mb-2">
-            <div className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs">{newsItem.category}</div>
+            <div className="bg-blue-50 dark:bg-blue-900 text-blue-600 px-3 py-1 rounded-full text-xs">{newsItem.category}</div>
             <div className="flex items-center text-gray-500 text-xs">
               <Clock className="h-3 w-3 mr-1"/>
               <span>{newsItem.readTime}</span>
             </div>
           </div>
-          <h2 className="text-lg font-bold text-blue-800 mb-2 line-clamp-2">{newsItem.title}</h2>
+          <h2 className="text-lg font-bold text-blue-800 dark:text-white mb-2 line-clamp-2">{newsItem.title}</h2>
           <div className="flex items-center text-gray-500 text-xs mb-3">
             <Calendar className="h-3 w-3 mr-1"/>
             <span>{formatDate(newsItem.date)}</span>
           </div>
-          <p className="text-blue-800 mb-4 text-sm line-clamp-3 flex-grow">{newsItem.summary}</p>
+          <p className="text-blue-800 dark:text-white mb-4 text-sm line-clamp-3 flex-grow">{newsItem.summary}</p>
           <div className="flex items-center text-orange-500 font-medium text-sm hover:text-orange-600 transition-colors">
           Читать далее <ArrowRight className="ml-1 h-4 w-4" />
           </div>
@@ -428,20 +428,20 @@ const NewsPageContent = () => {
         </div>
         <div className="w-full sm:w-2/3 sm:pl-6">
           <div className="flex flex-wrap justify-between items-center mb-2">
-            <div className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs mb-2 sm:mb-0">{newsItem.category}</div>
+            <div className="bg-blue-50 dark:bg-blue-900 text-blue-600 px-3 py-1 rounded-full text-xs mb-2 sm:mb-0">{newsItem.category}</div>
             <div className="flex items-center text-gray-500 text-xs">
               <Calendar className="h-3 w-3 mr-1"/>
               <span>{formatDate(newsItem.date)}</span>
             </div>
           </div>
           <Link href={`/news/${newsItem.slug}`}>
-            <h2 className="text-xl font-bold text-blue-800 mb-2">{newsItem.title}</h2>
+            <h2 className="text-xl font-bold text-blue-800 dark:text-white mb-2">{newsItem.title}</h2>
           </Link>
           <div className="flex items-center text-gray-500 text-xs mb-3">
             <Clock className="h-3 w-3 mr-1"/>
             <span>{newsItem.readTime}</span>
           </div>
-          <p className="text-blue-800 mb-4" style={{ fontFamily: '"Kamber Medium", sans-serif' }}>{newsItem.summary}</p>
+          <p className="text-blue-800 dark:text-white mb-4" style={{ fontFamily: '"Kamber Medium", sans-serif' }}>{newsItem.summary}</p>
           <Link href={`/news/${newsItem.slug}`}>
             <div className="flex items-center text-orange-500 font-medium hover:text-orange-600 transition-colors">
               Читать далее <ArrowRight className="ml-1 h-4 w-4" />
@@ -457,7 +457,7 @@ const NewsPageContent = () => {
     
     return (
       <div className="mb-12">
-        <h2 className="text-2xl sm:text-3xl font-light text-blue-800 mb-6">
+        <h2 className="text-2xl sm:text-3xl font-light text-blue-800 dark:text-white mb-6">
         Избранные <span className="font-bold" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>Истории</span>
         </h2>
         
@@ -497,10 +497,10 @@ const NewsPageContent = () => {
     <div className="md:hidden mb-6">
       <div className="flex justify-between items-center">
         <div 
-          className="flex items-center cursor-pointer bg-blue-50 px-3 py-2 rounded-lg"
+          className="flex items-center cursor-pointer bg-blue-50 dark:bg-blue-900 px-3 py-2 rounded-lg"
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          <span className="text-blue-800 text-sm mr-1">Сортировать по:</span>
+          <span className="text-blue-800 dark:text-white text-sm mr-1">Сортировать по:</span>
           <span className="text-blue-900 text-sm font-medium">{getSortOptionText(sortBy)}</span>
           {isDropdownOpen ? <ChevronUp className="text-orange-500 ml-1 h-4 w-4" /> : <ChevronDown className="text-orange-500 ml-1 h-4 w-4" />}
         </div>
@@ -514,7 +514,7 @@ const NewsPageContent = () => {
         </div>
       </div>
       {isDropdownOpen && (
-        <div className="absolute mt-1 bg-white border border-gray-200 shadow-lg z-10 w-full left-0 px-4">
+        <div className="absolute mt-1 bg-white dark:bg-gray-800 border border-gray-200 shadow-lg z-10 w-full left-0 px-4">
           {(['newest', 'oldest', 'a-z', 'z-a'] as SortOption[]).map(option => (
             <div 
               key={option} 
@@ -533,7 +533,7 @@ const NewsPageContent = () => {
   );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900 ">
       <Head>
         <title>Новости & Обновления</title>
         <meta name="description" content="Будьте в курсе последних новостей, инноваций и обновлений" />
@@ -543,7 +543,7 @@ const NewsPageContent = () => {
 
       <main className="container mx-auto max-w-7xl px-4 sm:px-6">
         <div className="py-4">
-          <div className="text-xs text-blue-800 font-light mt-4">Новости & Обновления</div>
+          <div className="text-xs text-blue-800 dark:text-white font-light mt-4">Новости & Обновления</div>
         </div>
 
         <div className="flex flex-col md:flex-row md:justify-between md:items-center my-2 md:my-6">
@@ -556,7 +556,7 @@ const NewsPageContent = () => {
 
         <div className="md:hidden mb-4">
           <button 
-            className="w-full bg-blue-50 text-blue-800 py-3 rounded flex items-center justify-center font-bold"
+            className="w-full bg-blue-50 dark:bg-blue-900 text-blue-800 dark:text-white py-3 rounded flex items-center justify-center font-bold"
             onClick={() => setIsMobileFilterOpen(true)}
           >
             <Filter className="mr-2 h-5 w-5" />
@@ -564,11 +564,11 @@ const NewsPageContent = () => {
           </button>
         </div>
 
-        <div className="flex flex-col md:flex-row md:space-x-6 mb-8">
+        <div className="flex flex-col md:flex-row md:space-x-6 pb-8">
           <div className="hidden md:block w-64 flex-shrink-0">
             {!isFilterOpen && (
               <button
-                className="mb-4 bg-blue-50 text-blue-800 py-2 px-4 rounded flex items-center font-bold"
+                className="mb-4 bg-blue-50 dark:bg-blue-900 text-blue-800 dark:text-white py-2 px-4 rounded flex items-center font-bold"
                 onClick={() => setIsFilterOpen(true)}
               >
                 <Filter className="mr-2 h-5 w-5" />
@@ -582,7 +582,7 @@ const NewsPageContent = () => {
 
           <div className="flex-grow relative">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 md:mb-6 border-b border-gray-200 pb-4">
-              <div className="text-blue-800 font-bold text-lg sm:text-xl mb-2 md:mb-0" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
+              <div className="text-blue-800 dark:text-white font-bold text-lg sm:text-xl mb-2 md:mb-0" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
                 {sortedNews.length} Статьи
               </div>
               <div className="hidden md:flex items-center gap-6">
@@ -593,7 +593,7 @@ const NewsPageContent = () => {
                     {isDropdownOpen ? <ChevronUp className="text-orange-500 ml-1 h-4 w-4" /> : <ChevronDown className="text-orange-500 ml-1 h-4 w-4" />}
                   </div>
                   {isDropdownOpen && (
-                    <div className="absolute top-full right-0 mt-1 bg-white border border-gray-200 shadow-lg z-10 w-40">
+                    <div className="absolute top-full right-0 mt-1 bg-white dark:bg-gray-800 border border-gray-200 shadow-lg z-10 w-40">
                       {(['newest', 'oldest', 'a-z', 'z-a'] as SortOption[]).map(option => (
                         <div 
                           key={option} 
@@ -623,9 +623,9 @@ const NewsPageContent = () => {
             {renderMobileSortAndView()}
 
             {sortedNews.length === 0 ? (
-              <div className="text-center py-10 sm:py-16 bg-gray-50 rounded">
-                <div className="text-4xl sm:text-5xl text-gray-300 mb-4">¯\_(ツ)_/¯</div>
-                <p className="text-lg sm:text-xl text-blue-800 mb-2">Нет новостей, соответствующих вашим фильтрам</p>
+              <div className="text-center py-10 sm:py-16 bg-gray-50 dark:bg-gray-800 rounded">
+                <div className="text-4xl sm:text-5xl text-gray-300 dark:text-white mb-4">¯\_(ツ)_/¯</div>
+                <p className="text-lg sm:text-xl text-blue-800 dark:text-white mb-2">Нет новостей, соответствующих вашим фильтрам</p>
                 <button 
                   onClick={clearAllFilters}
                   className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors"

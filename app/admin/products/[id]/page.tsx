@@ -252,6 +252,10 @@ export default function EditProductPage() {
   const [showImagePreview, setShowImagePreview] = useState(false);
   const [availableBrands, setAvailableBrands] = useState<string[]>([]);
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
+  const [customBrand, setCustomBrand] = useState('');
+const [customCategory, setCustomCategory] = useState('');
+const [isCustomBrand, setIsCustomBrand] = useState(false);
+const [isCustomCategory, setIsCustomCategory] = useState(false);
 
   const isNewProduct = id === 'new';
 
@@ -620,29 +624,41 @@ export default function EditProductPage() {
                     Бренд*
                   </label>
                   <select
-                    id="brandName"
-                    name="brandName"
-                    value={form.brandName}
-                    onChange={handleChange}
+  id="brandName"
+  name="brandName"
+  value={isCustomBrand ? 'other' : form.brandName}
+  onChange={(e) => {
+    const value = e.target.value;
+    if (value === 'other') {
+      setIsCustomBrand(true);
+      setForm(prev => ({ ...prev, brandName: '' }));
+    } else {
+      setIsCustomBrand(false);
+      setCustomBrand('');
+      setForm(prev => ({ ...prev, brandName: value }));
+    }
+  }}
                     className={`w-full px-3 py-2 border rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
                       errors.brandName ? 'border-red-300 bg-red-50' : 'border-gray-300'
                     }`}
                   >
-                    <option value="">Выберите бренд</option>
-                    {availableBrands.map(brand => (
-                      <option key={brand} value={brand}>
-                        {brand}
-                      </option>
-                    ))}
-                    <option value="other">Другой (введите ниже)</option>
+                     <option value="">Выберите бренд</option>
+                      {availableBrands.map(brand => (
+                        <option key={brand} value={brand}>{brand}</option>
+                      ))}
+                      <option value="other">Другой (введите ниже)</option>
                   </select>
-                  {form.brandName === 'other' && (
-                    <input
-                      placeholder="Введите название бренда"
-                      className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg"
-                      onChange={e => setForm(prev => ({ ...prev, brandName: e.target.value }))}
-                    />
-                  )}
+                  {isCustomBrand && (
+  <input
+    placeholder="Введите название бренда"
+    className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg"
+    value={customBrand}
+    onChange={(e) => {
+      setCustomBrand(e.target.value);
+      setForm(prev => ({ ...prev, brandName: e.target.value }));
+    }}
+  />
+)}
                   {renderFieldError('brandName')}
                 </div>
                 
@@ -651,10 +667,20 @@ export default function EditProductPage() {
                     Категория*
                   </label>
                   <select
-                    id="category"
-                    name="category"
-                    value={form.category}
-                    onChange={handleChange}
+  id="category"
+  name="category"
+  value={isCustomCategory ? 'other' : form.category}
+  onChange={(e) => {
+    const value = e.target.value;
+    if (value === 'other') {
+      setIsCustomCategory(true);
+      setForm(prev => ({ ...prev, category: '' }));
+    } else {
+      setIsCustomCategory(false);
+      setCustomCategory('');
+      setForm(prev => ({ ...prev, category: value }));
+    }
+  }}
                     className={`w-full px-3 py-2 border rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
                       errors.category ? 'border-red-300 bg-red-50' : 'border-gray-300'
                     }`}
@@ -667,13 +693,17 @@ export default function EditProductPage() {
                     ))}
                     <option value="other">Другая (введите ниже)</option>
                   </select>
-                  {form.category === 'other' && (
-                    <input
-                      placeholder="Введите название категории"
-                      className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg"
-                      onChange={e => setForm(prev => ({ ...prev, category: e.target.value }))}
-                    />
-                  )}
+                  {isCustomCategory && (
+  <input
+    placeholder="Введите название категории"
+    className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg"
+    value={customCategory}
+    onChange={(e) => {
+      setCustomCategory(e.target.value);
+      setForm(prev => ({ ...prev, category: e.target.value }));
+    }}
+  />
+)}
                   {renderFieldError('category')}
                 </div>
               </div>

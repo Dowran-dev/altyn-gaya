@@ -424,7 +424,7 @@ export default function NewsDetailPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-black text-gray-800 dark:text-gray-100">
       <Head>
         <title>{newsItem.title}</title>
         <meta name="description" content={newsItem.summary} />
@@ -432,20 +432,18 @@ export default function NewsDetailPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* Индикатор прогресса */}
-      <div className="fixed top-0 left-0 w-full h-1 z-50 bg-gray-200">
+      <div className="fixed top-0 left-0 w-full h-1 z-50 bg-gray-200 dark:bg-gray-700">
         <div 
           className="h-full bg-orange-500 transition-all duration-200 ease-out"
           style={{ width: `${scrollProgress}%` }}
         ></div>
       </div>
 
-      {/* Героическая секция с эффектом параллакса */}
       <div className="relative h-screen max-h-[600px] overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900">
+        <div className="absolute inset-0 bg-blue-900 dark:bg-gray-800">
           {renderNewsImage()}
         </div>
-        
+
         <div className="container mx-auto px-4 sm:px-6 h-full flex flex-col justify-end pb-16 relative z-10">
           <div className="animate-fadeIn">
             <Link href="/news" className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors group">
@@ -491,29 +489,6 @@ export default function NewsDetailPage() {
         
         {/* Плавающие кнопки действий */}
         <div className="hidden md:flex fixed right-6 top-1/3 flex-col gap-3 z-20">
-          {/* <button 
-            onClick={() => {setIsLiked(!isLiked); setLikeCount(isLiked ? likeCount - 1 : likeCount + 1)}}
-            className={`group p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 ${
-              isLiked ? 'bg-red-500 text-white' : 'bg-white/90 text-blue-800 hover:bg-red-500 hover:text-white'
-            }`}
-          >
-            <Heart className="h-5 w-5" fill={isLiked ? "white" : "none"} />
-            <span className="absolute right-full mr-2 bg-white/90 text-blue-800 rounded-md px-2 py-1 text-sm opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap shadow-md">
-              {likeCount} лайков
-            </span>
-          </button> */}
-          
-          {/* <button 
-            onClick={() => setIsBookmarked(!isBookmarked)}
-            className={`group p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 ${
-              isBookmarked ? 'bg-blue-600 text-white' : 'bg-white/90 text-blue-800 hover:bg-blue-600 hover:text-white'
-            }`}
-          >
-            {isBookmarked ? <BookmarkPlus className="h-5 w-5" /> : <Bookmark className="h-5 w-5" />}
-            <span className="absolute right-full mr-2 bg-white/90 text-blue-800 rounded-md px-2 py-1 text-sm opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap shadow-md">
-              {isBookmarked ? 'Сохранено' : 'Сохранить статью'}
-            </span>
-          </button> */}
           
           <button 
             onClick={() => setShareMenuOpen(!shareMenuOpen)}
@@ -606,7 +581,7 @@ export default function NewsDetailPage() {
       </div>
 
       {/* Мобильная панель действий */}
-      <div className="md:hidden flex items-center justify-between bg-white sticky top-0 z-30 px-4 py-3 border-b border-gray-200 shadow-sm">
+      <div className="md:hidden flex items-center justify-between bg-white dark:bg-gray-900 sticky top-0 z-30 px-4 py-3 border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="flex gap-2">
           {/* <button 
             onClick={() => {setIsLiked(!isLiked); setLikeCount(isLiked ? likeCount - 1 : likeCount + 1)}}
@@ -677,7 +652,7 @@ export default function NewsDetailPage() {
       
       {/* Мобильное содержание */}
       {showTableOfContents && (
-        <div className="md:hidden bg-blue-50 border-b border-blue-100">
+        <div className="md:hidden bg-blue-50 dark:bg-gray-800 border-b border-blue-100 dark:border-gray-700">
           <div className="container mx-auto px-4 py-3">
             <h3 className="font-bold text-blue-800 mb-2">В этой статье</h3>
             <ul className="space-y-2 pb-1">
@@ -705,17 +680,15 @@ export default function NewsDetailPage() {
 
       {/* Основное содержимое */}
       <main className="container mx-auto max-w-4xl px-4 sm:px-6 py-8 relative">
-        <article className="bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 mb-12">
-          {/* Содержимое статьи */}
+        <article className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 mb-12">
           <div 
             ref={contentRef}
-            className="prose prose-blue lg:prose-lg max-w-none prose-headings:text-blue-800 prose-headings:font-bold prose-p:text-blue-800/80 prose-a:text-orange-500 prose-a:font-medium prose-img:rounded-lg prose-img:shadow-md prose-li:text-blue-800/80"
+            className="prose prose-blue lg:prose-lg max-w-none prose-headings:text-blue-800 dark:prose-headings:text-blue-100 prose-headings:font-bold prose-p:text-blue-800/80 dark:prose-p:text-blue-300 prose-a:text-orange-500 prose-a:font-medium prose-img:rounded-lg prose-img:shadow-md prose-li:text-blue-800/80 dark:prose-li:text-blue-300"
           >
             <div dangerouslySetInnerHTML={{ __html: newsItem.content }} />
           </div>
-          
-          {/* Нижняя часть статьи */}
-          <div className="mt-12 pt-8 border-t border-gray-200">
+
+          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
             <div className="flex flex-wrap justify-between items-center gap-4">
               <div className="flex items-center gap-4">
                 {/* <button 
@@ -765,13 +738,12 @@ export default function NewsDetailPage() {
         {relatedNews.length > 0 && (
           <div className="mb-16">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-blue-800">Связанные статьи</h2>
+              <h2 className="text-2xl font-bold text-blue-800 dark:text-blue-100">Связанные статьи</h2>
               <Link href="/news-page" className="flex items-center text-orange-500 font-medium hover:text-orange-600 transition-colors">
                 Все новости
                 <ChevronRight className="h-5 w-5 ml-1" />
               </Link>
             </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedNews.slice(0, 3).map((item, index) => (
                 <RelatedNewsItem key={item.id} item={item} index={index} />
