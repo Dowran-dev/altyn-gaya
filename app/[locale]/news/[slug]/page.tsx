@@ -108,7 +108,7 @@ const NewsletterForm = () => {
         )}
         
         <p className="text-blue-200 text-sm mt-4">
-          Подписываясь, вы соглашаетесь с нашей <a href="/privacy" className="text-white underline">Политикой конфиденциальности</a> и даете согласие на получение обновлений от нашей компании.
+          Подписываясь, вы соглашаетесь с нашей <Link href="/privacy" className="text-white underline">Политикой конфиденциальности</Link> и даете согласие на получение обновлений от нашей компании.
         </p>
       </div>
     </div>

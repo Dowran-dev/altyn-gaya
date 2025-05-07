@@ -19,6 +19,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 
+// Obtain current file and directory paths for compatibility
 const __filename = fileURLToPath(
     import.meta.url);
 const __dirname = dirname(__filename);
@@ -31,7 +32,7 @@ export default [
     // Base Next.js config
     ...compat.extends("next/core-web-vitals", "next/typescript"),
 
-    // Your custom rules
+    // Custom rules for TypeScript files
     {
         files: ["**/*.ts", "**/*.tsx"],
         rules: {
@@ -57,6 +58,7 @@ export default [
                     ignoreRestArgs: true,
                 },
             ],
+            "@typescript-eslint/no-require-imports": "off",
         },
     },
 
@@ -72,7 +74,18 @@ export default [
         },
     },
 
-    // Optional: completely ignore those files (they won’t even be linted)
+    {
+        files: ["app/[locale]/layout.tsx"],
+        rules: {
+            "@typescript-eslint/no-explicit-any": "off", // Allow usage of `any`
+            "@typescript-eslint/no-unused-vars": "off", // Ignore unused variables
+            "@typescript-eslint/explicit-module-boundary-types": "off", // Ignore explicit return types
+            "@typescript-eslint/explicit-function-return-type": "off", // Ignore explicit function return types
+            "@typescript-eslint/no-empty-function": "off", // Ignore empty function checks
+        },
+    },
+
+    // Optional: ignore Prisma and node_modules
     {
         ignores: ["lib/generated/prisma/**/*", "node_modules/**/*"],
     },

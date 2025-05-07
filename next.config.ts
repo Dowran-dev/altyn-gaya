@@ -1,7 +1,10 @@
+// next.config.ts
+const withNextIntl = require('next-intl/plugin')();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["images.ctfassets.net", "www.techkorm.ru", "termobrest.ru", "images.unsplash.com", "res.cloudinary.com"], // Разрешаем Next.js загружать изображения с этого домена
+    domains: ["images.ctfassets.net", "www.techkorm.ru", "termobrest.ru", "images.unsplash.com", "res.cloudinary.com"],
     remotePatterns: [
       {
         protocol: "https",
@@ -12,4 +15,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withNextIntl(nextConfig);

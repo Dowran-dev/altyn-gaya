@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/header.tsx", "app/components/MobileNavigation.jsx", "app/components/DesktopNavigation.jsx", "app/components/MobileNavigation.jsx", "app/components/AboutCompanySection.jsx", "app/components/AdvantagesSection.jsx", "app/components/ContactSection.jsx", "app/page.tsx"],
+  "include": ["next-env.d.ts", "app/**/*","next.config.ts","**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/[locale]/components/header.tsx", "app/[locale]/components/MobileNavigation.jsx", "app/[locale]/components/DesktopNavigation.jsx", "app/[locale]/components/MobileNavigation.jsx", "app/[locale]/components/AboutCompanySection.jsx", "app/[locale]/components/AdvantagesSection.jsx", "app/[locale]/components/ContactSection.jsx", "app/[locale]/page.tsx"],
   "exclude": ["node_modules"]
 }

@@ -3475,24 +3475,52 @@
 // }
 
 
+
+
+
+// app/api/products/route.ts last
+// import { NextResponse } from 'next/server';
+// import prisma from '@/lib/prisma';
+
+// export async function GET() {
+//   try {
+//     const categories = await prisma.productCategory.findMany({
+//       include: {
+//         products: {
+//           include: {
+//             sizes: true,
+//             reviewsList: true
+//           }
+//         }
+//       }
+//     });
+
+//     return NextResponse.json(categories);
+//   } catch (error: unknown) {
+//     console.error('Failed to fetch products:', error);
+    
+//     // Convert unknown error to a typed error object
+//     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+//     const errorStack = error instanceof Error && process.env.NODE_ENV === 'development' ? error.stack : undefined;
+    
+//     return NextResponse.json({ 
+//       error: 'Internal Server Error', 
+//       message: errorMessage,
+//       stack: errorStack
+//     }, { status: 500 });
+//   }
+// }
+
+
 // app/api/products/route.ts
 import { NextResponse } from 'next/server';
-import prisma from '@/lib/prisma';
+// import type { ProductCategory } from '@/data/products';
+import { productsData } from '@/data/products';
 
 export async function GET() {
   try {
-    const categories = await prisma.productCategory.findMany({
-      include: {
-        products: {
-          include: {
-            sizes: true,
-            reviewsList: true
-          }
-        }
-      }
-    });
-
-    return NextResponse.json(categories);
+    // Return the product data directly from the imported file
+    return NextResponse.json(productsData);
   } catch (error: unknown) {
     console.error('Failed to fetch products:', error);
     

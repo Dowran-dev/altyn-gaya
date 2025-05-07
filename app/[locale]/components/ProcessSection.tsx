@@ -333,6 +333,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Check } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLocale, useTranslations } from 'next-intl';
 
 // Define types for process step
 type ProcessStep = {
@@ -345,29 +346,41 @@ type ProcessStep = {
 };
 
 const ProcessSection: React.FC = () => {
-  // Process steps data
+  const t = useTranslations(); 
+  const locale = useLocale();
+  
+ // Process steps data, using t to fetch localized content
   const processSteps: ProcessStep[] = [
     {
       id: 1,
-      title: "Закупка сырья",
-      description: "Мы используем только высококачественное сырье от проверенных поставщиков, которое проходит строгий контроль перед поступлением в производство.",
-      features: ["Экологически чистые материалы", "Сертифицированные поставщики"],
+      title: t('process.step1.title'),
+      description: t('process.step1.description'),
+      features: [
+        t('process.step1.features.0'),
+        t('process.step1.features.1')
+      ],
       imageSrc: "/images/zakupka_syrya.webp",
       imageAlt: "Закупка сырья"
     },
     {
       id: 2,
-      title: "Производство",
-      description: "Современное оборудование и автоматизированные линии производства позволяют нам создавать продукцию высочайшего качества с минимальным воздействием на окружающую среду.",
-      features: ["Автоматизированные процессы", "Многоуровневый контроль качества"],
+      title: t('process.step2.title'),
+      description: t('process.step2.description'),
+      features: [
+        t('process.step2.features.0'),
+        t('process.step2.features.1')
+      ],
       imageSrc: "/images/1.jpg",
       imageAlt: "Производство"
     },
     {
       id: 3,
-      title: "Упаковка и доставка",
-      description: "Наша продукция упаковывается в экологичные материалы и доставляется клиентам с соблюдением всех необходимых условий хранения и транспортировки.",
-      features: ["Экологичная упаковка", "Оперативная логистика"],
+      title: t('process.step3.title'),
+      description: t('process.step3.description'),
+      features: [
+        t('process.step3.features.0'),
+        t('process.step3.features.1')
+      ],
       imageSrc: "/images/upakowka.jpg",
       imageAlt: "Упаковка и доставка"
     }
@@ -413,13 +426,13 @@ const ProcessSection: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="inline-block mb-4 bg-[#fb4b06]/10 dark:bg-[#fb4b06]/20 rounded-full px-6 py-2">
-            <span className="text-[#fb4b06] dark:text-[#ff6a2c] text-sm font-medium uppercase tracking-wider">Как мы работаем</span>
+            <span className="text-[#fb4b06] dark:text-[#ff6a2c] text-sm font-medium uppercase tracking-wider">{locale === 'ru' ? 'Как мы работаем' : locale === 'en' ? 'How we work' : 'Nasıl çalışıyoruz'}</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-[#1E22AA] dark:text-blue-400 mb-6 leading-tight" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
-            ПРОИЗВОДСТВЕННЫЙ <span className="text-[#fb4b06] dark:text-orange-500">ПРОЦЕСС</span>
+          {locale === 'ru' ? 'ПРОИЗВОДСТВЕННЫЙ' : locale === 'en' ? 'INDUSTRIAL' : 'ENDÜSTRİYEL'} <span className="text-[#fb4b06] dark:text-orange-500">{locale === 'ru' ? 'ПРОЦЕСС' : locale === 'en' ? 'PROCESS' : 'SÜREÇ'}</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-            От закупки сырья до доставки готовой продукции - каждый этап производства контролируется нашими экспертами для обеспечения наивысшего качества.
+            {locale === 'ru' ? 'От закупки сырья до доставки готовой продукции - каждый этап производства контролируется нашими экспертами для обеспечения наивысшего качества.' : locale === 'en' ? 'From purchasing raw materials to delivery of finished products, every stage of production is controlled by our experts to ensure the highest quality.' : locale === 'tr' ? 'Hammadde alımından, bitmiş ürünlerin teslimatına kadar üretimin her aşaması, en yüksek kaliteyi garantilemek için uzmanlarımız tarafından kontrol edilir.' : ''}
           </p>
         </motion.div>
 

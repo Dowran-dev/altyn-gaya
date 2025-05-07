@@ -1471,6 +1471,7 @@ import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { Star, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 interface ProductSize {
   id: number;
@@ -1530,6 +1531,7 @@ const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<Products | null>(null);
   const [loading, setLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
+  const t = useTranslations();
 
   const brandsInfo: BrandInfo[] = [
     { name: "Real Plus", color: "#3538C8", logoUrl: "/images/logo/RealPlus.png" },
@@ -1611,7 +1613,7 @@ const ProductDetailsPage: React.FC = () => {
             style={{ backgroundColor: `${brandInfo.color}10` }}
           ></div>
           <div className="absolute bottom-0 w-full text-center p-4 text-sm text-gray-500 dark:text-gray-400">
-            Изображение недоступно
+            {t("productDetails.imageUnavailable")}
           </div>
         </div>
       );
@@ -1631,7 +1633,7 @@ const ProductDetailsPage: React.FC = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-blue-800 dark:text-blue-100 text-xl">Загрузка продукта...</div>
+        <div className="text-blue-800 dark:text-blue-100 text-xl">{t("productDetails.loadingProduct")}</div>
       </div>
     );
   }
@@ -1639,7 +1641,7 @@ const ProductDetailsPage: React.FC = () => {
   if (!product) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-blue-800 dark:text-blue-100 text-xl">Продукт не найден</div>
+        <div className="text-blue-800 dark:text-blue-100 text-xl">{t("productDetails.productNotFound")}</div>
       </div>
     );
   }
@@ -1745,16 +1747,16 @@ const ProductDetailsPage: React.FC = () => {
 
       <main className="container mx-auto max-w-7xl px-4 sm:px-6 py-6">
         <div className="flex items-center text-sm text-blue-800 dark:text-blue-100 mb-6">
-          <Link href="/" className="hover:text-orange-500">Главная</Link>
+          <Link href="/" className="hover:text-orange-500">{t("productDetails.home")}</Link>
           <span className="mx-2">/</span>
-          <Link href="/shop" className="hover:text-orange-500">Магазин</Link>
+          <Link href="/shop" className="hover:text-orange-500">{t("productDetails.shop")}</Link>
           <span className="mx-2">/</span>
           <span>{product.name}</span>
         </div>
 
         <Link href="/shop" className="flex items-center text-blue-600 hover:text-orange-500 mb-6">
           <ChevronLeft className="w-5 h-5 mr-1" />
-          Назад к продуктам
+          {t("productDetails.backToProducts")}
         </Link>
 
         <div className="flex flex-col md:flex-row md:space-x-8">
@@ -1772,13 +1774,13 @@ const ProductDetailsPage: React.FC = () => {
             </h1>
             <div className="flex items-center mb-4">
               {renderRatingStars(product.rating)}
-              <span className="text-blue-800 dark:text-blue-100 ml-2">({product.reviews} отзывов)</span>
+              <span className="text-blue-800 dark:text-blue-100 ml-2">({product.reviews} {t("productDetails.reviews")})</span>
             </div>
             <p className="text-blue-800 dark:text-blue-100 mb-6 text-lg" style={{ fontFamily: '"Kamber Medium", sans-serif' }}>
               {product.longDescription}
             </p>
             <div className="mb-6">
-              <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">Особенности:</h3>
+              <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">{t("productDetails.features")}:</h3>
               <ul className="list-disc pl-5 text-blue-800 dark:text-blue-100">
                 {product.features.map((feature, index) => (
                   <li key={index} className="mb-2">{feature}</li>
@@ -1786,7 +1788,7 @@ const ProductDetailsPage: React.FC = () => {
               </ul>
             </div>
             <div className="mb-6">
-              <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">Доступные размеры:</h3>
+              <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">{t("productDetails.availableSizes")}:</h3>
               <div className="flex flex-wrap gap-3">
                 {/* {product.sizes.map(size => (
                   <div 
@@ -1806,7 +1808,7 @@ const ProductDetailsPage: React.FC = () => {
             </div>
             {product.directions.length > 0 && (
               <div className="mb-6">
-                <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">Инструкции:</h3>
+                <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3 text-lg">{t("productDetails.instructions")}:</h3>
                 <ul className="list-decimal pl-5 text-blue-800 dark:text-blue-100">
                   {product.directions.map((direction, index) => (
                     <li key={index} className="mb-2">{direction}</li>
@@ -1817,7 +1819,7 @@ const ProductDetailsPage: React.FC = () => {
           </div>
         </div>
 
-        {product.reviewsList.length > 0 && (
+        {/* {product.reviewsList.length > 0 && (
           <div className="mt-12">
             <h2 className="text-2xl font-bold text-blue-800 dark:text-blue-100 mb-6" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
               Отзывы ({product.reviewsList.length})
@@ -1836,7 +1838,7 @@ const ProductDetailsPage: React.FC = () => {
               ))}
             </div>
           </div>
-        )}
+        )} */}
       </main>
     </div>
   );

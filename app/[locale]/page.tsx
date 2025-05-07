@@ -9,7 +9,7 @@ import AdvancedWaveSeparator from "./components/BrushWaveSeparator";
 import { FaInstagram, FaYoutube, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import AdvantagesSection from "./components/AdvantagesSection";
 import ContactSection from "./components/ContactSection";
-export const runtime = 'edge';
+import { useTranslations } from "next-intl";
 
 interface SocialLink {
   href: string;
@@ -105,15 +105,18 @@ const SocialMediaIcons: React.FC = () => {
   );
 };
 
+
+
+export default function Page() {
+
+  const t = useTranslations();
+
 // Contact information
 const contactInfo = {
   phone: "+993 61 64 09 21",
   email: "altyngaya2008@gmail.com",
-  address: "г. Мары, ул. Шаджахан, 22, велаят Мары, Туркменистан"
+  address: t("contactSection.address")
 };
-
-export default function Page() {
-
   return (
     <div className="min-h-screen overflow-hidden">
       <SocialMediaIcons />

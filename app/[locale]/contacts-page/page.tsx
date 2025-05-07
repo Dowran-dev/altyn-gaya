@@ -2,34 +2,8 @@
 import React, { useState, useEffect, useRef, FormEvent } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, ChevronRight, Loader2 } from 'lucide-react';
 import { FaWhatsapp, FaTiktok, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { useTranslations } from 'next-intl';
 
-
-// import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-// import { LatLngExpression } from 'leaflet';
-
-
-// const MapView = () => {
-
-//   const position: LatLngExpression = [37.6179558, 61.9144853]; // Example: Mary, Turkmenistan
-
-//   return (
-//     <div className="h-[400px] w-full rounded-lg overflow-hidden">
-//       <MapContainer center={position} zoom={15} style={{ height: '100%', width: '100%' }}>
-//         <TileLayer
-//           attribution="&copy; OpenStreetMap contributors"
-//           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//         />
-//         <Marker position={position}>
-//           <Popup>
-//             Altyn Gaya<br />г. Мары, ул. Шаджахан, 22
-//           </Popup>
-//         </Marker>
-//       </MapContainer>
-//     </div>
-//   );
-// };
-
-// export default MapView;
 // Animation component for elements that fade in on scroll
 const FadeInView: React.FC<{
     children: React.ReactNode;
@@ -152,6 +126,7 @@ const SocialLinks = () => {
 
 // Static location component to replace Google Maps
 const LocationDisplay = () => {
+  const t = useTranslations();
   return (
     <div className="relative w-full h-[400px] md:h-[500px] bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden">
       {/* Static map design */}
@@ -182,7 +157,7 @@ const LocationDisplay = () => {
                 <h3 className="font-bold text-sm text-[#0a0d42] dark:text-white">Altyn Gaya</h3>
               </div>
               <p className="text-xs text-gray-600 dark:text-gray-300">
-                г. Мары, ул. Шаджахан, 22, велаят Мары, Туркменистан
+                {t('footer.address')}
               </p>
             </div>
           </div>
@@ -198,7 +173,7 @@ const LocationDisplay = () => {
           <h3 className="font-bold text-lg text-[#0a0d42] dark:text-white">Altyn Gaya</h3>
         </div>
         <p className="text-sm text-gray-600 dark:text-gray-300">
-          г. Мары, ул. Шаджахан, 22, велаят Мары, Туркменистан
+          {t('footer.address')}
         </p>
       </div>
       
@@ -211,7 +186,7 @@ const LocationDisplay = () => {
           className="bg-[#0a0d42] hover:bg-[#fb4b06] text-white px-4 py-2 rounded-full transition-colors flex items-center space-x-2 shadow-lg"
         >
           <MapPin className="w-4 h-4" />
-          <span>Как добраться</span>
+          <span>{t('contact.howToGetThere')}</span>
         </a>
       </div>
     </div>
@@ -220,7 +195,7 @@ const LocationDisplay = () => {
 
 // Main Contact Page Component
 const Page = () => {
-
+  const t = useTranslations();
   // Form state
   const [formData, setFormData] = useState({
     name: '',
@@ -244,7 +219,7 @@ const Page = () => {
   const contactInfo = {
     phone: "+993 61 64 09 21",
     email: "altyngaya2008@gmail.com",
-    address: "г. Мары, ул. Шаджахан, 22, велаят Мары, Туркменистан",
+    address: t('footer.address'),
     hours: "Пн-Пт: 9:00 - 18:00, Сб: 10:00 - 15:00"
   };
   
@@ -311,7 +286,7 @@ const Page = () => {
       if (res.ok) {
         setFormStatus({
           type: 'success',
-          message: 'Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.'
+          message: t('contact.successMessage')
         });
         setFormData({
           name: '',
@@ -323,13 +298,13 @@ const Page = () => {
       } else {
         setFormStatus({
           type: 'error',
-          message: 'Ошибка при отправке сообщения. Пожалуйста, попробуйте позже.'
+          message: t('contact.errorMessage')
         });
       }
     } catch (_error) {
       setFormStatus({
         type: 'error',
-        message: 'Сетевая ошибка. Пожалуйста, попробуйте позже.'
+        message: t('contact.errorMessage')
       });
     } finally {
       setIsSubmitting(false);
@@ -391,20 +366,20 @@ const Page = () => {
             <FadeInView>
               <div className="inline-block mb-4 rounded-full px-6 py-2 bg-[#fb4b06]/10">
                 <span className="text-sm font-medium uppercase tracking-wider text-[#fb4b06]">
-                  Свяжитесь с нами
+                  {t('contact.contactUs')}
                 </span>
               </div>
             </FadeInView>
             
             <FadeInView delay={100}>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#0a0d42] to-[#2c2f7c] dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                Наши <span className="text-[#fb4b06]">Контакты</span>
+              {t('contact.title1')} <span className="text-[#fb4b06]">{t('contact.title2')}</span>
               </h1>
             </FadeInView>
             
             <FadeInView delay={200}>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Мы всегда рады помочь вам с выбором наших продуктов и ответить на любые вопросы. Свяжитесь с нами любым удобным для вас способом.
+                {t('contact.description')}
               </p>
             </FadeInView>
             
@@ -427,7 +402,7 @@ const Page = () => {
             <FadeInView delay={100}>
               <div className="space-y-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-[#0a0d42] dark:text-white mb-8">
-                  Как с нами <span className="text-[#fb4b06]">связаться</span>
+                {t('contact.title3')} <span className="text-[#fb4b06]"> {t('contact.title4')}</span>
                 </h2>
                 
                 <div className="space-y-6">
@@ -436,7 +411,7 @@ const Page = () => {
                       <Phone className="w-5 h-5 text-[#fb4b06] group-hover:text-white transition-colors" />
                     </div>
                     <div>
-                      <div className="text-gray-500 dark:text-gray-400 text-sm mb-1">Телефон</div>
+                      <div className="text-gray-500 dark:text-gray-400 text-sm mb-1">{t('contact.phone')}</div>
                       <a 
                         href={`tel:${contactInfo.phone}`} 
                         className="text-lg font-semibold text-[#0a0d42] dark:text-white hover:text-[#fb4b06] dark:hover:text-[#fb4b06] transition-colors"
@@ -466,7 +441,7 @@ const Page = () => {
                       <MapPin className="w-5 h-5 text-[#fb4b06] group-hover:text-white transition-colors" />
                     </div>
                     <div>
-                      <div className="text-gray-500 dark:text-gray-400 text-sm mb-1">Адрес</div>
+                      <div className="text-gray-500 dark:text-gray-400 text-sm mb-1">{t('contact.address')}</div>
                       <div className="text-lg font-semibold text-[#0a0d42] dark:text-white">
                         {contactInfo.address}
                       </div>
@@ -478,9 +453,9 @@ const Page = () => {
                       <Clock className="w-5 h-5 text-[#fb4b06] group-hover:text-white transition-colors" />
                     </div>
                     <div>
-                      <div className="text-gray-500 dark:text-gray-400 text-sm mb-1">Часы работы</div>
+                      <div className="text-gray-500 dark:text-gray-400 text-sm mb-1">{t('contact.workingHours')}</div>
                       <div className="text-lg font-semibold text-[#0a0d42] dark:text-white">
-                        {contactInfo.hours}
+                        {t('contact.workingTimes')}
                       </div>
                     </div>
                   </div>
@@ -488,7 +463,7 @@ const Page = () => {
                 
                 <div className="pt-6">
                   <h3 className="text-xl font-semibold text-[#0a0d42] dark:text-white mb-4">
-                    Мы в социальных сетях
+                    {t('contact.weInMedia')}
                   </h3>
                   <SocialLinks />
                 </div>
@@ -501,7 +476,7 @@ const Page = () => {
                 <div className="absolute -inset-4 rounded-2xl blur-xl opacity-20 animate-pulse bg-gradient-to-r from-[#0a0d42] to-[#fb4b06]"></div>
                 <div className="relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700">
                   <h3 className="text-2xl font-bold mb-6 text-[#0a0d42] dark:text-white">
-                    Отправить сообщение
+                    {t('contact.sendMessage')}
                   </h3>
                   
                   {formStatus && (
@@ -518,7 +493,7 @@ const Page = () => {
                     <div className="grid md:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-                          Ваше имя *
+                          {t('contact.yourName')}
                         </label>
                         <input
                           type="text"
@@ -527,13 +502,13 @@ const Page = () => {
                           onChange={handleChange}
                           required
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#fb4b06]/50 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                          placeholder="Введите ваше имя"
+                          placeholder={t('contact.yourNamePlaceholder')}
                         />
                       </div>
                       
                       <div>
                         <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-                          Email *
+                          {t('contact.yourEmail')}
                         </label>
                         <input
                           type="email"
@@ -542,7 +517,7 @@ const Page = () => {
                           onChange={handleChange}
                           required
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#fb4b06]/50 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                          placeholder="Введите ваш email"
+                          placeholder={t('contact.yourEmailPlaceholder')}
                         />
                       </div>
                     </div>
@@ -550,7 +525,7 @@ const Page = () => {
                     <div className="grid md:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-                          Телефон
+                        {t('contact.yourPhone')}
                         </label>
                         <input
                           type="tel"
@@ -558,13 +533,13 @@ const Page = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#fb4b06]/50 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                          placeholder="Введите ваш телефон"
+                          placeholder={t('contact.yourPhonePlaceholder')}
                         />
                       </div>
                       
                       <div>
                         <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-                          Тема
+                          {t('contact.subject')}
                         </label>
                         <input
                           type="text"
@@ -572,14 +547,14 @@ const Page = () => {
                           value={formData.subject}
                           onChange={handleChange}
                           className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#fb4b06]/50 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                          placeholder="Введите тему сообщения"
+                          placeholder={t('contact.subjectPlaceholder')}
                         />
                       </div>
                     </div>
                     
                     <div>
                       <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-                        Сообщение *
+                        {t('contact.yourMessage')}
                       </label>
                       <textarea
                         name="message"
@@ -587,7 +562,7 @@ const Page = () => {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#fb4b06]/50 focus:border-transparent min-h-[120px] dark:bg-gray-700 dark:text-white"
-                        placeholder="Введите ваше сообщение"
+                        placeholder={t('contact.yourMessagePlaceholder')}
                       ></textarea>
                     </div>
                     
@@ -599,12 +574,12 @@ const Page = () => {
                       {isSubmitting ? (
                         <>
                           <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                          Отправка...
+                          {t('contact.sending')}
                         </>
                       ) : (
                         <>
                           <Send className="w-5 h-5 mr-2" />
-                          Отправить сообщение
+                          {t('contact.sendMessage')}
                         </>
                       )}
                     </button>
@@ -621,7 +596,7 @@ const Page = () => {
         <div className="container mx-auto px-4">
           <FadeInView>
             <h2 className="text-3xl md:text-4xl font-bold text-center text-[#0a0d42] dark:text-white mb-12">
-              Мы на <span className="text-[#fb4b06]">карте</span>
+              {t('contact.title5')} <span className="text-[#fb4b06]">{t('contact.title6')}</span>
             </h2>
           </FadeInView>
           
@@ -640,10 +615,10 @@ const Page = () => {
           <FadeInView>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#0a0d42] dark:text-white mb-4">
-                Часто задаваемые <span className="text-[#fb4b06]">вопросы</span>
+                {t('faq.faq')}
               </h2>
               <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Здесь вы найдете ответы на самые распространенные вопросы о нашей компании и продукции.
+                {t('faq.faqDescription')}
               </p>
             </div>
           </FadeInView>
@@ -652,16 +627,16 @@ const Page = () => {
             <div className="grid gap-6">
               {[
                 {
-                  q: "Как оформить заказ на продукцию?",
-                  a: "Вы можете оформить заказ через наш веб-сайт, по телефону +993 61 64 09 21 или отправив заявку на email. Наши менеджеры свяжутся с вами для уточнения деталей заказа."
+                  q: t('faq.question1'),
+                  a: t('faq.answer1')
                 },
                 {
-                  q: "Осуществляете ли вы доставку за пределы Туркменистана?",
-                  a: "Да, мы осуществляем международные поставки нашей продукции. Стоимость и сроки доставки рассчитываются индивидуально в зависимости от страны назначения."
+                  q: t('faq.question2'),
+                  a: t('faq.answer2')
                 },
                 {
-                  q: "Есть ли у вас программа лояльности для постоянных клиентов?",
-                  a: "Да, у нас действует программа лояльности для постоянных клиентов, которая предусматривает специальные цены и условия сотрудничества. Подробности можно узнать у наших менеджеров."
+                  q: t('faq.question3'),
+                  a: t('faq.answer3')
                 }
               ].map((faq, index) => (
                 <FadeInView key={index} delay={index * 100}>
@@ -676,14 +651,14 @@ const Page = () => {
             <FadeInView delay={500}>
               <div className="mt-12 text-center">
                 <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  Не нашли ответ на свой вопрос? Свяжитесь с нами напрямую!
+                  {t('contact.notFoundAnswer')}
                 </p>
                 <a 
                   href={`tel:${contactInfo.phone}`}
                   className="inline-flex items-center px-8 py-3 bg-[#fb4b06] text-white rounded-full shadow-lg hover:bg-[#0a0d42] transition-colors"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  Позвонить нам
+                  {t('contact.callUs')}
                 </a>
               </div>
             </FadeInView>

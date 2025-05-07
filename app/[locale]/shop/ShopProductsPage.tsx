@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Star, ChevronDown, Grid, List, Filter, X, ChevronUp, Check } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface ProductSize {
   id: number;
@@ -72,7 +73,7 @@ type ViewMode = 'grid' | 'list';
 // Loading component to display while suspense is active
 const ProductsLoading = () => (
   <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
-    <div className="text-blue-800 dark:text-blue-100 text-xl">Загрузка продуктов...</div>
+    <div className="text-blue-800 dark:text-blue-100 text-xl">Loading products...</div>
   </div>
 );
 
@@ -96,7 +97,7 @@ const ShopProductsContent = () => {
     minRating: 0,
     hasBadge: false
   });
-  
+  const t = useTranslations();
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
   const brandsInfo: BrandInfo[] = [
@@ -179,13 +180,13 @@ const ShopProductsContent = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center p-8">
-          <div className="text-red-500 text-xl mb-4">Ошибка загрузки данных</div>
+          <div className="text-red-500 text-xl mb-4">{t('errorLoadingData')}</div>
           <p className="text-blue-800 dark:text-blue-100 mb-4">{error}</p>
           <button 
             onClick={() => window.location.reload()}
             className="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition-colors"
           >
-            Попробовать снова
+            {t('tryAgain')}
           </button>
         </div>
       </div>
@@ -239,10 +240,10 @@ const ShopProductsContent = () => {
 
   const getSortOptionText = (option: SortOption): string => {
     switch (option) {
-      case 'popularity': return 'Популярность';
-      case 'rating': return 'Рейтинг продукта';
-      case 'a-z': return 'Продукты А-Я';
-      case 'z-a': return 'Продукты Я-А';
+      case 'popularity': return t('productPage.popularity');
+      case 'rating': return t('productPage.product_rating');
+      case 'a-z': return t('productPage.a-z');
+      case 'z-a': return t('productPage.z-a');
     }
   };
 
@@ -261,7 +262,7 @@ const ShopProductsContent = () => {
 
   const renderBrandFilter = () => (
     <div className="mb-6">
-      <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3">Бренд</h3>
+      <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3">{t('productPage.brand')}</h3>
       <div className="space-y-2 max-h-56 overflow-y-auto">
         {availableBrands.map(brand => (
           <div 
@@ -281,7 +282,7 @@ const ShopProductsContent = () => {
 
   const renderCategoryFilter = () => (
     <div className="mb-6">
-      <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3">Категория</h3>
+      <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-3">{t('productPage.category')}</h3>
       <div className="space-y-2 max-h-96 overflow-y-auto pr-1">
         {availableCategories.map(category => (
           <div 
@@ -308,13 +309,13 @@ const ShopProductsContent = () => {
     return (
       <div className="p-5 bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 md:sticky md:top-16">
         <div className="flex justify-between items-center mb-5 pb-3 border-b border-gray-100">
-          <h2 className="text-xl font-bold text-blue-800 dark:text-blue-100">Фильтры</h2>
+          <h2 className="text-xl font-bold text-blue-800 dark:text-blue-100">{t('productPage.filters')}</h2>
           <div className="flex gap-2">
             <button 
               className="text-blue-600 hover:text-orange-500 text-sm font-medium transition-colors" 
               onClick={clearAllFilters}
             >
-              Очистить все
+              {t('productPage.clearFilters')}
             </button>
             <button
               className="text-blue-600 hover:text-orange-500 text-sm font-medium md:hidden"
@@ -460,7 +461,7 @@ const ShopProductsContent = () => {
           </div>
           <p className="text-blue-800 dark:text-blue-100 mb-4 text-sm line-clamp-2 flex-grow">{product.description}</p>
           <button className="bg-orange-500 text-white px-4 sm:px-8 py-2 w-full sm:w-auto my-2 rounded-full hover:bg-orange-600 transition-colors font-bold text-lg">
-            Подробнее о товаре
+            {t('productPage.productDetails')}
           </button>
         </div>
       </div>
@@ -492,7 +493,7 @@ const ShopProductsContent = () => {
           </div>
           <p className="text-blue-800 dark:text-blue-100 mb-4 sm:mb-6" style={{ fontFamily: '"Kamber Medium", sans-serif' }}>{product.description}</p>
           <div className="mb-4">
-            <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-2">Доступные размеры:</h3>
+            <h3 className="font-bold text-blue-800 dark:text-blue-100 mb-2">{t('productPage.availableSizes')}</h3>
             <div className="flex flex-wrap gap-2">
               <span className="bg-blue-50 text-blue-800 dark:text-blue-100 px-3 py-1 rounded-full text-sm">-</span>
             </div>
@@ -547,7 +548,7 @@ const ShopProductsContent = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-800 dark:bg-gray-900 text-gray-800 dark:text-gray-100 dark:text-gray-100">
       <Head>
-        <title>Каталог товаров</title>
+        <title>{t('productPage.catalog')}</title>
         <meta name="description" content="Просмотрите нашу полную линейку продуктов" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
@@ -555,12 +556,12 @@ const ShopProductsContent = () => {
 
       <main className="container mx-auto max-w-7xl px-4 sm:px-6">
         <div className="py-4">
-          <div className="text-xs text-blue-800 dark:text-blue-100 font-light mt-4">Каталог товаров</div>
+          <div className="text-xs text-blue-800 dark:text-blue-100 font-light mt-4">{t('productPage.catalog')}</div>
         </div>
 
         <div className="flex flex-col md:flex-row md:justify-between md:items-center my-2 md:my-6">
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-light text-orange-500 mb-4 md:mb-0">
-            Каталог <span className="font-bold" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>Товаров</span>
+            {t('productPage.title1')} <span className="font-bold" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>{t('productPage.title2')}</span>
           </h1>
         </div>
 
@@ -570,7 +571,7 @@ const ShopProductsContent = () => {
             onClick={() => setIsMobileFilterOpen(true)}
           >
             <Filter className="mr-2 h-5 w-5" />
-            Фильтры и сортировка
+            {t('productPage.filters_and_sorting')}
           </button>
         </div>
 
@@ -582,7 +583,7 @@ const ShopProductsContent = () => {
                 onClick={() => setIsFilterOpen(true)}
               >
                 <Filter className="mr-2 h-5 w-5" />
-                Показать фильтры
+                {t('productPage.show_filters')}
               </button>
             )}
             {renderFilterPanel()}
@@ -593,11 +594,11 @@ const ShopProductsContent = () => {
           <div className="flex-grow relative">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4 md:mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
               <div className="text-blue-800 dark:text-blue-100 font-bold text-lg sm:text-xl mb-2 md:mb-0" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>
-                {sortedProducts.length} Продуктов
+                {sortedProducts.length} {t('productPage.products')}
               </div>
               <div className="hidden md:flex items-center gap-6">
                 <div className="flex items-center gap-2 relative">
-                  <span className="text-blue-900 dark:text-gray-100 font-semibold" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>Сортировать по:</span>
+                  <span className="text-blue-900 dark:text-gray-100 font-semibold" style={{ fontFamily: '"Avenir Next Heavy", sans-serif' }}>{t('productPage.sortBy')}:</span>
                   <div className="flex items-center cursor-pointer" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                     <span className="text-blue-900 dark:text-gray-100">{getSortOptionText(sortBy)}</span>
                     {isDropdownOpen ? <ChevronUp className="text-orange-500 ml-1 h-4 w-4" /> : <ChevronDown className="text-orange-500 ml-1 h-4 w-4" />}
@@ -635,12 +636,12 @@ const ShopProductsContent = () => {
             {sortedProducts.length === 0 ? (
               <div className="text-center py-10 sm:py-16 bg-gray-50 rounded">
                 <div className="text-4xl sm:text-5xl text-gray-300 mb-4">¯\_(ツ)_/¯</div>
-                <p className="text-lg sm:text-xl text-blue-800 dark:text-blue-100 mb-2">Не найдено продуктов, соответствующих вашим фильтрам</p>
+                <p className="text-lg sm:text-xl text-blue-800 dark:text-blue-100 mb-2">{t('productPage.noResults')}</p>
                 <button 
                   onClick={clearAllFilters}
                   className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors"
                 >
-                  Очистить все фильтры
+                  {t('productPage.clearFilters')}
                 </button>
               </div>
             ) : (

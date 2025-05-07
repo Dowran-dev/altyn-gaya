@@ -118,7 +118,7 @@
 
 // export default BrushSeparator;
 
-
+'use client'
 import React, { useEffect, useRef } from 'react';
 
 interface AdvancedWaveSeparatorProps {
